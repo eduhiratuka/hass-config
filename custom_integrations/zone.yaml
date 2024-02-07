@@ -1,0 +1,9 @@
+zone:
+  - name: Chácara
+    latitude: !secret country_house_latitude
+    longitude: !secret country_house_longitude
+    icon: mdi:tree
+  - name: Fábrica
+    latitude: !secret work_latitude
+    longitude: !secret work_longitude
+    icon: mdi:factory

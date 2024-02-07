@@ -1,0 +1,2 @@
+title: Sweet Home
+views: !include_dir_list custom_dashboards/views/default

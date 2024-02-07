@@ -1,0 +1,80 @@
+homeassistant:
+  name: Sweet Home
+  latitude: !secret home_latitude
+  longitude: !secret home_longitude
+  unit_system: metric
+  time_zone: America/Sao_Paulo
+  currency: "BRL"
+  country: "BR"
+  language: "pt-BR"
+  customize: !include customizations/customize.yaml
+  packages: !include_dir_named custom_integrations
+
+
+
+####################################################################################
+#  
+# - Integrações essenciais carregadas por este arquivo de configuração, porem, não 
+# fazem parte do pacote default_config
+# - Integrações com espaçamento são as que foram carregadas manualmente por este
+# arquivo de configuração.
+#  
+####################################################################################
+#
+# recorder
+# template
+# homeassistant
+
+
+
+####################################################################################
+#  
+# - As integrações abaixo fazem parte do pacote default_config, documentado em 
+# https://www.home-assistant.io/integrations/default_config/
+# - Integrações com espaçamento são as que foram carregadas manualmente por este
+# arquivo de configuração.
+#  
+####################################################################################
+#  
+#     automation
+# assist_pipeline
+# backup
+# bluetooth
+# config
+# conversation
+# counter
+# dhcp
+# energy
+#     frontend
+# hardware
+#     history
+# homeassistant_alerts
+# cloud
+# image_upload
+# input_boolean
+# input_button
+# input_datetime
+# input_number
+# input_select
+# input_text
+# logbook
+# logger
+# map
+# media_source
+# mobile_app
+# my
+# network
+#     person
+# schedule
+#     scene
+#     script
+# ssdp
+# stream
+# sun
+# system_health
+# tag
+# timer
+# usb
+# webhook
+# zeroconf
+#     zone

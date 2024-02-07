@@ -1,0 +1,20 @@
+# Generic ignores
+*.log
+*.log.*
+*.db
+*.db-shm
+*.db-wal
+
+# Directory (contents) ignores
+.cloud
+.storage
+deps
+blueprints
+www/entity_picture/*
+!www/entity_picture/moon_phases
+
+# Specific file ignores
+secrets.yaml
+
+# Ignore files created by IDE's
+.vscode
