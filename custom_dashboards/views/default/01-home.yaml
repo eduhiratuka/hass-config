@@ -1,5 +1,51 @@
 title: Home
 path: home
 icon: mdi:home
-badges: []    
-cards: []
+type: custom:grid-layout
+layout:
+  grid-template-columns: 1fr 1fr 1fr
+  grid-template-rows: auto
+  grid-template-areas: |
+    "welcome frente fundos"
+    "welcome quarto-do-edu escritorio"
+  mediaquery:
+    "(max-width: 870px)":
+      grid-template-columns: 100%
+      grid-template-rows: auto
+      grid-template-areas: |
+        "welcome"
+        "frente"
+        "fundos"
+        "quarto-do-edu"
+        "escritorio"
+badges: []
+cards:
+  - type: custom:mushroom-title-card
+    title: >
+      {%- if now().hour < 12 -%} Bom dia
+      {%- elif now().hour < 18 -%} Boa tarde
+      {%- else -%} Boa noite
+      {%- endif -%} , {{ user.split(" ") | first }}
+    alignment: left
+    view_layout:
+      grid-area: welcome
+  - type: custom:mushroom-title-card
+    title: Frente
+    alignment: left
+    view_layout:
+      grid-area: frente
+  - type: custom:mushroom-title-card
+    title: Fundos
+    alignment: left
+    view_layout:
+      grid-area: fundos
+  - type: custom:mushroom-title-card
+    title: Quarto do Edu
+    alignment: left
+    view_layout:
+      grid-area: quarto-do-edu
+  - type: custom:mushroom-title-card
+    title: Escritório
+    alignment: left
+    view_layout:
+      grid-area: escritorio

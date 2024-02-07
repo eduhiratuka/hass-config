@@ -1,2 +1,23 @@
 lovelace:
   mode: yaml
+
+  resources:
+    - url: /local/custom_plugins/layout-card.js
+      type: module
+    - url: /local/custom_plugins/button-card.js
+      type: module
+    - url: /local/custom_plugins/decluttering-card.js
+      type: module
+    - url: /local/custom_plugins/card-mod.js
+      type: module
+    - url: /local/custom_plugins/mushroom.js
+      type: module
+
+  dashboards:
+    test-lab:
+      mode: yaml
+      filename: /config/custom_dashboards/dashboards/test-lab.yaml
+      title: Test Lab
+      icon: mdi:tools
+      show_in_sidebar: true
+      require_admin: true
