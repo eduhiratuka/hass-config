@@ -4,6 +4,7 @@ generic_camera_template:
     camera_url: null
     camera_name: null
     camera_destacada_entity: null
+    atalhos_extra: []
   card:
       type: 'custom:webrtc-camera'
       url: '[[camera_url]]'
@@ -11,26 +12,58 @@ generic_camera_template:
       media: "video"
       shortcuts:
         - name: "Destacar"
-          icon: mdi:arrow-bottom-left-bold-box
-          service: "select.select_option"
-          service_data:
-            entity_id: "[[camera_destacada_entity]]"
-            option: "[[camera_name]]"
-        - name: "Destacar"
-          icon: mdi:arrow-left-bold-box
-          service: "select.select_option"
-          service_data:
-            entity_id: "[[camera_destacada_entity]]"
-            option: "[[camera_name]]"
-        - name: "Destacar"
-          icon: mdi:arrow-top-left-bold-box
+          icon: mdi:resize
           service: "select.select_option"
           service_data:
             entity_id: "[[camera_destacada_entity]]"
             option: "[[camera_name]]"
         - '[[atalhos_extra]]'
       card_mod:
-        style:
+        style: 
+          .shortcuts ha-icon:
+            :nth-child(1) $: |
+                ha-svg-icon {
+                    transform: rotate(-135deg);
+                    transition: transform 0.5s ease-in-out 0.5s;
+                }
+
+                @media screen and (orientation: portrait) {
+                  ha-svg-icon {
+                    transform:  rotate(-765deg);
+                  }
+                }
+
+            $: |
+
+                {% if is_state('[[camera_destacada_entity]]', '[[camera_name]]') %}
+                    :host {
+                        --mdc-icon-size: 45px;
+                    }
+
+                {% else %}
+                    :host {
+                        --mdc-icon-size: 25px;
+                    }
+                {% endif %}
+
+                ha-svg-icon {
+                    background-color: rgba(var(--rgb-primary-color), 0.2);
+                    color: rgb(var(--rgb-primary-color));
+
+                    border-radius: 100%;
+                    padding: 12px;
+                    margin: 16px 16px;
+
+                    transition: all 0.5s ease-in-out 0.5s;
+                }
+                
+                ha-svg-icon:active {
+                    width: calc(2 * var(--mdc-icon-size));
+                    height: calc(2 * var(--mdc-icon-size)); 
+                }
+
+
+
           .: |
             {% set available_cameras = state_attr('[[camera_destacada_entity]]', 'options') %}
             {% set highlighted_camera = states('[[camera_destacada_entity]]') %}
@@ -38,34 +71,19 @@ generic_camera_template:
 
             {%- set ns = namespace() %}
             {%- set ns.camera_grid_areas = [] %}
-            {%- set ns.icons_grid_areas = ['down-direction', 'middle-direction', 'up-direction'] %}
-            {%- set ns.icons_landscape = ['mdi:arrow-bottom-left-bold-box', 'mdi:arrow-left-bold-box', 'mdi:arrow-top-left-bold-box'] %}
-            {%- set ns.icons_portrait = ['mdi:arrow-top-right-bold-box', 'mdi:arrow-up-bold-box', 'mdi:arrow-top-left-bold-box'] %}
+            {%- set ns.icons_grid_areas = 'middle-direction' %}
 
             {% for available_camera in available_cameras %}
-            
-            {%- set ns.camera_grid_areas = ns.camera_grid_areas + [(ns.camera_grid_areas | reject('equalto', 'main') | list | length + 1) if available_camera not in highlighted_camera else 'main' ] -%}
+                {%- set ns.camera_grid_areas = ns.camera_grid_areas + [(ns.camera_grid_areas | reject('equalto', 'main') | list | length + 1) if available_camera not in highlighted_camera else 'main' ] -%}
             {% endfor -%}
 
             {% set ns.this_camera_index = -1 %}
             {%- for available_camera in available_cameras -%}
-              {%- if available_camera == this_camera -%}
-                  {%- set ns.this_camera_index = loop.index0 -%}
-              {%- endif -%}
+                  {%- if available_camera == this_camera -%}
+                      {%- set ns.this_camera_index = loop.index0 -%}
+                  {%- endif -%}
             {%- endfor %}
             {%- set grid_index = ns.camera_grid_areas[ns.this_camera_index] %}
-
-
-
-
-
-
-            :host {
-              --mdc-icon-size: 50px
-            }
-
-
-
 
 
 
@@ -78,137 +96,154 @@ generic_camera_template:
               }
             }
 
-            
-            
 
 
+            /* ******************************************* */
+            /*                                             */
+            /* Formatação do bloco .shortcuts              */
+            /*                                             */
+            /* ******************************************* */
 
             .shortcuts {
                 display: grid;
                 top: 0;
                 left: 0;
-            }
+            } 
 
-            {% if (highlighted_camera == this_camera) %}
-                .shortcuts {
-                    width: 100%; 
-                    height: auto;
-                    grid-template-columns: auto; 
-                    grid-template-rows: 100%;
-                    grid-template-areas: ' . '
-
-                    justify-content: center;
-                    align-items: center;
-                }
-
-            {% else %}
-                .shortcuts {
-                    width: 100%; 
-                    height: 100%; 
-                    grid-template-columns: 100%; 
-                    grid-template-rows: 33% 34% 33%;
-                    grid-template-areas: 
-                        'up-direction'
-                        'middle-direction'
-                        'down-direction';
-                }
-            {% endif %}
-
-            @media screen and (orientation: portrait) {
-                {% if (highlighted_camera == this_camera) %};
+            /* MODO PAISAGEM */
+                /* MODO CARD ATIVO */
+                {% if (highlighted_camera == this_camera) %}
                     .shortcuts {
-                        width: auto; 
+                        width: 100%; 
+                        height: auto;
+                        grid-template-columns: auto; 
+                        grid-template-rows: 100%;
+                        grid-template-areas: ' . ';
+                    }
+
+                {% else %}
+                    /* MODO CARD MINIMIZADO */
+                    .shortcuts {
+                        width: 100%; 
+                        height: 100%; 
+                        grid-template-columns: 100%; 
+                        grid-template-rows: 100%;
+                        grid-template-areas: '{{ ns.icons_grid_areas }}';
+                    }
+
+                {% endif %}
+
+            /* MODO RETRATO */
+            @media screen and (orientation: portrait) {
+
+                /* MODO CARD ATIVO */
+                {% if (highlighted_camera == this_camera) %}
+                    .shortcuts {
+                        width: 100%; 
                         height: auto;
                         grid-template-columns: auto;
                         grid-template-rows: 100%;
-                        grid-template-areas: '.'
+                        grid-template-areas: ' . ';
                     }
+
+
                 {% else %}
+                    /* MODO CARD MINIMIZADO */
                     .shortcuts {
-                        width: auto; 
-                        height: auto;
-                        grid-template-columns: 33% 34% 33%;
+                        width: 100%;
+                        height: 100%;
+                        grid-template-columns: 100%;
                         grid-template-rows: 100%;
-                        grid-template-areas: 
-                          'up-direction middle-direction down-direction';
+                        grid-template-areas: '{{ ns.icons_grid_areas }}';
                     }
+
                 {% endif %}
             }
 
 
+            /* ******************************************* */
+            /*                                             */
+            /* Formatação do bloco .shortcuts ha-icon      */
+            /*                                             */
+            /* ******************************************* */
+
+            /* MODO PAISAGEM */
+                /* MODO CARD ATIVO */
+                {% if (highlighted_camera == this_camera) %}
+                    .shortcuts ha-icon {
+                        display: grid;
+                    }
+
+                {% else %}
+                    /* MODO CARD MINIMIZADO */
+                    .shortcuts ha-icon {
+                        display: none;
+                    }
+
+                {% endif %}
+
+            /* MODO RETRATO */
+            @media screen and (orientation: portrait) {
+
+                /* MODO CARD ATIVO */
+                {% if (highlighted_camera == this_camera) %}
+                    .shortcuts ha-icon {
+                    }
 
 
+                {% else %}
+                    /* MODO CARD MINIMIZADO */
+                    .shortcuts ha-icon {
+                    }
+
+                {% endif %}
+            }
 
 
-            .shortcuts ha-icon {
-                --ha-icon-display: grid;
+            /* ******************************************* */
+            /*                                             */
+            /* Formatação do bloco .shortcuts child(1)     */
+            /* também conhecido como botão de ativação     */
+            /*                                             */
+            /* ******************************************* */
+
+            .shortcuts>*:nth-child(1) {
+                grid-area: {{ ns.icons_grid_areas }};
             }
 
             {% if (highlighted_camera == this_camera) %}
-                .shortcuts ha-icon {
-                    display: grid;
-                }
-            
-            {% else %}
-                .shortcuts ha-icon {
+                .shortcuts>*:nth-child(1) {
                     display: none;
                 }
+
+            {% else %}
+                .shortcuts>*:nth-child(1) {
+                    display: grid;
+                }
+
             {% endif %}
 
-            .shortcuts ha-icon {
-                justify-content: stretch;
-                align-content: center;
-            }
-
             @media screen and (orientation: portrait) {
-                .shortcuts ha-icon {
-                    justify-content: center;
-                    align-content: stretch;
-                }
-            }
-
-            /* ******************************************* */
-            /*                                             */
-            /* Bloco de estilos para os 3 primeiros botões */
-            /*                                             */
-            /* ******************************************* */
-            {% if (highlighted_camera == this_camera) %}
-            {% else %}
-            {% endfor %}
-
-
-
-            .shortcuts>*:nth-child(-n+3) {
-                color: gold;
-            }
-
-            /* Adiciona o grid-area dos 3 botões de ativação*/
-            {%- for index in range(3) %}
-                .shortcuts>*:nth-child({{ loop.index }}) {
-                    opacity: {{ '100' if loop.index == grid_index else '0' }};
-                    grid-area: {{ ns.icons_grid_areas[loop.index0] }};
-                }
-            {% endfor %}
-
-            
-            /* Altera o ícone de ativação das câmeras minimizadas no modo paisagem
-            {%- for index in range(3) %}
-                .shortcuts>*:nth-child({{ loop.index }}) {
-                    --card-mod-icon: {{ ns.icons_landscape[loop.index0] }};
-                }
-            {% endfor %}
-
-            /* Altera o ícone de ativação das câmeras minimizadas no modo retrato
-            @media screen and (orientation: portrait) {
-                {%- for index in range(3) %}
-                    .shortcuts>*:nth-child({{ loop.index }}) {
-                        --card-mod-icon: {{ ns.icons_portrait[loop.index0] }};
+                {% if (highlighted_camera == this_camera) %}
+                    .shortcuts>*:nth-child(1) {
+                        display: none;
                     }
-                {% endfor %}
+
+                {% else %}
+                    .shortcuts>*:nth-child(1) {
+                        display: grid;
+                    }
+
+                {% endif %}
             }
 
+            /* ******************************************* */
+            /*                                             */
+            /* Formatação do bloco .shortcuts child(n+2)   */
+            /* também conhecido como botões extras         */
+            /*                                             */
+            /* ******************************************* */
 
-
-
-
-
+            .shortcuts>*:nth-child(n+2) {
+              justify-items: center;
+            }

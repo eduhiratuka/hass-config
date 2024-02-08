@@ -2,17 +2,17 @@ lovelace:
   mode: yaml
 
   resources:
-    - url: /local/custom_plugins/layout-card.js
+    - url: /hacsfiles/lovelace-layout-card/layout-card.js
       type: module
-    - url: /local/custom_plugins/button-card.js
+    - url: /hacsfiles/button-card/button-card.js
       type: module
-    - url: /local/custom_plugins/decluttering-card.js
+    - url: /hacsfiles/decluttering-card/decluttering-card.js
       type: module
-    - url: /local/custom_plugins/card-mod.js
+    - url: /hacsfiles/lovelace-card-mod/card-mod.js
       type: module
-    - url: /local/custom_plugins/mushroom.js
+    - url: /hacsfiles/lovelace-mushroom/mushroom.js
       type: module
-    - url: /webrtc/webrtc-camera.js
+    - url: /hacsfiles/apexcharts-card/apexcharts-card.js
       type: module
 
   dashboards:
