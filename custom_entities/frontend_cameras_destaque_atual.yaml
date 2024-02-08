@@ -1,0 +1,26 @@
+  - trigger:
+    - platform: event
+      event_type: frontend_cameras_destaque_alterado
+    - platform: event
+      event_type: event_template_reloaded
+    - platform: homeassistant
+      event: start
+    select:
+    - name: "Frontend: Cameras: Destaque Atual"
+      unique_id: frontend_cameras_destaque_atual
+      state: >-
+          {%- if trigger.platform == "homeassistant": -%}
+              {{ 'Frente: Câmera da Garagem' }}
+          {%- else: -%}
+              {%- if trigger.event.event_type == "frontend_cameras_destaque_alterado": -%}
+                {{ trigger.event.data.camera }}
+              {%- elif trigger.event.event_type == "event_template_reloaded": -%}
+                {{ 'Frente: Câmera da Garagem' }}
+              {%- endif -%}
+          {%- endif -%}
+      options: "['Frente: Câmera da Garagem', 'Frente: Câmera da Lateral', 'Fundos: Câmera da Piscina','Fundos: Câmera do Quintal']"
+      select_option:
+        - event: frontend_cameras_destaque_alterado
+          event_data:
+              camera: "{{ option }}"
+

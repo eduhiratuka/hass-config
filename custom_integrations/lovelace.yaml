@@ -12,6 +12,8 @@ lovelace:
       type: module
     - url: /local/custom_plugins/mushroom.js
       type: module
+    - url: /webrtc/webrtc-camera.js
+      type: module
 
   dashboards:
     test-lab:

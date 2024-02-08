@@ -1,5 +1,22 @@
 title: Weather
 path: weather
 icon: mdi:weather-partly-cloudy
-badges: []    
-cards: []
+type: custom:grid-layout
+layout:
+  grid-template-columns: 100%
+  grid-template-rows: auto
+  grid-template-areas: |
+    "weather-title"
+  mediaquery:
+    "(max-width: 870px)":
+      grid-template-columns: 100%
+      grid-template-rows: auto
+      grid-template-areas: |
+        "weather-title"
+badges: []
+cards:
+  - type: custom:mushroom-title-card
+    title: Previsão do Tempo
+    alignment: center
+    view_layout:
+      grid-area: weather-title
