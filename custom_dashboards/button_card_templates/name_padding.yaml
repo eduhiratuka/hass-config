@@ -1,0 +1,40 @@
+name_padding:
+  variables:
+    posX: null
+    posY: null
+  styles:
+      card:
+        - padding: >
+            [[[
+              if (variables.posX == 'top' && variables.posY == 'left') {
+                return "padding: 12px 6px 6px 12px"
+              } else if (variables.posX == 'top' && variables.posY == 'center') {
+                return "padding: 12px 6px 6px 6px"
+              } else if (variables.posX == 'top' && variables.posY == 'right') {
+                return "padding: 12px 12px 6px 6px"
+              } else if (variables.posX == 'top') {
+                return "padding: 12px 12px 6px 12px"
+              } else if (variables.posX == 'middle' && variables.posY == 'left') {
+                return "padding: 6px 6px 6px 12px"
+              } else if (variables.posX == 'middle' && variables.posY == 'center') {
+                return "padding: 6px 6px 6px 6px"
+              } else if (variables.posX == 'middle' && variables.posY == 'right') {
+                return "padding: 6px 12px 6px 6px"
+              } else if (variables.posX == 'middle') {
+                return "padding: 6px 12px 6px 12px"
+              } else if (variables.posX == 'bottom' && variables.posY == 'left') {
+                return "padding: 6px 6px 12px 12px"
+              } else if (variables.posX == 'bottom' && variables.posY == 'center') {
+                return "padding: 6px 6px 12px 6px"
+              } else if (variables.posX == 'bottom' && variables.posY == 'right') {
+                return "padding: 6px 12px 12px 6px"
+              } else if (variables.posX == 'bottom') {
+                return "padding: 6px 12px 12px 12px"
+              } else if (variables.posY == 'left') {
+                return "padding: 12px 6px 12px 12px"
+              } else if (variables.posY == 'center') {
+                return "padding: 12px 6px 12px 6px"
+              } else if (variables.posY == 'right') {
+                return "padding: 12px 12px 12px 6px"
+              } 
+            ]]]

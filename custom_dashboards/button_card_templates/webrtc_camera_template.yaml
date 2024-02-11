@@ -1,0 +1,74 @@
+webrtc_camera_template:
+    variables:
+        camera_url: null
+        camera_name: null
+        highlighted_camera: null
+    triggers_update: '[[[ return variables.highlighted_camera ]]]'
+    styles:
+        card:
+          - padding: 6px 6px 6px 6px
+          - height: 100%
+          - border: 0
+        grid:
+            - grid-template-areas: '"cam"'
+            - grid-template-columns: 100%
+            - grid-template-rows: 100%
+            - align-items: stretch
+    custom_fields:
+        cam:
+            card:
+                type: 'custom:webrtc-camera'
+                url: '[[[ return variables.camera_url ]]]'
+                media: "video"
+                background: true
+                shortcuts: '[[[ return variables.shortcuts ]]]'
+                card_mod:
+                    style:
+                        .shortcuts ha-icon $: |
+                            [[[
+                                const is_main_camera = states[variables.highlighted_camera].state == variables.camera_name;
+
+                                var styles = 
+                                    `:host {
+                                        --mdc-icon-size: ${ is_main_camera ? '45px' :  '25px'};
+                                    }
+                                    ha-svg-icon {
+                                        background-color: rgba(var(--rgb-primary-color), 0.2);
+                                        color: rgb(var(--rgb-primary-color));
+
+                                        border-radius: 100%;
+                                        padding: 12px;
+                                        margin: 16px 16px;
+                                    }`
+
+                                return styles;
+                            ]]]
+                        .: |
+                            [[[
+                                const is_main_camera = states[variables.highlighted_camera].state == variables.camera_name;
+
+                                var styles = 
+                                    `.shortcuts {
+                                        display: grid;
+                                        top: 0;
+                                        left: 0;
+                                        width: 100%; 
+                                        height: ${ is_main_camera ? 'auto' :  '100%'};
+                                        grid-template-columns: ${ is_main_camera ? 'auto' :  '100%'};
+                                        grid-template-rows: 100%;
+                                        grid-template-areas: ${ is_main_camera ? ' . ' :  "'middle-direction'"};
+                                    }
+                                    .shortcuts>*:nth-child(1) {
+                                        grid-area: 'middle-direction';
+                                        display: ${ is_main_camera ? 'none' :  'grid'};
+                                    }
+                                    .shortcuts>*:nth-child(n+2) {
+                                        justify-items: center;
+                                        display: ${ is_main_camera ? 'grid' :  'none'};
+                                    }`
+
+                                return styles;
+                            ]]]
+                            
+
+                            

@@ -3,95 +3,46 @@ path: surveillance-cameras
 icon: mdi:cctv
 type: custom:grid-layout
 layout:
-    grid-template-columns: 100%
-    grid-template-rows: auto
-    grid-template-areas: |
-        "cameras-dashboard"
+  grid-template-columns: 100%
+  grid-template-rows: min-content max-content
+  grid-template-areas: |
+    "cameras-title"
+    "cameras-dashboards"
+#  height: calc(100vh - 56px - 4px)
 cards:
-  - type: "custom:mod-card"
-    card:
-        type: "custom:layout-card"
-        layout_type: custom:grid-layout
-        layout:
-            grid-template-columns: 70% 30%
-            grid-template-rows: 10% 30% 30% 30%
-            grid-template-areas: |
-                "camera-title camera-title"
-                "camera-main camera-1"
-                "camera-main camera-2"
-                "camera-main camera-3"
-            height: calc(100vh - 56px - 24px)
-            mediaquery:
-                "(orientation: portrait)":
-                    grid-template-columns: 34% 33% 33%
-                    grid-template-rows: min-content auto auto
-                    grid-template-areas: |
-                        "camera-title camera-title camera-title"
-                        "camera-main camera-main camera-main"
-                        "camera-1 camera-2 camera-3"
-                    height: 100%
-        cards:
-          - type: 'custom:mushroom-title-card'
-            title: Câmeras
-            view_layout:
-                grid-area: camera-title
-          - type: 'custom:decluttering-card'
-            template: generic_camera_template
-            variables:
-              - camera_url: 'frente_camera_da_garagem'
-              - camera_name: 'Frente: Câmera da Garagem'
-              - camera_destacada_entity: 'select.frontend_cameras_destaque_atual'
-              - atalhos_extra:
-                    name: "Secret"
-                    icon: mdi:key-chain
-            view_layout:
-                grid-area: camera-main
-          - type: 'custom:decluttering-card'
-            template: generic_camera_template
-            variables:
-              - camera_url: 'frente_camera_da_lateral'
-              - camera_name: 'Frente: Câmera da Lateral'
-              - camera_destacada_entity: 'select.frontend_cameras_destaque_atual'
-            view_layout:
-                grid-area: camera-1
-          - type: 'custom:decluttering-card'
-            template: generic_camera_template
-            variables:
-              - camera_url: 'fundos_camera_da_piscina'
-              - camera_name: 'Fundos: Câmera da Piscina'
-              - camera_destacada_entity: 'select.frontend_cameras_destaque_atual'
-            view_layout:
-                grid-area: camera-2
-          - type: 'custom:decluttering-card'
-            template: generic_camera_template
-            variables:
-              - camera_url: 'fundos_camera_do_quintal'
-              - camera_name: 'Fundos: Câmera do Quintal'
-              - camera_destacada_entity: 'select.frontend_cameras_destaque_atual'
-            view_layout:
-                grid-area: camera-3
+  - type: custom:mushroom-title-card
+    title: Vigilância
+    alignment: center
     card_mod:
-      style:
-        layout-card $ grid-layout $ div decluttering-card:
-          $: |
-              #root {
-                  height: 100%;
-              }
-        layout-card $ grid-layout $: |
-            {% set camera_destaque = states('select.frontend_cameras_destaque_atual') %}
-
-            {% if camera_destaque == 'Frente: Câmera da Garagem' %}
-                {% set camera_area_list = ['camera-main', 'camera-1', 'camera-2', 'camera-3'] %}
-            {% elif camera_destaque == 'Frente: Câmera da Lateral' %}
-                {% set camera_area_list = ['camera-1', 'camera-main', 'camera-2', 'camera-3'] %}
-            {% elif camera_destaque == 'Fundos: Câmera da Piscina' %}
-                {% set camera_area_list = ['camera-1', 'camera-2', 'camera-main', 'camera-3'] %}
-            {% elif camera_destaque == 'Fundos: Câmera do Quintal' %}
-                {% set camera_area_list = ['camera-1', 'camera-2', 'camera-3', 'camera-main'] %}
-            {% endif %}
-
-            {% for camera_area in camera_area_list %}
-                #root>*:nth-child(1 + {{ loop.index }}) {
-                    grid-area: {{ camera_area }} !important;
-                }
-            {% endfor %}
+      style: |
+        @media screen and (max-width: 450px) {
+          ha-card.header {
+            display: none;
+          }
+        }
+    view_layout:
+      grid-area: cameras-title
+  - type: custom:button-card
+    template: 4ch_cameras_dashboard
+    variables:
+      highlighted_camera: select.frontend_cameras_destaque_atual
+      channel1:
+        camera_url: frente_camera_da_garagem
+        camera_name: 'Frente: Câmera da Garagem'
+        shortcuts:
+          - name: "Abrir Portão"
+            icon: "mdi:garage-variant"
+            service: "light.toggle"
+            service_data:
+                entity_id: 'light.lampada_de_atmosfera'
+      channel2:
+        camera_url: frente_camera_da_lateral
+        camera_name: 'Frente: Câmera da Lateral'
+      channel3:
+        camera_url: fundos_camera_da_piscina
+        camera_name: 'Fundos: Câmera da Piscina'
+      channel4:
+        camera_url: fundos_camera_do_quintal
+        camera_name: 'Fundos: Câmera do Quintal'
+    view_layout:
+      grid-area: cameras-dashboards

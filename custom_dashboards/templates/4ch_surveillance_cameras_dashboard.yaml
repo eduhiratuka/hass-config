@@ -1,0 +1,126 @@
+4ch_surveillance_cameras_dashboard:
+  card:
+      type: "custom:mod-card"
+      card:
+          type: "custom:layout-card"
+          layout_type: custom:grid-layout
+          layout:
+              grid-template-columns: 70% 30%
+              grid-template-rows: 33% 33% 33%
+              grid-template-areas: |
+                  "camera-main camera-1"
+                  "camera-main camera-2"
+                  "camera-main camera-3"
+              height: calc(100vh - 76px - 4px - 24px - 56px)
+              # mediaquery:
+              #     "(max-width: 430px)":
+              #         grid-template-columns: 50% 50%
+              #         grid-template-rows: max-content auto
+              #         grid-template-areas: |
+              #             "camera-main camera-main"
+              #             "camera-1 camera-2"
+              #             "camera-3 ."
+              #         height: calc(100vh - 76px - 4px - 24px - 56px)
+              #     "(max-width: 650px)":
+              #         grid-template-columns: 33% 33% 33%
+              #         grid-template-rows: max-content auto auto
+              #         grid-template-areas: |
+              #             "camera-main camera-main camera-main"
+              #             "camera-1 camera-2 camera-3"
+              #         height: calc(100vh - 76px - 4px - 24px - 56px)
+          cards:
+              - type: 'custom:decluttering-card'
+                template: generic_camera_template
+                variables: '[[channel1]]'
+                view_layout:
+                    grid-area: camera-main
+              - type: 'custom:decluttering-card'
+                template: generic_camera_template
+                variables: '[[channel2]]'
+                view_layout:
+                    grid-area: camera-1
+              - type: 'custom:decluttering-card'
+                template: generic_camera_template
+                variables: '[[channel3]]'
+                view_layout:
+                    grid-area: camera-2
+              - type: 'custom:decluttering-card'
+                template: generic_camera_template
+                variables: '[[channel4]]'
+                view_layout:
+                    grid-area: camera-3
+      card_mod:
+        style:
+          layout-card $ grid-layout $ div decluttering-card:
+            $: |
+                #root {
+                    height: 100%;
+                }
+          layout-card $ grid-layout $: |
+              {% set camera_destaque = states('[[featured_camera_selector_entity]]') %}
+              {% set camera_options = state_attr('[[featured_camera_selector_entity]]', 'options') %}
+
+              {% if camera_destaque == camera_options[0] %}
+                  {% set camera_area_list = ['camera-main', 'camera-1', 'camera-2', 'camera-3'] %}
+              {% elif camera_destaque ==  camera_options[1] %}
+                  {% set camera_area_list = ['camera-1', 'camera-main', 'camera-2', 'camera-3'] %}
+              {% elif camera_destaque ==  camera_options[2] %}
+                  {% set camera_area_list = ['camera-1', 'camera-2', 'camera-main', 'camera-3'] %}
+              {% elif camera_destaque ==  camera_options[3] %}
+                  {% set camera_area_list = ['camera-1', 'camera-2', 'camera-3', 'camera-main'] %}
+              {% endif %}
+
+              {% for camera_area in camera_area_list %}
+                  #root>*:nth-child({{ loop.index }}) {
+                      grid-area: {{ camera_area }} !important;
+                  }
+              {% endfor %}                
+                
+                
+                
+                
+                
+                
+                
+                
+                
+                
+                
+                
+            
+            
+            
+            
+            
+            
+            
+            
+            
+            
+            
+            
+            
+            
+            
+            
+            
+            
+                
+                
+                
+                
+                
+                
+                
+                
+                
+                
+                
+                
+                
+                
+                
+                
+                
+                
+                
