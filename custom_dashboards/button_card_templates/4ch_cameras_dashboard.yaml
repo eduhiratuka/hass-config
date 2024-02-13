@@ -1,11 +1,14 @@
 4ch_cameras_dashboard:
   variables:
+    server_entity: null
     highlighted_camera: null
     channel1: null
     channel2: null
     channel3: null
     channel4: null
-  triggers_update: '[[[ return variables.highlighted_camera ]]]'
+  triggers_update: 
+    - '[[[ return variables.highlighted_camera ]]]'
+    - '[[[ return variables.server_entity ]]]'
   styles:
     card:
       - padding: 0px
@@ -81,7 +84,7 @@
         template: dashboard_title_template
         variables:
           title: 'Câmeras de Vigilância'
-          subtitle: '4 câmeras conectadas e 13 conexões ativas.'
+          subtitle: '[[[ return states[variables.server_entity]["state"] ]]]'
     cam1:
       card:
         type: 'custom:button-card'
