@@ -1,6 +1,6 @@
 title: Home
 path: home
-icon: mdi:home
+icon: mdi:home-circle
 type: custom:grid-layout
 layout:
   grid-template-columns: 1fr 1fr 1fr

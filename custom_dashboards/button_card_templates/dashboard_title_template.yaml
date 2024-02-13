@@ -1,0 +1,29 @@
+dashboard_title_template:
+    variables:
+        title: null
+        subtitle: null
+        buttons: null
+    styles:
+        card:
+          - padding: 0px
+          - border: 0
+          - height: 100%
+          - color: white
+          - background-color: transparent
+        grid:
+          - grid-template-areas: '"title" "subtitle"'
+          - grid-template-columns: auto
+          - grid-template-rows: auto auto
+          - text-align: left
+          - align-content: center
+        custom_fields:
+            title:
+                - font-size: 1.4em
+            subtitle:
+                - font-size: 1.0em
+    color_type: label-card
+    custom_fields:
+        title: >
+            [[[ return variables.title ]]]
+        subtitle: >
+            [[[ return variables.subtitle ]]]

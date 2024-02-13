@@ -1,27 +1,14 @@
-title: Surveillance Cameras
+title: Câmeras
 path: surveillance-cameras
-icon: mdi:cctv
 type: custom:grid-layout
 layout:
   grid-template-columns: 100%
-  grid-template-rows: min-content max-content
+  grid-template-rows: 100%
   grid-template-areas: |
-    "cameras-title"
     "cameras-dashboards"
-#  height: calc(100vh - 56px - 4px)
+  margin: 0
+  height: 100%
 cards:
-  - type: custom:mushroom-title-card
-    title: Vigilância
-    alignment: center
-    card_mod:
-      style: |
-        @media screen and (max-width: 450px) {
-          ha-card.header {
-            display: none;
-          }
-        }
-    view_layout:
-      grid-area: cameras-title
   - type: custom:button-card
     template: 4ch_cameras_dashboard
     variables:
@@ -29,6 +16,8 @@ cards:
       channel1:
         camera_url: frente_camera_da_garagem
         camera_name: 'Frente: Câmera da Garagem'
+        camera_status: binary_sensor.frente_camera_da_garagem_status
+        camera_connections: sensor.frente_camera_da_garagem_conexoes
         shortcuts:
           - name: "Abrir Portão"
             icon: "mdi:garage-variant"
@@ -38,11 +27,17 @@ cards:
       channel2:
         camera_url: frente_camera_da_lateral
         camera_name: 'Frente: Câmera da Lateral'
+        camera_status: binary_sensor.frente_camera_da_lateral_status
+        camera_connections: sensor.frente_camera_da_lateral_conexoes
       channel3:
         camera_url: fundos_camera_da_piscina
         camera_name: 'Fundos: Câmera da Piscina'
+        camera_status: binary_sensor.fundos_camera_da_piscina_status
+        camera_connections: sensor.fundos_camera_da_piscina_conexoes
       channel4:
         camera_url: fundos_camera_do_quintal
         camera_name: 'Fundos: Câmera do Quintal'
+        camera_status: binary_sensor.fundos_camera_do_quintal_status
+        camera_connections: sensor.fundos_camera_do_quintal_conexoes
     view_layout:
       grid-area: cameras-dashboards

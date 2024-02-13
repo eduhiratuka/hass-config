@@ -1,0 +1,58 @@
+- resource: "http://192.168.15.150:1984/api/streams?src=frente_camera_da_garagem"
+  sensor:
+    - unique_id: "frente_camera_da_garagem_conexoes"
+      name: "Frente: Câmera da Garagem: Conexões"
+      value_template: "{{ value_json.consumers | count }}"
+      state_class: measurement
+  binary_sensor:
+    - unique_id: "frente_camera_da_garagem_status"
+      name: "Frente: Câmera da Garagem: Status"
+      value_template: >
+        {% if value_json %}
+          {{ (value_json.producers | count) > 0 }}
+        {% else %}
+          {{ False }}
+        {% endif %}
+      device_class: connectivity
+
+
+
+- resource: "http://192.168.15.150:1984/api/streams?src=frente_camera_da_lateral"
+  sensor:
+    - unique_id: "frente_camera_da_lateral_conexoes"
+      name: "Frente: Câmera da Lateral: Conexões"
+      value_template: "{{ value_json.consumers | count }}"
+      state_class: measurement
+  binary_sensor:
+    - unique_id: "frente_camera_da_lateral_status"
+      name: "Frente: Câmera da Lateral: Status"
+      value_template: "{{ (value_json.producers | count) > 0 }}"
+      device_class: connectivity
+
+
+
+- resource: "http://192.168.15.150:1984/api/streams?src=fundos_camera_da_piscina"
+  sensor:
+    - unique_id: "fundos_camera_da_piscina_conexoes"
+      name: "Fundos: Câmera da Piscina: Conexões"
+      value_template: "{{ value_json.consumers | count }}"
+      state_class: measurement
+  binary_sensor:
+    - unique_id: "fundos_camera_da_piscina_status"
+      name: "Fundos: Câmera da Piscina: Status"
+      value_template: "{{ (value_json.producers | count) > 0 }}"
+      device_class: connectivity
+
+
+
+- resource: "http://192.168.15.150:1984/api/streams?src=fundos_camera_do_quintal"
+  sensor:
+    - unique_id: "fundos_camera_do_quintal_conexoes"
+      name: "Fundos: Câmera do Quintal: Conexões"
+      value_template: "{{ value_json.consumers | count }}"
+      state_class: measurement
+  binary_sensor:
+    - unique_id: "fundos_camera_do_quintal_status"
+      name: "Fundos: Câmera da Quintal: Status"
+      value_template: "{{ (value_json.producers | count) > 0 }}"
+      device_class: connectivity

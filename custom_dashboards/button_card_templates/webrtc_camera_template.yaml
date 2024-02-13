@@ -5,10 +5,10 @@ webrtc_camera_template:
         highlighted_camera: null
     styles:
         card:
-          - padding: 6px 6px 6px 6px
-          - height: 100%
+          - padding: 0px
           - border: 0
-          - background: none
+          - height: 100%
+          - background-color: transparent
         grid:
           - grid-template-areas: '"cam"'
           - grid-template-columns: 100%
