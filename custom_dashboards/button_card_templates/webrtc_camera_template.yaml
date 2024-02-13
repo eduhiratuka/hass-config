@@ -10,10 +10,10 @@ webrtc_camera_template:
           - border: 0
           - background: none
         grid:
-            - grid-template-areas: '"cam"'
-            - grid-template-columns: 100%
-            - grid-template-rows: 100%
-            - align-items: stretch
+          - grid-template-areas: '"cam"'
+          - grid-template-columns: 100%
+          - grid-template-rows: 100%
+          - align-items: stretch
     custom_fields:
         cam:
             card:
@@ -27,20 +27,20 @@ webrtc_camera_template:
                 card_mod:
                     style:
                         .shortcuts ha-icon $: |
-                                {% set is_main_camera = is_state(config.highlited_camera, config.camera_name) %}
+                            {% set is_main_camera = is_state(config.highlited_camera, config.camera_name) %}
 
-                                :host {
-                                    --mdc-icon-size: {{ '45px' if is_main_camera else '25px' }};
-                                }
+                            :host {
+                                --mdc-icon-size: {{ '45px' if is_main_camera else '25px' }};
+                            }
 
-                                ha-svg-icon {
-                                    background-color: rgba(var(--rgb-primary-color), 0.2);
-                                    color: rgb(var(--rgb-primary-color));
+                            ha-svg-icon {
+                                background-color: rgba(var(--rgb-primary-color), 0.2);
+                                color: rgb(var(--rgb-primary-color));
 
-                                    border-radius: 100%;
-                                    padding: 12px;
-                                    margin: 16px 16px;
-                                }
+                                border-radius: 100%;
+                                padding: 12px;
+                                margin: 16px 16px;
+                            }
                         .: |
                             {% set is_main_camera = is_state(config.highlited_camera, config.camera_name) %}
                             

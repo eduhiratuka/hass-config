@@ -32,9 +32,9 @@ cards:
         shortcuts:
           - name: "Abrir Portão"
             icon: "mdi:garage-variant"
-            service: "light.toggle"
+            service: "cover.toggle"
             service_data:
-                entity_id: 'light.lampada_de_atmosfera'
+                entity_id: 'cover.frente_portao_da_garagem'
       channel2:
         camera_url: frente_camera_da_lateral
         camera_name: 'Frente: Câmera da Lateral'
