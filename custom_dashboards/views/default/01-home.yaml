@@ -29,11 +29,34 @@ cards:
     alignment: left
     view_layout:
       grid-area: welcome
-  - type: custom:mushroom-title-card
-    title: Frente
-    alignment: left
+
+
+
+  - type: custom:layout-card
+    layout_type: custom:grid-layout
+    layout:
+        grid-template-columns: auto
+        grid-template-rows: auto
+        grid-template-areas: |
+            "frente-title"
+            "frente-portao"
+    cards:
+      - type: custom:mushroom-title-card
+        title: Frente
+        alignment: left
+        view_layout:
+          grid-area: frente-title
+      - type: custom:mushroom-cover-card
+        entity: cover.frente_portao_da_garagem
+        name: Portão
+        show_buttons_control: true
+        view_layout:
+          grid-area: frente-portao
     view_layout:
-      grid-area: frente
+        grid-area: frente
+
+
+
   - type: custom:mushroom-title-card
     title: Fundos
     alignment: left

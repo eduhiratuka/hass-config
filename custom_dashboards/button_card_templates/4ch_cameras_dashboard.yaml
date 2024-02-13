@@ -9,6 +9,8 @@
   styles:
     card:
       - padding: 0
+      - background: none
+      - border: 0
     grid:
       - height: calc(100vh - 12px - 12px - 76px - 56px)
       - align-items: stretch
