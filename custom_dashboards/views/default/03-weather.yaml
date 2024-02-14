@@ -1,16 +1,15 @@
-title: Weather
+title: Previsão do Tempo
 path: weather
-icon: mdi:weather-partly-cloudy
 type: custom:grid-layout
 layout:
   grid-template-columns: 100%
-  grid-template-rows: min-content 100%
+  grid-template-rows: 100%
   grid-template-areas: |
-    "weather-title"
-badges: []
+    "weather_dashboard"
+  margin: 0
+  height: 100%
 cards:
-  - type: custom:mushroom-title-card
-    title: Previsão do Tempo
-    alignment: center
+  - type: custom:button-card
+    template: weather_dashboard_template
     view_layout:
-      grid-area: weather-title
+      grid-area: weather_dashboard

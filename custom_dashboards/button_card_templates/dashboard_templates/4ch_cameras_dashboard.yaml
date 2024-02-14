@@ -64,11 +64,15 @@
           }
           @media screen and (max-width: 450px) {
               ha-card #container.vertical.no-icon.no-name.no-label {
-                  grid-template-areas: "title title" "${pos[0]} ${pos[0]}" "${pos[1]} ${pos[2]}" "${pos[3]} .";
+                  grid-template-areas: "${pos[0]} ${pos[0]}" "${pos[1]} ${pos[2]}" "${pos[3]} .";
                   grid-template-columns: 50% 50%;
-                  grid-template-rows: 10% 60% 15% 15%;
+                  grid-template-rows: 70% 15% 15%;
                   height: calc(100vh - 12px - 24px - 56px - 18px);
                   width: calc(100% - 24px - 6px);
+              }
+
+              ha-card>#container>#title {
+                display: none;
               }
           }`;
 
