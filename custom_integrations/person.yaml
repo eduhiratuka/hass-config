@@ -2,8 +2,14 @@ person:
   - id: eduardo_hiratuka
     name: Eduardo Hiratuka
     user_id: 169f209dc7ca42d291f97e8f9549c89c
+    device_trackers:
+      - device_tracker.roaming_iphone_do_edu_localizacao
+
   - id: mario_hiratuka
     name: Mario Hiratuka
+
   - id: ana_ferreira_hiratuka
     name: Ana Ferreira Hiratuka
     user_id: 0de6fb25e4ad45a3a56ef9314152542f
+    device_trackers:
+      - device_tracker.roaming_s9_do_edu_localizacao

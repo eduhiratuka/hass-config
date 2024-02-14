@@ -1,7 +1,7 @@
 title: Rede e Internet
 path: network
-icon: mdi:network
+icon: mdi:check-network-outline
 type: panel
 cards:
-  - type: custom:button-card
-    template: network_dashboard_template
+    - type: 'custom:button-card'
+      template: network_dashboard_template
