@@ -14,6 +14,8 @@ lovelace:
       type: module
     - url: /webrtc/webrtc-camera.js
       type: module
+    - url: /hacsfiles/mini-graph-card/mini-graph-card-bundle.js
+      type: module
 
   dashboards:
     test-lab:

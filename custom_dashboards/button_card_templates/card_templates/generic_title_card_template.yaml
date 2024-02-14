@@ -2,7 +2,6 @@ generic_title_card_template:
     variables:
         title: null
         subtitle: null
-        buttons: null
     styles:
         card:
           - padding: 0px
