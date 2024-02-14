@@ -10,7 +10,7 @@ layout:
   height: 100%
 cards:
   - type: custom:button-card
-    template: 4ch_cameras_dashboard
+    template: 4ch_cameras_dashboard_template
     variables:
       server_entity: sensor.frontend_cameras_texto_do_dashboard
       highlighted_camera: select.frontend_cameras_destaque_atual

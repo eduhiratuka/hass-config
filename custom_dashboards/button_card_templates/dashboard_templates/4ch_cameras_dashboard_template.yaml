@@ -1,4 +1,4 @@
-4ch_cameras_dashboard:
+4ch_cameras_dashboard_template:
   triggers_update: 
     - '[[[ return variables.highlighted_camera ]]]'
     - '[[[ return variables.server_entity ]]]'
@@ -6,7 +6,6 @@
     - generic_dashboard_template
   extra_styles: >
     [[[
-        
         const highlighted_camera_entity = variables.highlighted_camera;
         const highlighted_camera_state = states[highlighted_camera_entity];
         const current_camera = highlighted_camera_state.state;
