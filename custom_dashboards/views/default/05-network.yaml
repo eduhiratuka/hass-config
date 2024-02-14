@@ -84,22 +84,6 @@ cards:
                 - line_color: 'red'
             view_layout:
                 grid-area: pingtest
-
-            
-            
-          - type: custom:decluttering-card
-            template: 2_lines_graphic_card_template
-            variables:
-                - line1_entity: 'sensor.servicos_networking_speedtest_velocidade_de_upload'
-                - line1_name: 'Upload'
-                - line1_icon: 'mdi:upload-network'
-                - line1_color: 'orange'
-                - line2_entity: 'sensor.sala_roteador_velocidade_de_download'
-                - line2_name: 'Download'
-                - line2_icon: 'mdi:download-network'
-                - line2_color: 'blue'
-            view_layout:
-                grid-area: speedtest
                 
                 
                 
