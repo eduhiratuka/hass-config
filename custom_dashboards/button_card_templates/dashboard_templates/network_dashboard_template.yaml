@@ -1,40 +1,6 @@
 network_dashboard_template:
   variables:
-  styles:
-    card:
-      - padding: 0px
-      - height: 100%
-      - border: 0
-      - justify-content: center
-      - background-color: transparent
-      - pointer-events: none
-    grid:
-      - padding: 12px
-      - grid-gap: 6px 6px
-      - align-items: stretch
-      - align-content: center
-      - justify-items: stretch
-      - justify-content: center              
-      - grid-template-areas: '"title" "blank"'
-      - grid-template-columns: 100%
-      - grid-template-rows: 10% 90%;
-      - height: calc(100vh - 56px - 12px - 24px - 6px)
-      - width: calc(100%)
-  extra_styles: >
-    [[[
-      var styles = 
-        `ha-card>#container>*>button-card {
-            height: 100%;
-            justify-content: center;
-        }`
-
-        return styles;
-    ]]]
-  custom_fields:
-    title:
-      card:  
-        type: 'custom:button-card'
-        template: dashboard_title_template
-        variables:
-          title: 'Rede e Internet'
-          subtitle: 'Rede e Internet'
+    title: 'Rede e Internet'
+    subtitle: 'Rede e Internet'
+  template:
+    - generic_dashboard_template

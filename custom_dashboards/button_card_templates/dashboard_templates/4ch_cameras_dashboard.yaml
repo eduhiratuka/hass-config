@@ -1,28 +1,9 @@
 4ch_cameras_dashboard:
-  variables:
-    server_entity: null
-    highlighted_camera: null
-    channel1: null
-    channel2: null
-    channel3: null
-    channel4: null
   triggers_update: 
     - '[[[ return variables.highlighted_camera ]]]'
     - '[[[ return variables.server_entity ]]]'
-  styles:
-    card:
-      - padding: 0px
-      - height: 100%
-      - border: 0
-      - justify-content: center
-      - background-color: transparent
-    grid:
-      - padding: 12px
-      - grid-gap: 6px 6px
-      - align-items: stretch
-      - align-content: center
-      - justify-items: stretch
-      - justify-content: center
+  template:
+    - generic_dashboard_template
   extra_styles: >
     [[[
         

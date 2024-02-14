@@ -1,0 +1,45 @@
+  - sensor:
+    - name: "Frontend: Weather Frog: Status"
+      unique_id: frontend_weather_frog_status
+      state: >-
+        {% set entity = states("weather.forecast_home") %} 
+        {% set cloud = state_attr("weather.forecast_home", "cloud_coverage") | int %}  
+        {% set rain = state_attr("weather.forecast_home", "forecast")[0]["precipitation"] | float %} 
+
+        {% if entity == "fog" %}
+          fog
+        {% elif entity == "hail" %}
+          hail
+        {% elif entity == "lightning" or entity == "lightning-rainy" or entity == "exceptional" %}
+          lightning
+        {% elif entity == "snowy" or entity == "snowy-rainy" %}
+          snowy
+        {% elif rain > 0 and rain <= 0.8 %}
+          drizzle
+        {% elif rain > 0.8 %}
+          rainy
+        {% elif states("sun.sun") == "below_horizon" %}
+          {% if cloud < 20 %}
+            clear
+          {% elif cloud < 40 %}
+            mostly-clear
+          {% elif cloud < 60 %}
+            partly-cloudy-night
+          {% elif cloud < 80 %}
+            mostly-cloudy-night
+          {% else %}
+              cloudy
+          {% endif %}
+        {% else %}
+          {% if cloud < 20 %}
+            sunny
+          {% elif cloud < 40 %}
+            mostly-sunny
+          {% elif cloud < 60 %}
+            partly-cloudy-day
+          {% elif cloud < 80 %}
+            mostly-cloudy-day
+          {% else %}
+            cloudy
+          {% endif %}
+        {% endif %}

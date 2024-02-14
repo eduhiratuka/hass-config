@@ -8,7 +8,6 @@ dashboard_title_template:
           - padding: 0px
           - border: 0
           - height: 100%
-          - color: white
           - background-color: transparent
         grid:
           - grid-template-areas: '"title" "subtitle"'
@@ -18,9 +17,11 @@ dashboard_title_template:
           - align-content: center
         custom_fields:
             title:
-                - font-size: 1.4em
+                - font-size: 24px
+                - color: var(--primary-text-color)
             subtitle:
-                - font-size: 1.0em
+                - font-size: 16px
+                - color: var(--secondary-text-color)
     color_type: label-card
     custom_fields:
         title: >
