@@ -3,5 +3,122 @@ path: network
 icon: mdi:check-network-outline
 type: panel
 cards:
-    - type: 'custom:button-card'
-      template: network_dashboard_template
+  - type: custom:mod-card
+    card_mod:
+        style:
+            ha-card>layout-card$grid-layout$: |
+                div#root {
+                    margin: 0;
+                    padding: 12px;
+                    height: calc(100vh - 56px - 24px);
+                    grid-gap: 6px 6px;
+                    align-items: stretch;
+                    align-content: center;
+                    justify-items: stretch;
+                    justify-content: center;
+                }
+
+                div#root {
+                    grid-template-areas: "title title" "speedtest pingtest";
+                    grid-template-columns: calc(50% - 3px) calc(50% - 3px);
+                    grid-template-rows: 10% calc(90% - 6px);
+                }
+                @media screen and (max-width: 870px) {
+                    div#root {
+                        grid-template-areas: "title title" "speedtest speedtest" "pingtest pingtest";
+                        grid-template-columns: calc(50% - 3px) calc(50% - 3px);
+                        grid-template-rows: 10% calc(45% - 3px) calc(45% - 3px);
+                    }
+                }
+                @media screen and (max-width: 450px) {
+                    div#root {
+                        grid-template-areas: "title title" "speedtest speedtest" "pingtest pingtest";
+                        grid-template-columns: calc(50% - 3px) calc(50% - 3px);
+                        grid-template-rows: 10% calc(45% - 3px) calc(45% - 3px);
+                    }
+                }
+                
+                div#root > * {
+                    margin: 0;
+                    padding: 0;
+                    height: 100%;
+                    justify-content: center;
+                    align-content: center;
+                }
+    card:
+        type: custom:layout-card
+        layout_type: custom:grid-layout
+        cards:
+          - type: 'custom:button-card'
+            template: generic_title_card_template
+            variables:
+                title: 'Rede e Internet'
+                subtitle: 'Rede e Internet'
+            view_layout:
+                grid-area: title
+
+            
+            
+          - type: custom:decluttering-card
+            template: 2_lines_graphic_card_template
+            variables:
+                - line1_entity: 'sensor.servicos_networking_speedtest_velocidade_de_upload'
+                - line1_name: 'Upload'
+                - line1_icon: 'mdi:upload-network'
+                - line1_color: 'orange'
+                - line2_entity: 'sensor.servicos_networking_speedtest_velocidade_de_download'
+                - line2_name: 'Download'
+                - line2_icon: 'mdi:download-network'
+                - line2_color: 'blue'
+            view_layout:
+                grid-area: speedtest
+
+
+
+          - type: custom:decluttering-card
+            template: 1_line_graphic_card_template
+            variables:
+                - line_entity: 'sensor.servicos_networking_speedtest_ping'
+                - line_name: 'Latência'
+                - line_icon: 'mdi:network'
+                - line_color: 'red'
+            view_layout:
+                grid-area: pingtest
+
+            
+            
+          - type: custom:decluttering-card
+            template: 2_lines_graphic_card_template
+            variables:
+                - line1_entity: 'sensor.servicos_networking_speedtest_velocidade_de_upload'
+                - line1_name: 'Upload'
+                - line1_icon: 'mdi:upload-network'
+                - line1_color: 'orange'
+                - line2_entity: 'sensor.sala_roteador_velocidade_de_download'
+                - line2_name: 'Download'
+                - line2_icon: 'mdi:download-network'
+                - line2_color: 'blue'
+            view_layout:
+                grid-area: speedtest
+                
+                
+                
+                
+                
+                
+                
+                
+                
+                
+                
+                
+                
+                
+                
+                
+                
+                
+                
+                
+                
+                
