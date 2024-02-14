@@ -7,6 +7,7 @@ network_dashboard_template:
       - border: 0
       - justify-content: center
       - background-color: transparent
+      - pointer-events: none
     grid:
       - padding: 12px
       - grid-gap: 6px 6px
@@ -14,11 +15,21 @@ network_dashboard_template:
       - align-content: center
       - justify-items: stretch
       - justify-content: center              
-      - grid-template-areas: '"title"'
+      - grid-template-areas: '"title" "blank"'
       - grid-template-columns: 100%
-      - grid-template-rows: 100%;
-      - height: calc(100vh - 56px - 12px - 24px)
+      - grid-template-rows: 10% 90%;
+      - height: calc(100vh - 56px - 12px - 24px - 6px)
       - width: calc(100%)
+  extra_styles: >
+    [[[
+      var styles = 
+        `ha-card>#container>*>button-card {
+            height: 100%;
+            justify-content: center;
+        }`
+
+        return styles;
+    ]]]
   custom_fields:
     title:
       card:  
