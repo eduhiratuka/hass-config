@@ -1,15 +1,7 @@
 title: Previsão do Tempo
 path: weather
-type: custom:grid-layout
-layout:
-  grid-template-columns: 100%
-  grid-template-rows: 100%
-  grid-template-areas: |
-    "weather_dashboard"
-  margin: 0
-  height: 100%
+icon: mdi:weather-partly-cloudy
+type: panel
 cards:
   - type: custom:button-card
     template: weather_dashboard_template
-    view_layout:
-      grid-area: weather_dashboard

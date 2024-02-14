@@ -1,36 +1,174 @@
 title: Câmeras
 path: surveillance-cameras
-type: custom:grid-layout
-layout:
-  grid-template-columns: 100%
-  grid-template-rows: 100%
-  grid-template-areas: |
-    "cameras-dashboards"
-  margin: 0
-  height: 100%
+icon: mdi:cctv
+type: panel
 cards:
-  - type: custom:button-card
-    template: 4ch_cameras_dashboard_template
-    variables:
-      server_entity: sensor.frontend_cameras_texto_do_dashboard
-      highlighted_camera: select.frontend_cameras_destaque_atual
-      channel1:
-        camera_url: frente_camera_da_garagem
-        camera_name: 'Frente: Câmera da Garagem'
-        shortcuts:
-          - name: "Abrir Portão"
-            icon: "mdi:garage-variant"
-            service: "cover.toggle"
-            service_data:
-                entity_id: 'cover.frente_portao_da_garagem'
-      channel2:
-        camera_url: frente_camera_da_lateral
-        camera_name: 'Frente: Câmera da Lateral'
-      channel3:
-        camera_url: fundos_camera_da_piscina
-        camera_name: 'Fundos: Câmera da Piscina'
-      channel4:
-        camera_url: fundos_camera_do_quintal
-        camera_name: 'Fundos: Câmera do Quintal'
-    view_layout:
-      grid-area: cameras-dashboards
+  - type: custom:mod-card
+    card_mod:
+        style:
+            ha-card>layout-card$grid-layout$: |
+
+                {% set all_cameras = state_attr('select.frontend_cameras_destaque_atual', 'options') %}
+                {% set current_camera = states('select.frontend_cameras_destaque_atual') %}
+
+                {% set pos = ['cam1', 'cam2', 'cam3', 'cam4'] %}
+                {% if current_camera == all_cameras[1] %}
+                    {% set pos = ['cam2', 'cam1', 'cam3', 'cam4'] %}
+                {% elif (current_camera == all_cameras[2]) %}
+                    {% set pos = ['cam3', 'cam1', 'cam2', 'cam4'] %}
+                {% elif (current_camera == all_cameras[3]) %}
+                    {% set pos = ['cam4', 'cam1', 'cam2', 'cam3'] %}
+                {% endif %}
+
+                div#root {
+                    margin: 0;
+                    padding: 12px;
+                    height: calc(100vh - 56px - 24px);
+                    grid-gap: 6px 6px;
+                    align-items: stretch;
+                    align-content: center;
+                    justify-items: stretch;
+                    justify-content: center;
+                }
+
+                div#root {
+                    grid-template-areas: "title title" "{{ pos[0] }} {{ pos[1] }}" "{{ pos[0] }} {{ pos[2] }}" "{{ pos[0] }} {{ pos[3] }}";
+                    grid-template-columns: 70% calc(30% - 6px);
+                    grid-template-rows: 10% calc(30% - 6px) calc(30% - 6px) calc(30% - 6px);
+                }
+                @media screen and (max-width: 870px) {
+                    div#root {
+                        grid-template-areas: "title title title" "{{ pos[0] }} {{ pos[0] }} {{ pos[0] }}" "{{ pos[1] }} {{ pos[2] }} {{ pos[3] }}";
+                        grid-template-columns: calc(33% - 6px) 34% calc(33% - 6px);
+                        grid-template-rows: 10% calc(60% - 6px) calc(30% - 6px);
+                    }
+                }
+                @media screen and (max-width: 450px) {
+                    div#root {
+                        grid-template-areas: "{{ pos[0] }} {{ pos[0] }}" "{{ pos[1] }} {{ pos[2] }}" "{{ pos[3] }} .";
+                        grid-template-columns: calc(50% - 3px) calc(50% - 3px);
+                        grid-template-rows: 70% calc(15% - 6px) calc(15% - 6px);
+                    }
+
+                    div#root > *:nth-child(1) {
+                      display: none;
+                    }
+                }
+                
+                div#root > * {
+                    margin: 0;
+                    padding: 0;
+                    height: 100%;
+                    justify-content: center;
+                    align-content: center;
+                }
+    card:
+        type: custom:layout-card
+        layout_type: custom:grid-layout
+        cards:
+          - type: 'custom:button-card'
+            template: generic_title_card_template
+            variables:
+                title: 'Câmeras de Vigilância'
+                subtitle: '[[[ return states["sensor.frontend_cameras_texto_do_dashboard"]["state"] ]]]'
+            view_layout:
+                grid-area: title
+
+          - type: 'custom:button-card'
+            template: generic_camera_card_template
+            variables:
+                camera_url: 'frente_camera_da_garagem'
+                camera_name: 'Frente: Câmera da Garagem'
+                highlighted_camera: 'select.frontend_cameras_destaque_atual'
+                shortcuts: >
+                    [[[ 
+                        const destacar = [{
+                          name: "Destacar",
+                          icon: "mdi:resize",
+                          service: "select.select_option",
+                          service_data: {
+                            entity_id: 'select.frontend_cameras_destaque_atual',
+                            option: 'Frente: Câmera da Garagem'
+                          }
+                        }, {
+                          name: "Abrir Portão",
+                          icon: "mdi:garage-variant",
+                          service: "cover.toggle",
+                          service_data: {
+                              entity_id: 'cover.frente_portao_da_garagem'
+                          }
+                        }];
+
+                        return destacar;
+                    ]]]
+            view_layout:
+                grid-area: cam1
+
+          - type: 'custom:button-card'
+            template: generic_camera_card_template
+            variables:
+                camera_url: 'frente_camera_da_lateral'
+                camera_name: 'Frente: Câmera da Lateral'
+                highlighted_camera: 'select.frontend_cameras_destaque_atual'
+                shortcuts: >
+                    [[[ 
+                        const destacar = [{
+                          name: "Destacar",
+                          icon: "mdi:resize",
+                          service: "select.select_option",
+                          service_data: {
+                            entity_id: 'select.frontend_cameras_destaque_atual',
+                            option: 'Frente: Câmera da Lateral'
+                          }
+                        }];
+
+                        return destacar;
+                    ]]]
+            view_layout:
+                grid-area: cam2
+
+          - type: 'custom:button-card'
+            template: generic_camera_card_template
+            variables:
+                camera_url: 'fundos_camera_da_piscina'
+                camera_name: 'Fundos: Câmera da Piscina'
+                highlighted_camera: 'select.frontend_cameras_destaque_atual'
+                shortcuts: >
+                    [[[ 
+                        const destacar = [{
+                          name: "Destacar",
+                          icon: "mdi:resize",
+                          service: "select.select_option",
+                          service_data: {
+                            entity_id: 'select.frontend_cameras_destaque_atual',
+                            option: 'Fundos: Câmera da Piscina'
+                          }
+                        }];
+
+                        return destacar;
+                    ]]]
+            view_layout:
+                grid-area: cam3
+
+          - type: 'custom:button-card'
+            template: generic_camera_card_template
+            variables:
+                camera_url: 'fundos_camera_do_quintal'
+                camera_name: 'Fundos: Câmera do Quintal'
+                highlighted_camera: 'select.frontend_cameras_destaque_atual'
+                shortcuts: >
+                    [[[ 
+                        const destacar = [{
+                          name: "Destacar",
+                          icon: "mdi:resize",
+                          service: "select.select_option",
+                          service_data: {
+                            entity_id: 'select.frontend_cameras_destaque_atual',
+                            option: 'Fundos: Câmera do Quintal'
+                          }
+                        }];
+
+                        return destacar;
+                    ]]]
+            view_layout:
+                grid-area: cam4

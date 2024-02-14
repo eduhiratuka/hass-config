@@ -20,7 +20,6 @@ generic_camera_card_template:
                 type: 'custom:webrtc-camera'
                 url: '[[[ return variables.camera_url ]]]'
                 media: "video"
-                background: true
                 shortcuts: '[[[ return variables.shortcuts ]]]'
                 highlited_camera: '[[[ return variables.highlighted_camera ]]]'
                 camera_name: '[[[ return variables.camera_name ]]]'

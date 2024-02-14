@@ -1,15 +1,7 @@
 title: Media Center
 path: media-center
-type: custom:grid-layout
-layout:
-  grid-template-columns: 100%
-  grid-template-rows: 100%
-  grid-template-areas: |
-    "media_center_dashboard"
-  margin: 0
-  height: 100%
+icon: mdi:multimedia
+type: panel
 cards:
   - type: custom:button-card
     template: media_center_dashboard_template
-    view_layout:
-      grid-area: media_center_dashboard
