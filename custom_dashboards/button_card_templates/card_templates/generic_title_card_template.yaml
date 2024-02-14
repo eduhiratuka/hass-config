@@ -1,4 +1,4 @@
-dashboard_title_template:
+generic_title_card_template:
     variables:
         title: null
         subtitle: null

@@ -52,7 +52,7 @@ generic_dashboard_template:
         title:
             card:  
                 type: 'custom:button-card'
-                template: dashboard_title_template
+                template: generic_title_card_template
                 variables:
                     title: '[[[ return variables.title ]]]'
                     subtitle: '[[[ return variables.subtitle ]]]'

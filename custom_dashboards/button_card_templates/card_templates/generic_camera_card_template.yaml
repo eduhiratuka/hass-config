@@ -1,4 +1,4 @@
-webrtc_camera_template:
+generic_camera_card_template:
     variables:
         camera_url: null
         camera_name: null
@@ -62,6 +62,3 @@ webrtc_camera_template:
                                 justify-items: center;
                                 display: {{ 'grid' if is_main_camera else 'none' }};
                             }
-                            
-
-                            

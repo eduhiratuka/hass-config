@@ -65,14 +65,14 @@
     title:
       card:  
         type: 'custom:button-card'
-        template: dashboard_title_template
+        template: generic_title_card_template
         variables:
           title: 'Câmeras de Vigilância'
           subtitle: '[[[ return states[variables.server_entity]["state"] ]]]'
     cam1:
       card:
         type: 'custom:button-card'
-        template: webrtc_camera_template
+        template: generic_camera_card_template
         variables:
           camera_url: '[[[ return variables.channel1.camera_url ]]]'
           camera_name: '[[[ return variables.channel1.camera_name ]]]'
@@ -96,7 +96,7 @@
     cam2:
       card:
         type: 'custom:button-card'
-        template: webrtc_camera_template
+        template: generic_camera_card_template
         variables:
           camera_url: '[[[ return variables.channel2.camera_url ]]]'
           camera_name: '[[[ return variables.channel2.camera_name ]]]'
@@ -120,7 +120,7 @@
     cam3:
       card:
         type: 'custom:button-card'
-        template: webrtc_camera_template
+        template: generic_camera_card_template
         variables:
           camera_url: '[[[ return variables.channel3.camera_url ]]]'
           camera_name: '[[[ return variables.channel3.camera_name ]]]'
@@ -144,7 +144,7 @@
     cam4:
       card:
         type: 'custom:button-card'
-        template: webrtc_camera_template
+        template: generic_camera_card_template
         variables:
           camera_url: '[[[ return variables.channel4.camera_url ]]]'
           camera_name: '[[[ return variables.channel4.camera_name ]]]'
