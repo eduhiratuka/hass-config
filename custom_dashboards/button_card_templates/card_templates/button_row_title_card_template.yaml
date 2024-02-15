@@ -1,0 +1,56 @@
+button_row_title_card_template:
+    variables:
+        title: null
+        subtitle: null
+    styles:
+        card:
+          - pointer-events: none
+          - padding: 0px
+          - border: 0
+          - height: 100%
+          - background-color: transparent
+        grid:
+          - grid-template-areas: '"title buttons" "subtitle buttons"'
+          - grid-template-columns: repeat(auto-fit, minmax(min-content, 200px))
+          - grid-template-rows: auto auto
+          - text-align: left
+          - align-content: stretch
+          - justify-content: space-between
+        custom_fields:
+            title:
+                - font-size: 24px
+                - color: var(--primary-text-color)
+                - grid-row: 1 / span 1
+                - align-self: end
+            subtitle:
+                - font-size: 16px
+                - color: var(--secondary-text-color)
+                - grid-row: 2 / span 1
+                - align-self: start
+            buttons:
+                - pointer-events: all
+                - grid-row-end: span 2
+    color_type: label-card
+    custom_fields:
+        title: >
+            [[[ return variables.title ]]]
+        subtitle: >
+            [[[ return variables.subtitle ]]]
+        buttons:
+            card:
+                type: horizontal-stack
+                cards:
+                  - type: custom:mushroom-entity-card
+                    entity: binary_sensor.sala_roteador_status_da_wan
+                    name: Internet
+                  - type: custom:mushroom-entity-card
+                    entity: binary_sensor.sala_roteador_status_da_wan
+                    name: Internet
+                  - type: custom:mushroom-entity-card
+                    entity: binary_sensor.sala_roteador_status_da_wan
+                    name: Internet
+                  - type: custom:mushroom-template-card
+                    primary: Online
+                    icon: mdi:lan-connect
+                    secondary: >-
+                        {{ states.device_tracker | selectattr("attributes.source_type", "eq", "router") | selectattr("state", "eq", "home") | list | count }}

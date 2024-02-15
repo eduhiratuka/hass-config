@@ -13,14 +13,16 @@ generic_title_card_template:
           - grid-template-columns: auto
           - grid-template-rows: auto auto
           - text-align: left
-          - align-content: center
+          - align-content: stretch
         custom_fields:
             title:
                 - font-size: 24px
                 - color: var(--primary-text-color)
+                - align-self: end
             subtitle:
                 - font-size: 16px
                 - color: var(--secondary-text-color)
+                - align-self: start
     color_type: label-card
     custom_fields:
         title: >

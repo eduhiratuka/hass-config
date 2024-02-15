@@ -19,8 +19,8 @@ cards:
                 }
 
                 div#root {
-                    grid-template-areas: "title title" "speedtest pingtest";
-                    grid-template-columns: calc(50% - 3px) calc(50% - 3px);
+                    grid-template-areas: "title title title" "speedtest pingtest .";
+                    grid-template-columns: calc(33% - 4px) calc(34% - 4px) calc(33% - 4px);
                     grid-template-rows: 10% calc(90% - 6px);
                 }
                 @media screen and (max-width: 870px) {
@@ -50,7 +50,7 @@ cards:
         layout_type: custom:grid-layout
         cards:
           - type: 'custom:button-card'
-            template: generic_title_card_template
+            template: button_row_title_card_template
             variables:
                 title: 'Rede e Internet'
                 subtitle: 'Rede e Internet'
