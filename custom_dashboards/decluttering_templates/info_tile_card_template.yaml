@@ -1,0 +1,28 @@
+info_tile_card_template:
+    default:
+    card:
+        type: custom:mushroom-template-card
+        entity: "[[info_entity]]"
+        primary: "[[info_name]]"
+        secondary: >
+            [[info_state]]
+        icon: "[[info_icon]]"
+        icon_color: primary
+        layout: vertical
+        card_mod:
+            style:
+                mushroom-state-item$: |
+                    div.container.vertical>div.icon {
+                        margin-bottom: 0px;
+                    }
+                mushroom-shape-icon$: |
+                    div.shape {
+                        background-color: transparent;
+                        --icon-color: --var(--primary-text-color);
+                    }
+                .: |
+                    ha-card.type-custom-mushroom-template-card {
+                        height: 100%;
+                        padding: 0;
+                        background-color: transparent;
+                    }

@@ -1,12 +1,10 @@
 generic_title_card_template:
-    variables:
-        title: null
-        subtitle: null
     styles:
         card:
           - padding: 0px
           - border: 0
           - height: 100%
+          - border-radius: 0
           - background-color: transparent
         grid:
           - grid-template-areas: '"title" "subtitle"'
@@ -14,6 +12,7 @@ generic_title_card_template:
           - grid-template-rows: auto auto
           - text-align: left
           - align-content: stretch
+          - justify-content: space-between
         custom_fields:
             title:
                 - font-size: 24px

@@ -1,0 +1,67 @@
+generic_title_card_template:
+    default:
+    card:
+        type: custom:mod-card
+        card_mod:
+            style:
+                ha-card>layout-card$grid-layout$div#root: 
+                    hui-horizontal-stack-card$: |
+                        #root>* {
+                            width: 78px;
+                            height: 78px;
+                        }
+                ha-card>layout-card$grid-layout$: |
+                    div#root {
+                        margin: 0;
+                        height: 100%;
+                        align-items: center;
+                        align-content: stretch;
+                        justify-items: stretch;
+                        justify-content: space-between;
+                    }
+
+                    div#root {
+                        grid-template-areas: "generic_title container";
+                        grid-template-columns: auto auto;
+                        grid-template-rows: auto;
+                    }
+                
+                    div#root > * {
+                        margin: 0;
+                        padding: 0;
+                    }
+                .: |
+                    ha-card {
+                        height: 100%;
+                    }
+                
+        card:
+            type: custom:layout-card
+            layout_type: custom:grid-layout
+            cards:
+              - type: custom:button-card
+                template: generic_title_card_template
+                variables:
+                    title: "[[title]]"
+                    subtitle: "[[subtitle]]"
+                view_layout:
+                    grid-area: generic_title
+              - type: horizontal-stack    
+                cards:
+                  - type: custom:decluttering-card
+                    template: info_tile_card_template
+                    variables:
+                      - info_name: Online
+                      - info_icon: mdi:lan-connect
+                      - info_state: >-
+                            {{ states.device_tracker | selectattr('attributes.source_type', 'eq', 'router') | selectattr('state', 'eq', 'home') | list | count }}    
+                  - type: custom:decluttering-card
+                    template: info_tile_card_template
+                    variables:
+                        - info_entity: binary_sensor.sala_roteador_status_da_wan
+                        - info_name: Internet
+                        - info_icon: mdi:check-network-outline
+                        - info_state: >-
+                            {{ 'Conectado' if is_state('binary_sensor.sala_roteador_status_da_wan', 'on') else 'Desconectado' }}
+                view_layout:
+                    grid-area: container

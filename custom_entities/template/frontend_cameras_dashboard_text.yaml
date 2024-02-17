@@ -7,9 +7,12 @@
         {% set server_last = states[server_entity].last_changed -%}
         {%
           set server_last_relative = server_last | relative_time
-            | replace("hour", "hora")
             | replace("minute", "minuto")
             | replace("minutes", "minutos")
+            | replace("hour", "hora")
+            | replace("hours", "horas")
+            | replace("day", "dia")
+            | replace("days", "dias")
         -%}
         {% set server_text = "O servidor está " + server_state + " há " + server_last_relative %}
 

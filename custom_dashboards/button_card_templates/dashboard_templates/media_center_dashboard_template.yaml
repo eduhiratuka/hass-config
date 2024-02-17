@@ -1,6 +1,6 @@
 media_center_dashboard_template:
   variables:
-    title: 'Central Multimedia'
-    subtitle: 'Central Multimedia'
+    title: 'Rede e Internet'
+    subtitle: 'Rede e Internet'
   template:
     - generic_dashboard_template
