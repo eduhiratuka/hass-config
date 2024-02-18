@@ -1,0 +1,61 @@
+number_tile_card_template:
+    name: '[[[ return variables.info_name ]]]'
+    icon: '[[[ return variables.info_icon ]]]'
+    label: '[[[ return variables.info_state ]]]'
+    show_label: true
+    styles:
+        card:
+          - margin: 0
+          - padding: 0
+          - border: 0
+          - border-radius: 0
+          - width: 80px
+          - height: 80px
+        grid:
+          - grid-template-areas: >-
+                "n i"
+                "l l"
+          - grid-template-columns: 40px 40px;
+          - grid-template-rows: 40px 40px;
+          - width: 80px
+          - height: 80px
+        img_cell:
+          - position: absolute
+          - top: -8px
+          - right: -8px
+
+          - width: 40px
+          - height: 40px
+
+          - border-radius: 100%
+          - background-color: rgba(3, 169, 244, 0.2)
+        icon:
+          - width: 20px
+          - height: 20px
+          - color: rgb(3, 169, 244)
+        name:
+          - position: absolute
+          - top: 6px
+          - left: 4px
+
+          - width: 72px
+          - height: 12px
+          - line-height: 12px
+
+          - text-align: left
+          - vertical-align: middle
+          - font-size: 10.53px
+          - color: var(--secondary-text-color)
+        label:
+          - position: absolute
+          - bottom: 4px
+          - left: 4px
+
+          - width: 72px
+          - height: 16px
+          - line-height: 16px
+
+          - text-align: right
+          - vertical-align: middle
+          - font-size: 13.3px
+          - color: var(--primary-color)

@@ -39,20 +39,20 @@ cards:
                 div#root {
                     grid-template-areas: "title title title" "speedtest pingtest .";
                     grid-template-columns: calc(33% - 4px) calc(34% - 4px) calc(33% - 4px);
-                    grid-template-rows: 10% calc(90% - 6px);
+                    grid-template-rows: 80px calc(100% - 86px);
                 }
                 @media screen and (max-width: 870px) {
                     div#root {
                         grid-template-areas: "title title" "speedtest speedtest" "pingtest pingtest";
                         grid-template-columns: calc(50% - 3px) calc(50% - 3px);
-                        grid-template-rows: 10% auto;
+                        grid-template-rows: 80px calc(50% - 43px) calc(50% - 43px);
                     }
                 }
                 @media screen and (max-width: 450px) {
                     div#root {
                         grid-template-areas: "title title" "speedtest speedtest" "pingtest pingtest";
                         grid-template-columns: calc(50% - 3px) calc(50% - 3px);
-                        grid-template-rows: 10% auto;
+                        grid-template-rows: 80px calc(50% - 43px) calc(50% - 43px);
                     }
                 }
     card:
@@ -72,14 +72,14 @@ cards:
           - type: custom:decluttering-card
             template: 2_lines_graphic_card_template
             variables:
-                - line1_entity: 'sensor.servicos_networking_speedtest_velocidade_de_upload'
-                - line1_name: 'Upload'
-                - line1_icon: 'mdi:upload-network'
-                - line1_color: 'orange'
-                - line2_entity: 'sensor.servicos_networking_speedtest_velocidade_de_download'
-                - line2_name: 'Download'
-                - line2_icon: 'mdi:download-network'
-                - line2_color: 'blue'
+              - line1_entity: 'sensor.servicos_networking_speedtest_velocidade_de_upload'
+              - line1_name: 'Upload'
+              - line1_icon: 'mdi:upload-network'
+              - line1_color: 'orange'
+              - line2_entity: 'sensor.servicos_networking_speedtest_velocidade_de_download'
+              - line2_name: 'Download'
+              - line2_icon: 'mdi:download-network'
+              - line2_color: 'blue'
             view_layout:
                 grid-area: speedtest
 

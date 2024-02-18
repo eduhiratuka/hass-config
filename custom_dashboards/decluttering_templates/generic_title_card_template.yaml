@@ -7,8 +7,8 @@ generic_title_card_template:
                 ha-card>layout-card$grid-layout$div#root: 
                     hui-horizontal-stack-card$: |
                         #root>* {
-                            width: 78px;
-                            height: 78px;
+                            width: 80px;
+                            height: 80px;
                         }
                 ha-card>layout-card$grid-layout$: |
                     div#root {
@@ -48,20 +48,20 @@ generic_title_card_template:
                     grid-area: generic_title
               - type: horizontal-stack    
                 cards:
-                  - type: custom:decluttering-card
-                    template: info_tile_card_template
+                  - type: custom:button-card
+                    template: number_tile_card_template
                     variables:
-                      - info_name: Online
-                      - info_icon: mdi:lan-connect
-                      - info_state: >-
+                        info_name: Online
+                        info_icon: mdi:lan-connect
+                        info_state: >-
                             {{ states.device_tracker | selectattr('attributes.source_type', 'eq', 'router') | selectattr('state', 'eq', 'home') | list | count }}    
-                  - type: custom:decluttering-card
-                    template: info_tile_card_template
+                  - type: custom:button-card
+                    template: number_tile_card_template
                     variables:
-                        - info_entity: binary_sensor.sala_roteador_status_da_wan
-                        - info_name: Internet
-                        - info_icon: mdi:check-network-outline
-                        - info_state: >-
+                        info_entity: binary_sensor.sala_roteador_status_da_wan
+                        info_name: Internet
+                        info_icon: mdi:check-network-outline
+                        info_state: >-
                             {{ 'Conectado' if is_state('binary_sensor.sala_roteador_status_da_wan', 'on') else 'Desconectado' }}
                 view_layout:
                     grid-area: container
