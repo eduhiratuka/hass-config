@@ -16,12 +16,3 @@ lovelace:
       type: module
     - url: /hacsfiles/mini-graph-card/mini-graph-card-bundle.js
       type: module
-
-  dashboards:
-    test-lab:
-      mode: yaml
-      filename: /config/custom_dashboards/dashboards/test-lab.yaml
-      title: Test Lab
-      icon: mdi:tools
-      show_in_sidebar: true
-      require_admin: true

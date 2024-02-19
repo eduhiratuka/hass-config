@@ -72,16 +72,6 @@ view_title_card_template:
 
 
 
-            #  - type: custom:decluttering-card
-            #    template: horizontal_container_template
-            #    variables:
-            #      - info_tile_1: "[[info_tile_1]]"
-            #      - info_tile_2: "[[info_tile_2]]"
-            #    view_layout:
-            #        grid-area: container
-
-
-
 
 
 

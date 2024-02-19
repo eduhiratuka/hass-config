@@ -1,0 +1,15 @@
+alias: "Serviços: Networking: Agrupar Dispositivos do Roteador"
+id: servicos_networking_agrupar_dispositivos_do_roteador
+description: ""
+mode: single
+trigger:
+  - platform: homeassistant
+    event: start
+action:
+  - service: group.set
+    metadata: {}
+    data:
+      name: "Serviços: Networking: Dispositivos do Roteador"
+      object_id: servicos_networking_dispositivos_do_roteador
+      entities: >
+        {{ states.device_tracker | selectattr('attributes.source_type', 'eq', 'router') | map(attribute='entity_id') | join(',') }}

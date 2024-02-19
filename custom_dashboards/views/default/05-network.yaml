@@ -78,7 +78,7 @@ cards:
                                 value.attributes.source_type === "router"
                             ).length;
                         ]]]
-                    info_triggers_update: 'group.teste2'
+                    info_triggers_update: group.servicos_networking_dispositivos_do_roteador
               - info_tile_2:
                     info_name: Internet
                     info_icon: mdi:check-network-outline
