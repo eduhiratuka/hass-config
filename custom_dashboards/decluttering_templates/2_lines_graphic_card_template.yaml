@@ -88,9 +88,8 @@
                 name: false
                 icon: false
                 legend: false
-                points: false
-            hours_to_show: 12
-            points_per_hour: 6
+            hours_to_show: 48
+            points_per_hour: 1
             line_width: 2
             card_mod:
                 style: |

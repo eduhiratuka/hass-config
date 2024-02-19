@@ -1,4 +1,4 @@
-number_tile_card_template:
+generic_tile_card_template:
     name: '[[[ return variables.info_name ]]]'
     icon: '[[[ return variables.info_icon ]]]'
     label: '[[[ return variables.info_state ]]]'
@@ -32,11 +32,11 @@ number_tile_card_template:
           - height: 40px
 
           - border-radius: 100%
-          - background-color: rgba(3, 169, 244, 0.2)
+          - background-color: rgba(var(--rgb-accent-color), 0.2)
         icon:
           - width: 20px
           - height: 20px
-          - color: rgb(3, 169, 244)
+          - color: rgb(var(--rgb-accent-color))
         name:
           - position: absolute
           - top: 6px
@@ -55,5 +55,5 @@ number_tile_card_template:
           - justify-self: end
           - align-self: end
           - font-size: 13.3px
-          - color: var(--primary-color)
+          - color: rgb(var(--rgb-accent-color))
           - white-space: normal
