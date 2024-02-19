@@ -21,8 +21,8 @@ generic_title_card_template:
                     }
 
                     div#root {
-                        grid-template-areas: "generic_title container";
-                        grid-template-columns: auto auto;
+                        grid-template-areas: "generic_title info_tile_1 info_tile_2";
+                        grid-template-columns: auto auto auto;
                         grid-template-rows: auto;
                     }
                 
@@ -39,6 +39,9 @@ generic_title_card_template:
             type: custom:layout-card
             layout_type: custom:grid-layout
             cards:
+
+
+
               - type: custom:button-card
                 template: generic_title_card_template
                 variables:
@@ -46,22 +49,49 @@ generic_title_card_template:
                     subtitle: "[[subtitle]]"
                 view_layout:
                     grid-area: generic_title
-              - type: horizontal-stack    
-                cards:
-                  - type: custom:button-card
-                    template: number_tile_card_template
-                    variables:
-                        info_name: Online
-                        info_icon: mdi:lan-connect
-                        info_state: >-
-                            {{ states.device_tracker | selectattr('attributes.source_type', 'eq', 'router') | selectattr('state', 'eq', 'home') | list | count }}    
-                  - type: custom:button-card
-                    template: number_tile_card_template
-                    variables:
-                        info_entity: binary_sensor.sala_roteador_status_da_wan
-                        info_name: Internet
-                        info_icon: mdi:check-network-outline
-                        info_state: >-
-                            {{ 'Conectado' if is_state('binary_sensor.sala_roteador_status_da_wan', 'on') else 'Desconectado' }}
+
+
+
+              - type: custom:button-card
+                template: number_tile_card_template
+                variables: "[[info_tile_1]]"
                 view_layout:
-                    grid-area: container
+                    grid-area: info_tile_1
+
+
+
+              - type: custom:button-card
+                template: number_tile_card_template
+                variables: "[[info_tile_2]]"
+                view_layout:
+                    grid-area: info_tile_2
+
+
+
+            #  - type: custom:decluttering-card
+            #    template: horizontal_container_template
+            #    variables:
+            #      - info_tile_1: "[[info_tile_1]]"
+            #      - info_tile_2: "[[info_tile_2]]"
+            #    view_layout:
+            #        grid-area: container
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

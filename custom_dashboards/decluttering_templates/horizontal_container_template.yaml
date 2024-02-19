@@ -1,0 +1,20 @@
+horizontal_container_template:
+    default:
+    card:
+        type: horizontal-stack
+        cards:
+
+
+
+                  - type: custom:button-card
+                    template: number_tile_card_template
+                    variables: "[[info_tile_1]]"
+
+
+
+                  - type: custom:button-card
+                    template: number_tile_card_template
+                    variables: "[[info_tile_2]]"
+
+
+

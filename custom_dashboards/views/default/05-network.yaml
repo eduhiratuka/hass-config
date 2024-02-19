@@ -59,16 +59,29 @@ cards:
         type: custom:layout-card
         layout_type: custom:grid-layout
         cards:
+
+
+
           - type: custom:decluttering-card
             template: generic_title_card_template
             variables:
               - title: Rede e Internet
               - subtitle: Rede e Internet
+              - info_tile_1:
+                    info_name: Online
+                    info_icon: mdi:lan-connect
+                    info_state: >-
+                        {{ states.device_tracker | selectattr('attributes.source_type', 'eq', 'router') | selectattr('state', 'eq', 'home') | list | count }}    
+              - info_tile_2:
+                    info_name: Internet
+                    info_icon: mdi:check-network-outline
+                    info_state: >-
+                        {{ 'Conectado' if is_state('binary_sensor.sala_roteador_status_da_wan', 'on') else 'Desconectado' }}
             view_layout:
                 grid-area: title
 
-            
-            
+
+
           - type: custom:decluttering-card
             template: 2_lines_graphic_card_template
             variables:
@@ -94,25 +107,6 @@ cards:
                 - line_color: 'red'
             view_layout:
                 grid-area: pingtest
-                
-                
-                
-                
-                
-                
-                
-                
-                
-                
-                
-                
-                
-                
-                
-                
-                
-                
-                
-                
-                
-                
+
+
+
