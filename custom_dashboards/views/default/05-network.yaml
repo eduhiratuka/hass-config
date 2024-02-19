@@ -70,20 +70,12 @@ cards:
               - info_tile_1:
                     info_name: Online
                     info_icon: mdi:lan-connect
-                    info_state: >-
-                        [[[ 
-                            return Object.entries(states).filter(([key, value]) =>
-                                key.startsWith("device_tracker") && 
-                                value.state === "home" && 
-                                value.attributes.source_type === "router"
-                            ).length;
-                        ]]]
+                    info_state: "[[[ return Object.entries(states).filter(([key, value]) => key.startsWith('device_tracker') && value.state === 'home' && value.attributes.source_type === 'router').length; ]]]"
                     info_triggers_update: group.servicos_networking_dispositivos_do_roteador
               - info_tile_2:
                     info_name: Internet
                     info_icon: mdi:check-network-outline
-                    info_state: >-
-                        [[[ return states['binary_sensor.sala_roteador_status_da_wan']['state'] == 'on' ? 'Conectado' : 'Des-conectado' ]]]
+                    info_state: "[[[ return states['binary_sensor.sala_roteador_status_da_wan']['state'] == 'on' ? 'Conectado' : 'Des-conectado' ]]]"
             view_layout:
                 grid-area: title
 
