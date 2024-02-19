@@ -2,6 +2,8 @@ number_tile_card_template:
     name: '[[[ return variables.info_name ]]]'
     icon: '[[[ return variables.info_icon ]]]'
     label: '[[[ return variables.info_state ]]]'
+    triggers_update: '[[[ return variables.info_triggers_update ]]]'
+    group_expand: true
     show_label: true
     styles:
         card:
@@ -19,6 +21,8 @@ number_tile_card_template:
           - grid-template-rows: 40px 40px;
           - width: 80px
           - height: 80px
+          - align-items: end
+          - text-align: end
         img_cell:
           - position: absolute
           - top: -8px
@@ -47,15 +51,9 @@ number_tile_card_template:
           - font-size: 10.53px
           - color: var(--secondary-text-color)
         label:
-          - position: absolute
-          - bottom: 4px
-          - left: 4px
-
-          - width: 72px
-          - height: 16px
-          - line-height: 16px
-
-          - text-align: right
-          - vertical-align: middle
+          - margin: 4px
+          - justify-self: end
+          - align-self: end
           - font-size: 13.3px
           - color: var(--primary-color)
+          - white-space: normal

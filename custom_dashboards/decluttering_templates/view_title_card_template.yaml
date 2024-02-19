@@ -17,18 +17,22 @@ view_title_card_template:
                         align-items: center;
                         align-content: stretch;
                         justify-items: stretch;
-                        justify-content: space-between;
+                        justify-content: stretch;
                     }
 
                     div#root {
                         grid-template-areas: "generic_title info_tile_1 info_tile_2";
-                        grid-template-columns: auto auto auto;
+                        grid-template-columns: calc(100% - 176px) 88px 88px;
                         grid-template-rows: auto;
                     }
                 
                     div#root > * {
                         margin: 0;
                         padding: 0;
+                    }
+                
+                    div#root > *:nth-child(n+2) {
+                        justify-self: end;
                     }
                 .: |
                     ha-card {
