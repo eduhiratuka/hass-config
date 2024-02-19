@@ -1,0 +1,131 @@
+list_card_template:
+  default:
+  card:
+    type: custom:mod-card
+    card_mod:
+        style:
+            ha-card>layout-card$grid-layout$: |
+                div#root {
+                    margin: 0;
+                    align-items: stretch;
+                    align-content: stretch;
+                    justify-items: stretch;
+                    justify-content: stretch;
+                }
+
+                div#root {
+                    grid-template-areas: "list_status" "list";
+                    grid-template-columns: 100%
+                    grid-template-rows: auto;
+                }
+
+                div#root > * {
+                    margin: 0;
+                    padding: 0;
+                    height: 100%;
+                    justify-content: center;
+                    align-content: center;
+                }
+    card:
+        type: custom:layout-card
+        layout_type: custom:grid-layout
+        cards:
+
+
+          - type: custom:mushroom-template-card
+            primary: '[[list_head_primary_info]]'
+            secondary: '[[list_head_secondary_info]]'
+            icon: '[[list_head_icon]]'
+            icon_color: '[[list_head_icon_color]]'
+            tap_action:
+                action: none
+            card_mod:
+                style: |
+                    ha-card {
+                        border-bottom: 0;
+                        border-bottom-right-radius: 0;
+                        border-bottom-left-radius: 0;
+                        pointer-events: none;
+                    }
+            view_layout:
+                grid-area: list_status
+
+
+          - type: markdown
+            content: >
+                [[list_variable]]
+
+                {% for item in items -%}
+                    <div>
+                        <div>
+                            <font color="[[list_item_icon_color]]">
+                                <ha-icon icon="[[list_item_icon]]"></ha-icon>
+                            </font>
+                        </div>
+                        <div>
+                            [[list_item_primary_info]]
+                        </div>
+                        <div>
+                            [[list_item_secondary_info]]
+                        </div>
+                     </div>
+                {% endfor %}
+            card_mod:
+                style:
+                    ha-markdown$: |
+                        ha-markdown-element>div {
+                            display: grid;
+                            grid-template-areas: 'i l' 'i s';
+                            grid-template-columns: 52px auto;
+                            grid-template-rows: auto;
+                            padding: 0 12px 12px 32px;
+                        }
+
+                        ha-markdown-element>div>div:nth-child(1) {
+                            grid-area: i;
+                            background: color-mix(in srgb, var(--blue-color) 20%, transparent);
+                            color: white;
+                            display: flex;
+                            justify-content: center;
+                            align-items: center;
+                            border-radius: 50%;
+                            margin-right: 12px;
+
+                            --icon-primary-color: var(--blue-color);
+                        }
+
+                        ha-markdown-element>div>div:nth-child(2) {
+                            grid-area: l;
+                            font-weight: 500;
+                            font-size: 14px;
+                            line-height: 20px;
+                            color: var(--primary-text-color);
+                            letter-spacing: 0.1px;
+                            text-overflow: ellipsis;
+                            overflow: hidden;
+                            white-space: nowrap;
+                        }
+
+                        ha-markdown-element>div>div:nth-child(3) {
+                            grid-area: s;
+                            font-weight: 400;
+                            font-size: 12px;
+                            line-height: 16px
+                            color: var(--primary-text-color);
+                            letter-spacing: 0.4px
+                            text-overflow: ellipsis;
+                            overflow: hidden;
+                            white-space: nowrap;
+                        }
+                    .: |
+                        ha-card {
+                            border-top: 0;
+                            border-top-right-radius: 0;
+                            border-top-left-radius: 0;
+                        }
+
+                        ha-card ha-markdown, ha-card ha-markdown.no-header {
+                            padding: 0;
+                        }
+            view_layout:
+                grid-area: list
