@@ -1,4 +1,4 @@
-generic_title_card_template:
+view_title_card_template:
     default:
     card:
         type: custom:mod-card

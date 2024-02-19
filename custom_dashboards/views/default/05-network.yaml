@@ -37,8 +37,8 @@ cards:
                 }
 
                 div#root {
-                    grid-template-areas: "title title title" "speedtest pingtest .";
-                    grid-template-columns: calc(33% - 4px) calc(34% - 4px) calc(33% - 4px);
+                    grid-template-areas: "title title" "speedtest pingtest";
+                    grid-template-columns: calc(50% - 3px) calc(50% - 3px);
                     grid-template-rows: 80px calc(100% - 86px);
                 }
                 @media screen and (max-width: 870px) {
@@ -63,7 +63,7 @@ cards:
 
 
           - type: custom:decluttering-card
-            template: generic_title_card_template
+            template: view_title_card_template
             variables:
               - title: Rede e Internet
               - subtitle: Rede e Internet
