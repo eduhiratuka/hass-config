@@ -4,4 +4,7 @@ icon: mdi:multimedia
 type: panel
 cards:
   - type: custom:button-card
-    template: media_center_dashboard_template
+    template: generic_dashboard_template
+    variables:
+        title: 'Central Multimedia'
+        subtitle: 'Central Multimedia'

@@ -1,0 +1,10 @@
+title: Astrometrics
+path: astrometrics
+icon: mdi:space-station
+type: panel
+cards:
+  - type: custom:button-card
+    template: generic_dashboard_template
+    variables:
+        title: 'Astrometrics'
+        subtitle: 'Astrometrics'

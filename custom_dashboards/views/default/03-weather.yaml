@@ -4,4 +4,7 @@ icon: mdi:weather-partly-cloudy
 type: panel
 cards:
   - type: custom:button-card
-    template: weather_dashboard_template
+    template: generic_dashboard_template
+    variables:
+        title: 'Previsão do Tempo'
+        subtitle: 'Previsão do Tempo'

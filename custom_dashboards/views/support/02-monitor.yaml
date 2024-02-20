@@ -1,0 +1,156 @@
+title: Monitor
+path: monitor
+icon: mdi:monitor-eye
+type: panel
+cards:
+  - type: custom:mod-card
+    card_mod:
+        style:
+            ha-card>layout-card$grid-layout$div#root>decluttering-card:nth-child(1)$: |
+                div#root {
+                    margin: 0;
+                    height: 100%;
+                    align-items: start;
+                    align-content: center;
+                    justify-items: stretch;
+                    justify-content: left;
+                }
+            ha-card>layout-card$grid-layout$: |
+                div#root {
+                    margin: 0;
+                    padding: 12px;
+                    height: calc(100vh - 56px - 24px);
+                    grid-gap: 6px 6px;
+                    align-items: start;
+                    align-content: start;
+                    justify-items: stretch;
+                    justify-content: stretch;
+                }
+                
+                div#root > * {
+                    margin: 0;
+                    padding: 0;
+                }
+                
+                div#root > *:first-child {
+                    height: 100%
+                }
+
+                div#root {
+                    grid-template-areas: 
+                        "title title"
+                        "speedtest pingtest"
+                        "offline_devices unrecognized_devices";
+                    grid-template-columns: calc(50% - 3px) calc(50% - 3px);
+                    grid-template-rows: 80px auto
+                }
+                @media screen and (max-width: 870px) {
+                    div#root {
+                        grid-template-areas:
+                            "title"
+                            "speedtest"
+                            "pingtest"
+                            "offline_devices"
+                            "unrecognized_devices";
+                        grid-template-columns: calc(100%);
+                        grid-template-rows: 80px auto
+                    }
+                }
+                @media screen and (max-width: 450px) {
+                    div#root {
+                        grid-template-areas:
+                            "title"
+                            "speedtest"
+                            "pingtest"
+                            "offline_devices"
+                            "unrecognized_devices";
+                        grid-template-columns: calc(100%);
+                        grid-template-rows: 80px auto
+                    }
+                }
+    card:
+        type: custom:layout-card
+        layout_type: custom:grid-layout
+        cards:
+
+
+
+          - type: custom:decluttering-card
+            template: header_view_card_template
+            variables:
+              - title: Rede e Internet
+              - subtitle: Rede e Internet
+              - info_tile_1:
+                    info_name: Online
+                    info_icon: mdi:lan-connect
+                    info_state: "[[[ return Object.entries(states).filter(([key, value]) => key.startsWith('device_tracker') && value.state === 'home' && value.attributes.source_type === 'router').length; ]]]"
+                    info_triggers_update: group.servicos_networking_dispositivos_do_roteador
+              - info_tile_2:
+                    info_name: Internet
+                    info_icon: mdi:check-network-outline
+                    info_state: "[[[ return states['binary_sensor.sala_roteador_status_da_wan']['state'] == 'on' ? 'Conectado' : 'Des-conectado' ]]]"
+            view_layout:
+                grid-area: title
+
+
+
+          - type: custom:decluttering-card
+            template: 2_lines_graphic_card_template
+            variables:
+              - line1_entity: 'sensor.servicos_networking_speedtest_velocidade_de_upload'
+              - line1_name: 'Upload'
+              - line1_icon: 'mdi:upload-network'
+              - line1_color: 'orange'
+              - line2_entity: 'sensor.servicos_networking_speedtest_velocidade_de_download'
+              - line2_name: 'Download'
+              - line2_icon: 'mdi:download-network'
+              - line2_color: 'blue'
+            view_layout:
+                grid-area: speedtest
+
+
+
+          - type: custom:decluttering-card
+            template: 1_line_graphic_card_template
+            variables:
+                - line_entity: 'sensor.servicos_networking_speedtest_ping'
+                - line_name: 'Latência'
+                - line_icon: 'mdi:network'
+                - line_color: 'red'
+            view_layout:
+                grid-area: pingtest
+
+
+
+          - type: custom:decluttering-card
+            template: list_card_template
+            variables:
+                - list_head_primary_info: "Dispositivos Offline/Online"
+                - list_head_secondary_info: "{{ 'Offline: ' + expand(integration_entities('Nmap Tracker 192.168.15.0/24')) | rejectattr('state','eq', 'home') | list | count | string + ' | Online: ' + expand(integration_entities('Nmap Tracker 192.168.15.0/24')) | selectattr('state','eq', 'home')  | list | count | string }}"
+                - list_head_icon: "mdi:network-off"
+                - list_head_icon_color: "accent"
+                - list_variable: "{%- set items = expand(integration_entities('Nmap Tracker 192.168.15.0/24'))  | rejectattr('state', 'eq', 'home')  | list %}"
+                - list_item_primary_info: "{{ item.name.split(': ') | last }}"
+                - list_item_secondary_info: "{{ 'Motivo: ' + item.attributes['reason'] | replace('Device not found in initial scan', 'Não Encontrado') | replace('no-response', 'Não Responde') + ' | Visto há ' + item.attributes['last_time_reachable'] | as_datetime | relative_time | replace('second', 'segundo') | replace('minute', 'minuto') | replace('hour', 'hora') | replace('day', 'dia') | replace('months', 'meses') | replace('month', 'mês') | replace('year', 'ano') }}"
+                - list_item_icon: "{{ item.attributes['icon'] }}"
+                - list_item_icon_color: "var(--blue-color)"
+            view_layout:
+                grid-area: offline_devices
+
+
+
+          - type: custom:decluttering-card
+            template: list_card_template
+            variables:
+                - list_head_primary_info: "Dispositivos Desconhecidos"
+                - list_head_secondary_info: "{{ 'Desconhecidos: ' +  expand(integration_entities('Nmap Tracker 192.168.15.0/24')) | rejectattr('name', 'match', '^Serviços: Networking: ') | list | count | string + ' | Conhecidos: ' +  expand(integration_entities('Nmap Tracker 192.168.15.0/24')) | selectattr('name', 'match', '^Serviços: Networking: ') | list | count  | string }}"
+                - list_head_icon: "mdi:help-network"
+                - list_head_icon_color: "accent"
+                - list_variable: "{%- set items = expand(integration_entities('Nmap Tracker 192.168.15.0/24')) | rejectattr('name', 'match', '^Serviços: Networking: ') | list %}"
+                - list_item_primary_info: "{{ item.name.split(': ') | last }}"
+                - list_item_secondary_info: "{{ ' Visto há ' + item.attributes['last_time_reachable'] | as_datetime | relative_time | replace('second', 'segundo') | replace('minute', 'minuto') | replace('hour', 'hora') | replace('day', 'dia') | replace('months', 'meses') | replace('month', 'mês') | replace('year', 'ano') }}"
+                - list_item_icon: "{{ item.attributes['icon'] }}"
+                # - list_item_icon_color: "var(--green-color)"
+                - list_item_icon_color: "{{ 'var(--green-color)' if item.state == 'home' else 'var(--red-color)' }}"
+            view_layout:
+                grid-area: unrecognized_devices
