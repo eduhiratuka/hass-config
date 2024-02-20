@@ -1,10 +1,23 @@
+###################################
+#   Status Button Card Template   #
+#                                 #
+# Variables:                      #
+#                                 #
+###################################
+
 no_base_button_card_template:
     styles:
         card:
+          # Layout Styles
           - margin: 0
           - padding: 0
-          - border: 0
           - height: auto
+          
+          # Appearence Styles
+          - border: 0
+          - border-radius: 0
           - background: none
+
         grid:
+          # Layout Styles
           - height: auto

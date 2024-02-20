@@ -1,8 +1,18 @@
+#########################################
+#   Primary Info Button Card Template   #
+#                                       #
+# Variables:                            #
+#   - primary_info                      #
+#                                       #
+#########################################
+
 primary_info_button_card_template:
     variables:
-        primary_info: "[[[ return 'Sun'; ]]]"
-    name: "[[[ return variables.primary_info; ]]]"
+        primary_info: "Sun"
+
+    name: "[[[ return variables.primary_info ]]]"
     show_name: true
+
     styles:
         name:
           # Layout Styles

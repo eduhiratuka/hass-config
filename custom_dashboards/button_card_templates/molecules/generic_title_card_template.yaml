@@ -1,0 +1,50 @@
+#########################################
+#   Generic Title Button Card Template  #
+#                                       #
+# Variables:                            #
+#   - primary_info                      #
+#   - secondary_info                    #
+#                                       #
+#########################################
+
+generic_title_card_template:
+    template:
+      - no_base_button_card_template
+      - primary_info_button_card_template
+      - secondary_info_button_card_template
+ 
+    styles:
+        card:
+          # Layout Styles
+          - height: 100%
+
+        grid:
+          # Grid Styles
+          - grid-template: >
+                "n" auto
+                "s" auto / auto
+
+        name:
+          # Layout Styles
+          - place-self: initial
+          - text-align: initial
+
+          # Text Styles
+          - font-size: 24px
+          - line-height: normal
+          - font-weight: normal
+          - letter-spacing: normal
+
+        state:
+          # Layout Styles
+          - place-self: initial
+          - text-align: initial
+
+          # Text Styles
+          - font-size: 16px
+          - line-height: normal
+          - font-weight: normal
+          - letter-spacing: normal
+          
+          # Appearence Styles
+          - color: var(--secondary-text-color)

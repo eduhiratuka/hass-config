@@ -1,3 +1,8 @@
+#####################################
+#   System Monitor Dashboard View   #
+#                                   #
+#####################################
+
 title: Monitor
 path: system-monitor
 icon: mdi:monitor-eye
@@ -38,18 +43,18 @@ cards:
 
                 div#root {
                     grid-template: 
-                        "title title" 80px / calc(50% - 3px) calc(50% - 3px);
+                        "title" 80px / 100%;
                 }
                 @media screen and (max-width: 870px) {
                     div#root {
                         grid-template:
-                            "title title" 80px / calc(50% - 3px) calc(50% - 3px);
+                            "title" 80px / 100%;
                     }
                 }
                 @media screen and (max-width: 450px) {
                     div#root {
                         grid-template:
-                            "title title" 80px / calc(50% - 3px) calc(50% - 3px);
+                            "title" 80px / 100%;
                     }
                 }
     card:

@@ -1,3 +1,8 @@
+##############################
+#   Weather Dashboard View   #
+#                            #
+##############################
+
 title: Previsão do Tempo
 path: weather
 icon: mdi:weather-partly-cloudy
@@ -26,39 +31,33 @@ cards:
                     justify-items: stretch;
                     justify-content: stretch;
                 }
-                
+
                 div#root > * {
                     margin: 0;
                     padding: 0;
                 }
-                
+
                 div#root > *:first-child {
                     height: 100%
                 }
 
                 div#root {
-                    grid-template-areas: 
-                        "title title"
-                        "radar .";
-                    grid-template-columns: calc(50% - 3px) calc(50% - 3px);
-                    grid-template-rows: 80px auto
+                    grid-template: 
+                        "title title" 80px
+                        "radar ." auto / calc(50% - 3px) calc(50% - 3px);
                 }
                 @media screen and (max-width: 870px) {
                     div#root {
-                        grid-template-areas:
-                            "title"
-                            "radar";
-                        grid-template-columns: calc(100%);
-                        grid-template-rows: 80px auto
+                        grid-template:
+                            "title" 80px
+                            "radar" auto / 100%;
                     }
                 }
                 @media screen and (max-width: 450px) {
                     div#root {
-                        grid-template-areas:
-                            "title"
-                            "radar";
-                        grid-template-columns: calc(100%);
-                        grid-template-rows: 80px auto
+                        grid-template:
+                            "title" 80px
+                            "radar" auto / 100%;
                     }
                 }
     card:
@@ -81,7 +80,7 @@ cards:
             data_source: RainViewer-Original
             map_style: Light
             zoom_level: 8
-            static_map: true
+            static_map: false
             show_zoom: true
             square_map: true
             view_layout:

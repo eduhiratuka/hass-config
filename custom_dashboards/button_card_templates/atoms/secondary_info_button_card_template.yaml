@@ -1,8 +1,18 @@
+###########################################
+#   Secondary Info Button Card Template   #
+#                                         #
+# Variables:                              #
+#   - secondary_info                      #
+#                                         #
+###########################################
+
 secondary_info_button_card_template:
     variables:
-        secondary_info: "[[[ return helpers.localize(states['sun.sun']); ]]]"
-    state_display: "[[[ return variables.secondary_info; ]]]"
+        secondary_info: "[[[ return helpers.localize(states['sun.sun']) ]]]"
+
+    state_display: "[[[ return variables.secondary_info ]]]"
     show_state: true
+
     styles:
         state:
           # Layout Styles

@@ -40,7 +40,9 @@ header_view_card_template:
                     ha-card {
                         height: 100%;
                     }
-                
+
+
+
         card:
             type: custom:layout-card
             layout_type: custom:grid-layout
@@ -51,8 +53,8 @@ header_view_card_template:
               - type: custom:button-card
                 template: generic_title_card_template
                 variables:
-                    title: "[[title]]"
-                    subtitle: "[[subtitle]]"
+                    primary_info: "[[title]]"
+                    secondary_info: "[[subtitle]]"
                 view_layout:
                     grid-area: generic_title
 

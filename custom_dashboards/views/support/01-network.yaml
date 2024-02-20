@@ -1,3 +1,8 @@
+##############################
+#   Network Dashboard View   #
+#                            #
+##############################
+
 title: Rede e Internet
 path: network
 icon: mdi:check-network-outline
@@ -37,35 +42,29 @@ cards:
                 }
 
                 div#root {
-                    grid-template-areas: 
-                        "title title"
-                        "speedtest pingtest"
-                        "offline_devices unrecognized_devices";
-                    grid-template-columns: calc(50% - 3px) calc(50% - 3px);
-                    grid-template-rows: 80px auto
+                    grid-template: 
+                        "title title" 80px
+                        "speedtest pingtest" auto
+                        "offline_devices unrecognized_devices" auto / calc(50% - 3px) calc(50% - 3px);
                 }
                 @media screen and (max-width: 870px) {
                     div#root {
-                        grid-template-areas:
-                            "title"
-                            "speedtest"
-                            "pingtest"
-                            "offline_devices"
-                            "unrecognized_devices";
-                        grid-template-columns: calc(100%);
-                        grid-template-rows: 80px auto
+                        grid-template:
+                            "title" 80px
+                            "speedtest" auto
+                            "pingtest" auto
+                            "offline_devices" auto
+                            "unrecognized_devices" auto / 100%;
                     }
                 }
                 @media screen and (max-width: 450px) {
                     div#root {
-                        grid-template-areas:
-                            "title"
-                            "speedtest"
-                            "pingtest"
-                            "offline_devices"
-                            "unrecognized_devices";
-                        grid-template-columns: calc(100%);
-                        grid-template-rows: 80px auto
+                        grid-template:
+                            "title" 80px
+                            "speedtest" auto
+                            "pingtest" auto
+                            "offline_devices" auto
+                            "unrecognized_devices" auto / 100%;
                     }
                 }
     card:
@@ -78,8 +77,10 @@ cards:
           - type: custom:decluttering-card
             template: header_view_card_template
             variables:
-              - title: Rede e Internet
-              - subtitle: Rede e Internet
+            #   - title: Rede e Internet
+            #   - subtitle: Rede e Internet
+              - title: Previsão do Tempo
+              - subtitle: Previsão do Tempo
               - info_tile_1:
                     info_name: Online
                     info_icon: mdi:lan-connect
