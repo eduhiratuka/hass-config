@@ -1,5 +1,5 @@
 title: Monitor
-path: monitor
+path: system-monitor
 icon: mdi:monitor-eye
 type: panel
 cards:
