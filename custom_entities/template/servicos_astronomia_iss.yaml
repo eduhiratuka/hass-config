@@ -1,0 +1,37 @@
+- trigger:
+    - platform: event
+      event_type: upcoming_iss_flybys_update
+  sensor:
+    - name: 'Serviços: Astronomia: ISS: Próximos Sobrevoos'
+      unique_id: servicos_astronomia_iss_proximos_sobrevoos
+      device_class: timestamp
+      state: >-
+          {{ (strptime(trigger.event.data.flybys.passes[0]['begin'], '%Y%m%d%H%M%S') | as_local).isoformat() }}
+      attributes:
+          magnitude: "{{ trigger.event.data.flybys.passes[0]['mag'] }}"
+
+          begin_time: "{{ (strptime(trigger.event.data.flybys.passes[0]['begin'], '%Y%m%d%H%M%S') | as_local).isoformat() }}"
+          max_time: "{{ (strptime(trigger.event.data.flybys.passes[0]['max'], '%Y%m%d%H%M%S') | as_local).isoformat() }}"
+          end_time: "{{ (strptime(trigger.event.data.flybys.passes[0]['end'], '%Y%m%d%H%M%S') | as_local).isoformat() }}"
+          
+          begin_altitude: "{{ trigger.event.data.flybys.passes[0]['beginAlt'] }}"
+          max_altitude: "{{ trigger.event.data.flybys.passes[0]['maxAlt'] }}"
+          end_altitude: "{{ trigger.event.data.flybys.passes[0]['endAlt'] }}"
+
+          begin_direction: "{{ trigger.event.data.flybys.passes[0]['beginDir'] }}"
+          max_begin_direction: "{{ trigger.event.data.flybys.passes[0]['maxDir'] }}"
+          end_begin_direction: "{{ trigger.event.data.flybys.passes[0]['endDir'] }}"
+
+          visible_radius: "{{ trigger.event.data.flybys.passes[0]['visibRad'] }}"
+
+          more_flybys: > 
+              {% set ns = namespace(flybys=[]) %}
+              {% for flyby in trigger["event"]["data"]["flybys"]["passes"] -%}
+                  {% set ns.flybys = ns.flybys + [{
+                      "begin_time": (strptime(flyby['begin'], '%Y%m%d%H%M%S') | as_local).isoformat(),
+                      "max_time": (strptime(flyby['max'], '%Y%m%d%H%M%S') | as_local).isoformat(),
+                      "end_time": (strptime(flyby['end'], '%Y%m%d%H%M%S') | as_local).isoformat()
+                  }] %}
+              {% endfor %}
+              {{ ns.flybys }}
+

@@ -1,0 +1,15 @@
+id: 'servicos_astronomia_iss_atualiza_proximos_sobrevoos'
+alias: 'Serviços: Astronomia: ISS: Atualiza Próximos Sobrevoos'
+description: ''
+mode: single
+trigger: []
+action:
+  - service: rest_command.get_upcoming_iss_flybys
+    response_variable: upcoming_iss_flybys
+  - if:
+      - condition: template
+        value_template: "{{ upcoming_iss_flybys['status'] == 200 }}"
+    then:
+      - event: upcoming_iss_flybys_update
+        event_data:
+            flybys: "{{ upcoming_iss_flybys['content'] }}"

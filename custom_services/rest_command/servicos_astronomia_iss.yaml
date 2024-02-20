@@ -1,0 +1,2 @@
+get_upcoming_iss_flybys:
+    url: https://www.astroviewer.net/iss/ws/predictor.php?sat=48274&lon=-49.3804&lat=-20.8126&name=S%C3%A3o%20Jos%C3%A9%20do%20Rio%20Preto&tz=America%2FSao_Paulo
