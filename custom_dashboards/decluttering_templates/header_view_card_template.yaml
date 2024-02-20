@@ -1,5 +1,7 @@
 header_view_card_template:
     default:
+        - info_tile_1: ""
+        - info_tile_2: ""
     card:
         type: custom:mod-card
         card_mod:
@@ -59,6 +61,11 @@ header_view_card_template:
               - type: custom:button-card
                 template: generic_tile_card_template
                 variables: "[[info_tile_1]]"
+                card_mod:
+                    style: >
+                        ha-card.button-card-main {
+                            display: {{ 'none' if "[[info_tile_1]]" == "" else 'block' }};
+                        }
                 view_layout:
                     grid-area: info_tile_1
 
@@ -67,6 +74,11 @@ header_view_card_template:
               - type: custom:button-card
                 template: generic_tile_card_template
                 variables: "[[info_tile_2]]"
+                card_mod:
+                    style: >
+                        ha-card.button-card-main {
+                            display: {{ 'none' if "[[info_tile_1]]" == "" else 'block' }};
+                        }
                 view_layout:
                     grid-area: info_tile_2
 
