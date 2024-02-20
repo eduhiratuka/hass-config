@@ -8,65 +8,13 @@ path: weather
 icon: mdi:weather-partly-cloudy
 type: panel
 cards:
-  - type: custom:mod-card
-    card_mod:
-        style:
-            ha-card>layout-card$grid-layout$div#root>decluttering-card:nth-child(1)$: |
-                div#root {
-                    margin: 0;
-                    height: 100%;
-                    align-items: start;
-                    align-content: center;
-                    justify-items: stretch;
-                    justify-content: left;
-                }
-            ha-card>layout-card$grid-layout$: |
-                div#root {
-                    margin: 0;
-                    padding: 12px;
-                    height: calc(100vh - 56px - 24px);
-                    grid-gap: 6px 6px;
-                    align-items: start;
-                    align-content: start;
-                    justify-items: stretch;
-                    justify-content: stretch;
-                }
-
-                div#root > * {
-                    margin: 0;
-                    padding: 0;
-                }
-
-                div#root > *:first-child {
-                    height: 100%
-                }
-
-                div#root {
-                    grid-template: 
-                        "title title" 80px
-                        "radar ." auto / calc(50% - 3px) calc(50% - 3px);
-                }
-                @media screen and (max-width: 870px) {
-                    div#root {
-                        grid-template:
-                            "title" 80px
-                            "radar" auto / 100%;
-                    }
-                }
-                @media screen and (max-width: 450px) {
-                    div#root {
-                        grid-template:
-                            "title" 80px
-                            "radar" auto / 100%;
-                    }
-                }
-    card:
-        type: custom:layout-card
-        layout_type: custom:grid-layout
-        cards:
-
-
-
+  - type: custom:decluttering-card
+    template: generic_dashboard_view
+    variables:
+      - regular_grid_template: "'title title' 80px 'radar .' auto / calc(50% - 3px) calc(50% - 3px)"
+      - grid_template_on_mediumscreen: "'title' 80px 'radar' auto / 100%"
+      - grid_template_on_smallscreen: "'title' 80px 'radar' auto / 100%"
+      - cards:
           - type: custom:decluttering-card
             template: header_view_card_template
             variables:
@@ -74,7 +22,6 @@ cards:
               - subtitle: Previsão do Tempo
             view_layout:
                 grid-area: title
-
 
           - type: custom:weather-radar-card
             data_source: RainViewer-Original

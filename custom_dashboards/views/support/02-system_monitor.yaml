@@ -8,59 +8,10 @@ path: system-monitor
 icon: mdi:monitor-eye
 type: panel
 cards:
-  - type: custom:mod-card
-    card_mod:
-        style:
-            ha-card>layout-card$grid-layout$div#root>decluttering-card:nth-child(1)$: |
-                div#root {
-                    margin: 0;
-                    height: 100%;
-                    align-items: start;
-                    align-content: center;
-                    justify-items: stretch;
-                    justify-content: left;
-                }
-            ha-card>layout-card$grid-layout$: |
-                div#root {
-                    margin: 0;
-                    padding: 12px;
-                    height: calc(100vh - 56px - 24px);
-                    grid-gap: 6px 6px;
-                    align-items: start;
-                    align-content: start;
-                    justify-items: stretch;
-                    justify-content: stretch;
-                }
-                
-                div#root > * {
-                    margin: 0;
-                    padding: 0;
-                }
-                
-                div#root > *:first-child {
-                    height: 100%
-                }
-
-                div#root {
-                    grid-template: 
-                        "title" 80px / 100%;
-                }
-                @media screen and (max-width: 870px) {
-                    div#root {
-                        grid-template:
-                            "title" 80px / 100%;
-                    }
-                }
-                @media screen and (max-width: 450px) {
-                    div#root {
-                        grid-template:
-                            "title" 80px / 100%;
-                    }
-                }
-    card:
-        type: custom:layout-card
-        layout_type: custom:grid-layout
-        cards:
+  - type: custom:decluttering-card
+    template: generic_dashboard_view
+    variables:
+      - cards:
           - type: custom:decluttering-card
             template: header_view_card_template
             variables:
