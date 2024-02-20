@@ -3,8 +3,84 @@ path: media-center
 icon: mdi:multimedia
 type: panel
 cards:
-  - type: custom:button-card
-    template: generic_dashboard_template
-    variables:
-        title: 'Central Multimedia'
-        subtitle: 'Central Multimedia'
+  - type: custom:mod-card
+    card_mod:
+        style:
+            ha-card>layout-card$grid-layout$div#root>decluttering-card:nth-child(1)$: |
+                div#root {
+                    margin: 0;
+                    height: 100%;
+                    align-items: start;
+                    align-content: center;
+                    justify-items: stretch;
+                    justify-content: left;
+                }
+            ha-card>layout-card$grid-layout$: |
+                div#root {
+                    margin: 0;
+                    padding: 12px;
+                    height: calc(100vh - 56px - 24px);
+                    grid-gap: 6px 6px;
+                    align-items: start;
+                    align-content: start;
+                    justify-items: stretch;
+                    justify-content: stretch;
+                }
+                
+                div#root > * {
+                    margin: 0;
+                    padding: 0;
+                }
+                
+                div#root > *:first-child {
+                    height: 100%
+                }
+
+                div#root {
+                    grid-template: 
+                        "title title" 80px
+                        "test1 test2" auto
+                        "test3 test4" auto
+                        "test5 test6" auto / calc(50% - 3px) calc(50% - 3px);
+                }
+    card:
+        type: custom:layout-card
+        layout_type: custom:grid-layout
+        cards:
+          - type: custom:decluttering-card
+            template: header_view_card_template
+            variables:
+              - title: 'Central Multimedia'
+              - subtitle: 'Central Multimedia'
+            view_layout:
+                grid-area: title
+
+          - type: custom:mushroom-entity-card
+            entity: sun.sun
+            view_layout:
+                grid-area: test1
+
+          - type: custom:button-card
+            template: status_button_card_template
+            view_layout:
+                grid-area: test2
+
+          - type: custom:button-card
+            template: status_button_card_template
+            view_layout:
+                grid-area: test3
+
+          - type: custom:mushroom-entity-card
+            entity: sun.sun
+            view_layout:
+                grid-area: test4
+
+          - type: custom:button-card
+            template: primary_info_button_card_template
+            view_layout:
+                grid-area: test5
+
+          - type: custom:button-card
+            template: secondary_info_button_card_template
+            view_layout:
+                grid-area: test6

@@ -3,8 +3,86 @@ path: weather
 icon: mdi:weather-partly-cloudy
 type: panel
 cards:
-  - type: custom:button-card
-    template: generic_dashboard_template
-    variables:
-        title: 'Previsão do Tempo'
-        subtitle: 'Previsão do Tempo'
+  - type: custom:mod-card
+    card_mod:
+        style:
+            ha-card>layout-card$grid-layout$div#root>decluttering-card:nth-child(1)$: |
+                div#root {
+                    margin: 0;
+                    height: 100%;
+                    align-items: start;
+                    align-content: center;
+                    justify-items: stretch;
+                    justify-content: left;
+                }
+            ha-card>layout-card$grid-layout$: |
+                div#root {
+                    margin: 0;
+                    padding: 12px;
+                    height: calc(100vh - 56px - 24px);
+                    grid-gap: 6px 6px;
+                    align-items: start;
+                    align-content: start;
+                    justify-items: stretch;
+                    justify-content: stretch;
+                }
+                
+                div#root > * {
+                    margin: 0;
+                    padding: 0;
+                }
+                
+                div#root > *:first-child {
+                    height: 100%
+                }
+
+                div#root {
+                    grid-template-areas: 
+                        "title title"
+                        "radar .";
+                    grid-template-columns: calc(50% - 3px) calc(50% - 3px);
+                    grid-template-rows: 80px auto
+                }
+                @media screen and (max-width: 870px) {
+                    div#root {
+                        grid-template-areas:
+                            "title"
+                            "radar";
+                        grid-template-columns: calc(100%);
+                        grid-template-rows: 80px auto
+                    }
+                }
+                @media screen and (max-width: 450px) {
+                    div#root {
+                        grid-template-areas:
+                            "title"
+                            "radar";
+                        grid-template-columns: calc(100%);
+                        grid-template-rows: 80px auto
+                    }
+                }
+    card:
+        type: custom:layout-card
+        layout_type: custom:grid-layout
+        cards:
+
+
+
+          - type: custom:decluttering-card
+            template: header_view_card_template
+            variables:
+              - title: Previsão do Tempo
+              - subtitle: Previsão do Tempo
+            view_layout:
+                grid-area: title
+
+
+          - type: custom:weather-radar-card
+            data_source: RainViewer-Original
+            map_style: Light
+            zoom_level: 8
+            static_map: true
+            show_zoom: true
+            square_map: true
+            view_layout:
+                grid-area: radar

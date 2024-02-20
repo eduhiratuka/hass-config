@@ -1,0 +1,20 @@
+primary_info_button_card_template:
+    variables:
+        primary_info: "[[[ return 'Sun'; ]]]"
+    name: "[[[ return variables.primary_info; ]]]"
+    show_name: true
+    styles:
+        name:
+          # Layout Styles
+          - overflow: hidden
+
+          # Text Styles
+          - font-size: 14px
+          - font-weight: 500
+          - letter-spacing: 0.1px
+          - line-height: 20px
+          - text-overflow: ellipsis
+          - white-space: nowrap
+
+          # Appearence Styles
+          - color: var(--primary-text-color)

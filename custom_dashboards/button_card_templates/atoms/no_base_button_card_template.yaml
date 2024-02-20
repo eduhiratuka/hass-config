@@ -1,0 +1,10 @@
+no_base_button_card_template:
+    styles:
+        card:
+          - margin: 0
+          - padding: 0
+          - border: 0
+          - height: auto
+          - background: none
+        grid:
+          - height: auto

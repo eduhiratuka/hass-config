@@ -1,0 +1,17 @@
+icon_button_card_template:
+    variables:
+        icon: "mdi:lan-connect"
+        icon_color: "disabled"
+    icon: "[[[ return variables.icon ]]]"
+    show_icon: true
+    styles:
+        img_cell:
+          - width: 40px
+          - height: 40px
+
+          - border-radius: 100%
+          - background: "[[[ return `color-mix(in srgb, var(--${variables.icon_color}-color) 20%, transparent);` ]]]"
+        icon:
+          - width: 24px
+          - height: 24px
+          - color: "[[[ return `var(--${variables.icon_color}-color)` ]]]"

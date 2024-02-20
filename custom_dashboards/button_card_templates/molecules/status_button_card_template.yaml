@@ -1,0 +1,22 @@
+status_button_card_template:
+    template:
+        - icon_button_card_template
+        - primary_info_button_card_template
+        - secondary_info_button_card_template
+    styles:
+        card:
+            - padding: 12px
+        grid:
+            - grid-template: >
+                    "i n" auto
+                    "i s" min-content / min-content auto
+        img_cell:
+            - margin-right: 12px
+        name:
+            - padding-top: 2px
+            - place-self: initial
+            - text-align: initial
+        state:
+            - padding-bottom: 2px
+            - place-self: initial
+            - text-align: initial
