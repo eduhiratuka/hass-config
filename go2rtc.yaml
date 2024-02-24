@@ -3,4 +3,4 @@ streams:
   fundos_camera_do_quintal: rtsp://192.168.15.160:554/user=admin&password=admin&channel=02&stream=1.sdp
   frente_camera_da_lateral: rtsp://192.168.15.160:554/user=admin&password=admin&channel=03&stream=1.sdp
   frente_camera_da_garagem: rtsp://192.168.15.160:554/user=admin&password=admin&channel=04&stream=1.sdp
-  
+  test: rtsp://192.168.15.90:8080/h264_ulaw.sdp

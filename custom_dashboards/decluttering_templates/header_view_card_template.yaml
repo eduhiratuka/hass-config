@@ -23,16 +23,22 @@ header_view_card_template:
                     }
 
                     div#root {
-                        grid-template-areas: "generic_title info_tile_1 info_tile_2";
-                        grid-template-columns: calc(100% - 176px) 88px 88px;
-                        grid-template-rows: auto;
+                        grid-template: 'generic_title info_tile_1 info_tile_2' auto / calc(100% - 0px - 0px) 0px 0px;
                     }
-                
+
+                    div#root > *:nth-child(2) {
+                        display: none;
+                    }
+
+                    div#root > *:nth-child(3) {
+                        display: none;
+                    }
+
                     div#root > * {
                         margin: 0;
                         padding: 0;
                     }
-                
+
                     div#root > *:nth-child(n+2) {
                         justify-self: end;
                     }
@@ -63,11 +69,6 @@ header_view_card_template:
               - type: custom:button-card
                 template: generic_tile_card_template
                 variables: "[[info_tile_1]]"
-                card_mod:
-                    style: >
-                        ha-card.button-card-main {
-                            display: {{ 'none' if "[[info_tile_1]]" == "" else 'block' }};
-                        }
                 view_layout:
                     grid-area: info_tile_1
 
@@ -76,11 +77,6 @@ header_view_card_template:
               - type: custom:button-card
                 template: generic_tile_card_template
                 variables: "[[info_tile_2]]"
-                card_mod:
-                    style: >
-                        ha-card.button-card-main {
-                            display: {{ 'none' if "[[info_tile_1]]" == "" else 'block' }};
-                        }
                 view_layout:
                     grid-area: info_tile_2
 
