@@ -30,6 +30,8 @@ lovelace:
         type: module
       - url: /hacsfiles/lovelace-horizon-card/lovelace-horizon-card.js
         type: module
+      - url: /hacsfiles/config-template-card/config-template-card.js
+        type: module
 
     dashboards:
         ui-support:

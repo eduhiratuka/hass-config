@@ -33,6 +33,36 @@ cards:
                 grid-area: title
 
 
+          - type: 'custom:config-template-card'
+            variables:
+              LIGHT_STATE: states['light.bed_light'].state
+              GARAGE_STATE: states['cover.garage_door'].state
+            card:
+              type: custom:mini-graph-card
+              entities:
+                - entity: '[[line2_entity]]'
+                  color: '[[line1_color]]'
+                - entity: '[[line1_entity]]'
+                  color: '[[line2_color]]'
+              show:
+                  state: false
+                  name: false
+                  icon: false
+                  legend: false
+              hours_to_show: 48
+              points_per_hour: 1
+              line_width: 2
+              card_mod:
+                  style: |
+                      ha-card {
+                          padding-top: 0px;
+                          border-top: 0;
+                          border-top-right-radius: 0;
+                          border-top-left-radius: 0;
+                      }
+              view_layout:
+                  grid-area: graphic
+
 
           - type: custom:decluttering-card
             template: 2_lines_graphic_card_template
