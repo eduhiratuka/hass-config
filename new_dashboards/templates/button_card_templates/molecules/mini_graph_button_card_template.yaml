@@ -9,16 +9,10 @@
 #######################################
 
 mini_graph_button_card_template:
-    styles:
-        card:
-          - padding: 0px
-          - height: 100%
-          - background-color: transparent
-          - pointer-events: all
-          - cursor: pointer
-        grid:
-          - grid-template: "'contained' 100% / 100%"
-          - align-items: stretch
+    template:
+      - clickabled_card_style_mask
+      - quick_wrapper_style_mask
+      - padding_all_ghost_mask
     custom_fields:
         contained:
             card:

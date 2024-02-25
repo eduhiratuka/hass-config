@@ -22,11 +22,7 @@
                 type: custom:button-card
                 template:
                   - status_button_card_template
-                styles:
-                    card:
-                      - border-bottom: 0
-                      - border-bottom-right-radius: 0
-                      - border-bottom-left-radius: 0
+                  - border_top_ghost_mask
                 variables:
                     entity: '[[[ return variables.entity ]]]'
                     primary_info: '[[[ return variables.primary_info ]]]'
@@ -38,38 +34,8 @@
                 type: custom:button-card
                 template:
                   - mini_graph_button_card_template
-                styles:
-                    card:
-                      - border-top: 0
-                      - border-top-right-radius: 0
-                      - border-top-left-radius: 0
+                  - border_bottom_ghost_mask
                 variables:
                     lines:
                       - entity: '[[[ return variables.entity ]]]'
                         color: '[[[ return variables.icon_color ]]]'
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-

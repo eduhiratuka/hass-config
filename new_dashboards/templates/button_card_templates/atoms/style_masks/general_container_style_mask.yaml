@@ -1,0 +1,6 @@
+general_container_style_mask:
+    styles:
+        card:
+          - padding: 12px
+          - pointer-events: none
+          - cursor: default

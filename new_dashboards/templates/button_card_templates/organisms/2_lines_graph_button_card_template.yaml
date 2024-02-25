@@ -29,78 +29,36 @@
                 type: custom:button-card
                 template:
                   - status_button_card_template
-                styles:
-                    card:
-                      - border-bottom: 0
-                      - border-bottom-right-radius: 0
-                      - border-bottom-left-radius: 0
-                      - border-right: 0
-                      - border-top-right-radius: 0
+                  - border_top_ghost_mask
+                  - border_left_ghost_mask
                 variables:
                     entity: '[[[ return variables.line1.entity ]]]'
                     primary_info: '[[[ return variables.line1.primary_info ]]]'
                     secondary_info: '[[[ return variables.line1.secondary_info ]]]'
                     icon: '[[[ return variables.line1.icon ]]]'
                     icon_color: '[[[ return variables.line1.icon_color ]]]'
-                    
         status2: 
             card:
                 type: custom:button-card
                 template:
                   - status_button_card_template
-                styles:
-                    card:
-                      - border-bottom: 0
-                      - border-bottom-right-radius: 0
-                      - border-bottom-left-radius: 0
-                      - border-left: 0
-                      - border-top-left-radius: 0
+                  - border_top_ghost_mask
+                  - border_right_ghost_mask
                 variables:
                     entity: '[[[ return variables.line2.entity ]]]'
                     primary_info: '[[[ return variables.line2.primary_info ]]]'
                     secondary_info: '[[[ return variables.line2.secondary_info ]]]'
                     icon: '[[[ return variables.line2.icon ]]]'
                     icon_color: '[[[ return variables.line2.icon_color ]]]'
-
         graphic:
             card:
                 type: custom:button-card
                 template:
                   - mini_graph_button_card_template
-                styles:
-                    card:
-                      - border-top: 0
-                      - border-top-right-radius: 0
-                      - border-top-left-radius: 0
+                  - border_bottom_ghost_mask
                 variables:
                     lines:
                       - entity: '[[[ return variables.line1.entity ]]]'
                         color: '[[[ return variables.line1.icon_color ]]]'
                       - entity: '[[[ return variables.line2.entity ]]]'
                         color: '[[[ return variables.line2.icon_color ]]]'
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-

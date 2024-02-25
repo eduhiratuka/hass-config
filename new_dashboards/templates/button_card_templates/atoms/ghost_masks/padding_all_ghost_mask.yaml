@@ -1,0 +1,4 @@
+padding_all_ghost_mask:
+    styles:
+        card:
+          - padding: 0px

@@ -12,8 +12,8 @@ lovelace:
         type: module
       # - url: /hacsfiles/apexcharts-card/apexcharts-card.js
       #   type: module
-      # - url: /webrtc/webrtc-camera.js
-      #   type: module
+      - url: /webrtc/webrtc-camera.js
+        type: module
       - url: /hacsfiles/mini-graph-card/mini-graph-card-bundle.js
         type: module
       # - url: /hacsfiles/weather-radar-card/weather-radar-card.js

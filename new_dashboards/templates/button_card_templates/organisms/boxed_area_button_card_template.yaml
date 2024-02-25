@@ -6,32 +6,16 @@
 #######################################
 
 boxed_area_button_card_template:
-    template: no_base_button_card_template
-    styles:
-        grid:
-            - grid-template: "'contained' 100% / 100%"
+    template: 
+      - no_base_button_card_template
+      - quick_wrapper_style_mask
     custom_fields:
         contained:
             card:
                 type: custom:button-card
-                template: no_base_button_card_template
-                styles:
-                    card:
-                      - padding: 0px
-                    grid:
-                      - grid-template-areas: none
-                      - grid-template-rows: none
-                      - grid-template-columns: none
-                      - grid-gap: 8px
-                      - text-align: left
-                extra_styles: |
-                    #container > * {
-                        grid-area: auto !important;
-                    }
-                    #container > *:not(#generated_boxed_title) {
-                        pointer-events: all;
-                        cursor: pointer;
-                    }
+                template:
+                  - no_base_button_card_template
+                  - auto_grid_style_mask
                 custom_fields: >-
                     [[[
                         let arrayToMap = {};

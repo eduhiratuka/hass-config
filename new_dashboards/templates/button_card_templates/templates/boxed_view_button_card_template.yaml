@@ -6,19 +6,16 @@
 #######################################
 
 boxed_view_button_card_template:
-    template: no_base_button_card_template
-    styles:
-        card:
-            - padding: 12px
-            - pointer-events: none
-            - cursor: default
-        grid:
-            - grid-template: "'contained' 100% / 100%"
+    template:
+      - no_base_button_card_template
+      - general_container_style_mask
+      - quick_wrapper_style_mask
     custom_fields:
         contained:
             card:
                 type: custom:button-card
-                template: no_base_button_card_template
+                template:
+                  - no_base_button_card_template
                 styles:
                     grid:
                         - grid-gap: 8px
@@ -44,25 +41,24 @@ boxed_view_button_card_template:
                 custom_fields: >-
                     [[[
                         let arrayToMap = {};
-                        for (let i = 0; i < variables.boxes.length; i++) {
 
-                            arrayToMap[variables.boxes[i]['box']] = {
-                                card: {
-                                    type: 'custom:button-card',
-                                    template: 'boxed_area_button_card_template',
-                                    variables: {
-                                        title: variables.boxes[i]['title'],
-                                        cards: [{
-                                            type: 'custom:button-card',
-                                            id: 'generated_boxed_title',
-                                            template: 'boxed_title_button_card_template',
-                                            variables: {
-                                                primary_info: variables.boxes[i]['title']
-                                            }
-                                        }].concat(variables.boxes[i]['cards'])
-                                    }
+                        for (let i = 0; i < variables.boxes.length; i++) {
+                            arrayToMap[variables.boxes[i]['box']] = { card: {
+                                type: 'custom:button-card',
+                                template: 'boxed_area_button_card_template',
+                                variables: {
+                                    title: variables.boxes[i]['title'],
+                                    cards: [{
+                                        type: 'custom:button-card',
+                                        id: 'generated_boxed_title',
+                                        template: 'boxed_title_button_card_template',
+                                        variables: {
+                                            primary_info: variables.boxes[i]['title']
+                                        }
+                                    }].concat(variables.boxes[i]['cards'])
                                 }
-                            }
+                            } }
                         }
+
                         return arrayToMap;
                     ]]]

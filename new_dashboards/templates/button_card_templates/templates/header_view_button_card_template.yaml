@@ -10,11 +10,8 @@
 header_view_button_card_template:
     template:
       - no_base_button_card_template
+      - general_container_style_mask
     styles:
-        card:
-          - padding: 12px
-          - pointer-events: none
-          - cursor: default
         grid:
           - grid-template: >
                 'title' 80px
