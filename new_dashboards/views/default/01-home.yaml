@@ -22,7 +22,18 @@ cards:
             'escritorio' auto / 1fr !important;
         boxes:
           - box: welcome
-            title: "Welcome Back"
+            title: >
+                [[[
+                    let horas = new Date().getHours();
+                    let welcomeText = '';
+                    if(horas < 12) welcomeText += 'Bom dia';
+                    else if(horas < 18) welcomeText += 'Boa tarde';
+                    else welcomeText += 'Boa noite';
+
+                    welcomeText += ', ' + user.name.split(' ')[0];
+
+                    return welcomeText;
+                ]]]
             cards: []
 
 
