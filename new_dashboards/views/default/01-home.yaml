@@ -1,5 +1,3 @@
-# lovelace_gen
-
 title: Home
 path: home
 icon: mdi:home-circle
@@ -22,107 +20,36 @@ cards:
             'fundos' auto 
             'quarto-do-edu' auto 
             'escritorio' auto / 1fr !important;
-    custom_fields:
-        welcome:
-            card:
-                type: custom:button-card
-                template: boxed_area_button_card_template
+        boxes:
+          - box: welcome
+            title: "Welcome Back"
+            cards: []
+
+
+
+          - box: frente
+            title: "Frente"
+            cards:
+              - type: custom:button-card
+                template: status_button_card_template
                 variables:
-                    title: "Welcome Back"
-                custom_fields:
-                    a1:
-                        card:
-                            type: custom:button-card
-                            template: status_button_card_template
-                            variables:
-                                entity: sensor.servicos_networking_speedtest_velocidade_de_download
-                                primary_info: Download
-                    a2:
-                        card:
-                            type: custom:button-card
-                            template: status_button_card_template
-                            variables:
-                                entity: sensor.servicos_networking_speedtest_velocidade_de_upload
-                                primary_info: Upload
+                    entity: cover.frente_portao_da_garagem
+                    primary_info: Portão da Garagem
 
 
 
-        frente:
-            card:
-                type: custom:button-card
-                template: boxed_area_button_card_template
-                variables:
-                    title: "Frente"
-                custom_fields:
-                    a1:
-                        card:
-                            type: custom:button-card
-                            template: status_button_card_template
-                            variables:
-                                entity: cover.frente_portao_da_garagem
-                                primary_info: Portão da Garagem
+          - box: fundos
+            title: "Fundos"
+            cards: []
 
 
 
-        fundos:
-            card:
-                type: custom:button-card
-                template: boxed_area_button_card_template
-                variables:
-                    title: "Fundos"
-                custom_fields:
-                    a1:
-                        card:
-                            type: custom:button-card
-                            template: status_button_card_template
-                            variables:
-                                entity: light.fundos_fita_de_led
-                                primary_info: Fita de LED
+          - box: quarto-do-edu
+            title: "Quarto do Edu"
+            cards: []
 
 
 
-        quarto-do-edu:
-            card:
-                type: custom:button-card
-                template: boxed_area_button_card_template
-                variables:
-                    title: "Quarto do Edu"
-                custom_fields:
-                    a1:
-                        card:
-                            type: custom:button-card
-                            template: status_button_card_template
-                            variables:
-                                entity: climate.quarto_do_edu_ar_condicionado
-                                primary_info: Ar-condicionado
-                    a2:
-                        card:
-                            type: custom:button-card
-                            template: status_button_card_template
-                            variables:
-                                entity: light.quarto_do_edu_luz_de_teto
-                                primary_info: Luz de Teto
-                    a3:
-                        card:
-                            type: custom:button-card
-                            template: status_button_card_template
-                            variables:
-                                entity: light.quarto_do_edu_luz_de_cabeceira
-                                primary_info: Luz de Cabeceira
-
-
-
-        escritorio:
-            card:
-                type: custom:button-card
-                template: boxed_area_button_card_template
-                variables:
-                    title: "Escritório"
-                custom_fields:
-                    a1:
-                        card:
-                            type: custom:button-card
-                            template: status_button_card_template
-                            variables:
-                                entity: light.escritorio_luz_de_teto
-                                primary_info: Luz de Teto
+          - box: escritorio
+            title: "Escritório"
+            cards: []
