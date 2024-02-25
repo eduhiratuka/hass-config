@@ -1,0 +1,56 @@
+###################################
+#   Status Button Card Template   #
+#                                 #
+# Variables:                      #
+#   - entity                      #
+#   - primary_info                #
+#   - secondary_info              #
+#   - icon                        #
+#   - icon_color                  #
+#                                 #
+###################################
+
+status_button_card_template:
+    template:
+        - icon_button_card_template
+        - primary_info_button_card_template
+        - secondary_info_button_card_template
+
+    variables:
+        secondary_info: ""
+
+    entity: "[[[ return variables.entity ]]]"
+
+    styles:
+        card:
+          # Layout Styles
+          - padding: 12px
+
+          - pointer-events: all
+          - cursor: pointer
+
+        grid:
+          # Grid Styles
+          - grid-template: >
+                "i n" auto
+                "i s" min-content / min-content auto
+
+        img_cell:
+          # Layout Styles
+          - margin-right: 12px
+
+        name:
+          # Layout Styles
+          - padding-top: 2px
+          - place-self: initial
+
+          # Text Styles
+          - text-align: initial
+
+        state:
+          # Layout Styles
+          - padding-bottom: 2px
+          - place-self: initial
+
+          # Text Styles
+          - text-align: initial

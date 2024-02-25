@@ -1,0 +1,67 @@
+#######################################
+#   Mini Graph Button Card Template   #
+#                                     #
+# Variables:                          #
+#   - lines                           #
+#       - entity                      #
+#         color                       #
+#                                     #
+#######################################
+
+mini_graph_button_card_template:
+    styles:
+        card:
+          - padding: 0px
+          - height: 100%
+          - background-color: transparent
+          - pointer-events: all
+          - cursor: pointer
+        grid:
+          - grid-template: "'contained' 100% / 100%"
+          - align-items: stretch
+    custom_fields:
+        contained:
+            card:
+                type: custom:mini-graph-card
+                entities: '[[[ return variables.lines ]]]'
+                show:
+                    state: false
+                    name: false
+                    icon: false
+                    legend: false
+                hours_to_show: 48
+                points_per_hour: 1
+                line_width: 2
+                card_mod:
+                    style: |
+                        ha-card {
+                            padding-top: 0 !important;
+                            border: 0;
+                            border-radius: 0;
+                        }
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

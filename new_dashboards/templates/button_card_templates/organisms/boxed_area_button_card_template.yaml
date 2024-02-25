@@ -1,0 +1,29 @@
+#######################################
+#   Boxed Area Button Card Template   #
+#                                     #
+# Variables:                          #
+#                                     #
+#######################################
+
+boxed_area_button_card_template:
+    template:
+      - no_base_button_card_template
+    styles:
+        card:
+          - padding: 0px
+        grid:
+          - grid-template-areas: none
+          - grid-template-rows: none
+          - grid-template-columns: none
+          - grid-gap: 8px
+    extra_styles: |
+        #container > * {
+            grid-area: auto !important;
+        }
+    custom_fields:
+        title:
+            card:
+                type: custom:button-card
+                template: boxed_title_button_card_template
+                variables:
+                    primary_info: "[[[ return variables.title ]]]"

@@ -1,0 +1,30 @@
+########################################
+#   Header View Button Card Template   #
+#                                      #
+# Variables:                           #
+#   - title                            #
+#   - subtitle                         #
+#                                      #
+########################################
+
+header_view_button_card_template:
+    template:
+      - no_base_button_card_template
+    styles:
+        card:
+          - padding: 12px
+          - pointer-events: none
+          - cursor: default
+        grid:
+          - grid-template: >
+                'title' 80px
+                'view' calc(100% - 80px) / auto
+    custom_fields:
+        title:
+            card:
+                type: custom:button-card
+                template:
+                  - generic_title_button_card_template
+                variables:
+                    primary_info: "[[[ return variables.title ]]]"
+                    secondary_info: "[[[ return variables.subtitle ]]]"

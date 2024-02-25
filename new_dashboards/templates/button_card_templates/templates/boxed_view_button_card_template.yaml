@@ -1,0 +1,36 @@
+#######################################
+#   Boxed View Button Card Template   #
+#                                     #
+# Variables:                          #
+#                                     #
+#######################################
+
+boxed_view_button_card_template:
+    template:
+      - no_base_button_card_template
+    styles:
+        card:
+            - padding: 12px
+            - pointer-events: none
+            - cursor: default
+        grid:
+            - grid-gap: 8px
+            - align-items: start
+    extra_styles: >-
+        [[[
+            return `#container {
+                grid-template: ${ variables.regular_grid_template };
+            }
+
+            @media screen and (max-width: 870px) {
+                #container {
+                    grid-template: ${ variables.grid_template_on_mediumscreen };
+                }
+            }
+
+            @media screen and (max-width: 450px) {
+                #container {
+                    grid-template: ${ variables.grid_template_on_smallscreen }
+                }
+            }`
+        ]]]

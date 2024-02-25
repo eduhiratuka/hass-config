@@ -1,0 +1,75 @@
+#########################################
+#   1 Line Graph Button Card Template   #
+#                                       #
+# Variables:                            #
+#   - entity                            #
+#   - primary_info                      #
+#   - secondary_info                    #
+#   - icon                              #
+#   - icon_color                        #
+#                                       #
+#########################################
+
+1_line_graph_button_card_template:
+    template:
+      - no_base_button_card_template
+    styles:
+        grid:
+          - grid-template: "'status' auto 'graphic' auto / auto"
+    custom_fields:
+        status: 
+            card:
+                type: custom:button-card
+                template:
+                  - status_button_card_template
+                styles:
+                    card:
+                      - border-bottom: 0
+                      - border-bottom-right-radius: 0
+                      - border-bottom-left-radius: 0
+                variables:
+                    entity: '[[[ return variables.entity ]]]'
+                    primary_info: '[[[ return variables.primary_info ]]]'
+                    secondary_info: '[[[ return variables.secondary_info ]]]'
+                    icon: '[[[ return variables.icon ]]]'
+                    icon_color: '[[[ return variables.icon_color ]]]'
+        graphic:
+            card:
+                type: custom:button-card
+                template:
+                  - mini_graph_button_card_template
+                styles:
+                    card:
+                      - border-top: 0
+                      - border-top-right-radius: 0
+                      - border-top-left-radius: 0
+                variables:
+                    lines:
+                      - entity: '[[[ return variables.entity ]]]'
+                        color: '[[[ return variables.icon_color ]]]'
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

@@ -1,0 +1,13 @@
+# lovelace_gen
+
+title: Previsão do Tempo
+path: weather
+icon: mdi:weather-partly-cloudy
+type: panel
+cards:
+  - type: custom:button-card
+    template:
+      - header_view_button_card_template
+    variables:
+        title: Previsão do Tempo
+        subtitle: Weather Forecast

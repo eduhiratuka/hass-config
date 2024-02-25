@@ -1,0 +1,13 @@
+# lovelace_gen
+
+title: Câmeras de Vigilância
+path: surveillance-cameras
+icon: mdi:cctv
+type: panel
+cards:
+  - type: custom:button-card
+    template:
+      - header_view_button_card_template
+    variables:
+        title: Câmeras de Vigilância
+        subtitle: Surveillance Cameras
