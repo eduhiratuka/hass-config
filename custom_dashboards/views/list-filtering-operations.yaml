@@ -1,0 +1,49 @@
+count: |
+    (list) => {
+        console.log('count');
+        console.log(Object.keys(list).length);
+        return Object.keys(list).length.toString();
+    }
+mapBy: |
+    (list) => {
+        console.log('mapBy');
+
+        let filteredList = [];
+        for (let entity_id in list) {
+            filteredList.push(entity_id);
+        }
+
+        console.log(filteredList);
+        return filteredList;
+    }
+filterByState: |
+    (list, operator, state) => {
+        console.log('filterByState');
+
+        let filteredList = {};
+        for (let entity_id in list) {
+            if (operator == 'eq' && list[entity_id].state === state) {
+                filteredList[entity_id] = this.hass.states[entity_id];
+            }
+            if (operator == 'not eq' && list[entity_id].state !== state) {
+                filteredList[entity_id] = this.hass.states[entity_id];
+            }
+        }
+
+        console.log(filteredList);
+        return filteredList;
+    }
+filterStatesByPlatform: |
+    (list, plataform) => {
+        console.log('filterStatesByPlatform');
+
+        let filteredList = {};
+        for (let entity_id in list) {
+            if (list[entity_id].platform === plataform) {
+                filteredList[entity_id] = this.hass.states[entity_id];
+            }
+        }
+
+        console.log(filteredList);
+        return filteredList;
+    }

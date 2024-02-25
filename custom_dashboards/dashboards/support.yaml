@@ -1,4 +1,4 @@
 button_card_templates: !include_dir_merge_named ../button_card_templates
 decluttering_templates: !include_dir_merge_named ../decluttering_templates
-
+config_template_card_vars: !include ../views/list-filtering-operations.yaml
 views: !include_dir_list ../views/support
