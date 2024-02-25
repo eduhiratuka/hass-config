@@ -23,15 +23,24 @@ boxed_area_button_card_template:
                       - grid-template-rows: none
                       - grid-template-columns: none
                       - grid-gap: 8px
+                      - text-align: left
                 extra_styles: |
                     #container > * {
                         grid-area: auto !important;
+                    }
+                    #container > *:not(#generated_boxed_title) {
+                        pointer-events: all;
+                        cursor: pointer;
                     }
                 custom_fields: >-
                     [[[
                         let arrayToMap = {};
                         for (let i = 0; i < variables.cards.length; i++) {
-                          arrayToMap['a' + i] = { card: variables.cards[i] };
+                            let mapIndex = 'a' + i;
+                            if(variables.cards[i]['id'] == 'generated_boxed_title') {
+                                mapIndex = 'generated_boxed_title';
+                            }
+                          arrayToMap[mapIndex] = { card: variables.cards[i] };
                         }
                         return arrayToMap;
                     ]]]

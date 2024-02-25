@@ -41,26 +41,79 @@ cards:
           - box: frente
             title: "Frente"
             cards:
-              - type: custom:button-card
-                template: status_button_card_template
-                variables:
-                    entity: cover.frente_portao_da_garagem
-                    primary_info: Portão da Garagem
+              - type: custom:mushroom-cover-card
+                entity: cover.frente_portao_da_garagem
+                name: Garagem
+                show_position_control: false
+                show_buttons_control: true
 
 
 
           - box: fundos
             title: "Fundos"
-            cards: []
+            cards:
+              - type: custom:mushroom-light-card
+                entity: light.fundos_fita_de_led
+                name: Fita de LED
+                use_light_color: true
+                show_brightness_control: true
+                show_color_control: true
 
 
 
           - box: quarto-do-edu
             title: "Quarto do Edu"
-            cards: []
+            cards:
+              - type: custom:mushroom-climate-card
+                entity: climate.quarto_do_edu_ar_condicionado
+                name: Ar-condicionado               
+                hvac_modes:
+                  - auto
+                  - cool
+                  - dry
+                  - fan_only
+                  - 'off'
+                show_temperature_control: true
+              - type: custom:mushroom-light-card
+                entity: light.quarto_do_edu_luz_de_cabeceira
+                name: Luz de Cabeceira
+                use_light_color: true
+                show_brightness_control: true
+                show_color_control: true
+              - type: custom:mushroom-light-card
+                entity: light.quarto_do_edu_luz_de_teto
+                name: Luz de Teto
+                use_light_color: true
+                show_brightness_control: true
+                show_color_control: true
 
 
 
           - box: escritorio
             title: "Escritório"
-            cards: []
+            cards:
+              - type: custom:mushroom-light-card
+                entity: light.escritorio_luz_de_teto
+                name: Luz de Teto
+                use_light_color: true
+                show_brightness_control: true
+                show_color_control: true
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

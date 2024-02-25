@@ -8,8 +8,8 @@ lovelace:
         type: module
       # - url: /hacsfiles/decluttering-card/decluttering-card.js
       #   type: module
-      # - url: /hacsfiles/lovelace-mushroom/mushroom.js
-      #   type: module
+      - url: /hacsfiles/lovelace-mushroom/mushroom.js
+        type: module
       # - url: /hacsfiles/apexcharts-card/apexcharts-card.js
       #   type: module
       # - url: /webrtc/webrtc-camera.js

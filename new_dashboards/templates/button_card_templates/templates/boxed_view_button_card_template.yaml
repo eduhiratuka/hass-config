@@ -54,6 +54,7 @@ boxed_view_button_card_template:
                                         title: variables.boxes[i]['title'],
                                         cards: [{
                                             type: 'custom:button-card',
+                                            id: 'generated_boxed_title',
                                             template: 'boxed_title_button_card_template',
                                             variables: {
                                                 primary_info: variables.boxes[i]['title']
