@@ -7,7 +7,7 @@
 
 boxed_view_button_card_template:
     template:
-      - no_base_button_card_template
+      - no_base_style_mask
       - general_container_style_mask
       - quick_wrapper_style_mask
     custom_fields:
@@ -15,7 +15,7 @@ boxed_view_button_card_template:
             card:
                 type: custom:button-card
                 template:
-                  - no_base_button_card_template
+                  - no_base_style_mask
                 styles:
                     grid:
                         - grid-gap: 8px

@@ -9,7 +9,7 @@
 
 header_view_button_card_template:
     template:
-      - no_base_button_card_template
+      - no_base_style_mask
       - general_container_style_mask
     styles:
         grid:

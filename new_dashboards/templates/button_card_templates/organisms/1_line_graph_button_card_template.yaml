@@ -12,7 +12,7 @@
 
 1_line_graph_button_card_template:
     template:
-      - no_base_button_card_template
+      - no_base_style_mask
     styles:
         grid:
           - grid-template: "'status' auto 'graphic' auto / auto"

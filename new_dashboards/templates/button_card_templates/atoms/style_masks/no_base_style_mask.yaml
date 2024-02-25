@@ -5,7 +5,7 @@
 #                                 #
 ###################################
 
-no_base_button_card_template:
+no_base_style_mask:
     styles:
         card:
           # Layout Styles

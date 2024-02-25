@@ -19,7 +19,7 @@
 
 2_lines_graph_button_card_template:
     template:
-      - no_base_button_card_template
+      - no_base_style_mask
     styles:
         grid:
           - grid-template: "'status1 status2' auto 'graphic graphic' auto / 50% 50%"

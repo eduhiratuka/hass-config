@@ -7,7 +7,7 @@
 
 boxed_title_button_card_template:
     template:
-      - no_base_button_card_template
+      - no_base_style_mask
       - primary_info_button_card_template
     styles:
         card:
