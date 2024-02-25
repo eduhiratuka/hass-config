@@ -1,13 +1,13 @@
-##########################################
-#   Generic Title Button Card Template   #
-#                                        #
-# Variables:                             #
-#   - primary_info                       #
-#   - secondary_info                     #
-#                                        #
-##########################################
+#########################################
+#   Header Title Button Card Template   #
+#                                       #
+# Variables:                            #
+#   - primary_info                      #
+#   - secondary_info                    #
+#                                       #
+#########################################
 
-generic_title_button_card_template:
+header_title_button_card_template:
     template:
       - no_base_button_card_template
       - primary_info_button_card_template

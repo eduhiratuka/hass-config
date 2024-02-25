@@ -18,13 +18,33 @@ header_view_button_card_template:
         grid:
           - grid-template: >
                 'title' 80px
-                'view' calc(100% - 80px) / auto
+                'fields' calc(100% - 80px) / auto
     custom_fields:
         title:
             card:
                 type: custom:button-card
-                template:
-                  - generic_title_button_card_template
+                template: header_title_button_card_template
                 variables:
                     primary_info: "[[[ return variables.title ]]]"
                     secondary_info: "[[[ return variables.subtitle ]]]"
+        fields:
+            card:
+                type: custom:button-card
+                template: header_fields_button_card_template
+                variables:
+                    regular_grid_template: "[[[ return variables.regular_grid_template ]]]"
+                    grid_template_on_mediumscreen: "[[[ return variables.grid_template_on_mediumscreen ]]]"
+                    grid_template_on_smallscreen: "[[[ return variables.grid_template_on_smallscreen ]]]"
+                custom_fields: >
+                    [[[
+                        console.log(variables.fields);
+                        let arrayToMap = {};
+
+                        if (Array.isArray(variables.fields)) {
+                            for (let i = 0; i < variables.fields.length; i++) {
+                                arrayToMap['a' + i] = { card: variables.fields[i] };
+                            }
+                            console.log(arrayToMap);
+                        }
+                        return arrayToMap;
+                    ]]]

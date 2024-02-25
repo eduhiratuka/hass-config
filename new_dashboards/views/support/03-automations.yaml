@@ -1,13 +1,10 @@
-# lovelace_gen
-
 title: Automações
 path: automations
 icon: mdi:robot
 type: panel
 cards:
   - type: custom:button-card
-    template:
-      - header_view_button_card_template
+    template: header_view_button_card_template
     variables:
         title: Automações
         subtitle: Automations
