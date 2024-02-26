@@ -1,0 +1,5 @@
+feedreader:
+    urls:
+        - https://apiprevmet3.inmet.gov.br/avisos/rss
+    scan_interval:
+        minutes: 1
