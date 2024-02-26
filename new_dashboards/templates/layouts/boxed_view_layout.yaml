@@ -5,17 +5,17 @@
 #                                     #
 #######################################
 
-boxed_view_button_card_template:
+boxed_view_layout:
     template:
-      - no_base_style_mask
-      - general_container_style_mask
-      - quick_wrapper_style_mask
+        - no_base_style_mask
+        - general_container_style_mask
+        - quick_wrapper_style_mask
     custom_fields:
         contained:
             card:
                 type: custom:button-card
                 template:
-                  - no_base_style_mask
+                    - no_base_style_mask
                 styles:
                     grid:
                         - grid-gap: 8px
@@ -45,13 +45,13 @@ boxed_view_button_card_template:
                         for (let i = 0; i < variables.boxes.length; i++) {
                             arrayToMap[variables.boxes[i]['box']] = { card: {
                                 type: 'custom:button-card',
-                                template: 'boxed_area_button_card_template',
+                                template: 'boxed_view_layout_section_area',
                                 variables: {
                                     title: variables.boxes[i]['title'],
                                     cards: [{
                                         type: 'custom:button-card',
                                         id: 'generated_boxed_title',
-                                        template: 'boxed_title_button_card_template',
+                                        template: 'boxed_view_layout_section_title',
                                         variables: {
                                             primary_info: variables.boxes[i]['title']
                                         }

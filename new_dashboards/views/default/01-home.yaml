@@ -3,117 +3,90 @@ path: home
 icon: mdi:home-circle
 type: panel
 cards:
-  - type: custom:button-card
-    template: boxed_view_button_card_template
-    variables:
-        regular_grid_template: >
-            'welcome frente fundos' auto 
-            'welcome quarto-do-edu escritorio' auto / 1fr 1fr 1fr !important
-        grid_template_on_mediumscreen: >
-            'welcome frente' auto 
-            'welcome fundos' auto 
-            'welcome quarto-do-edu' auto 
-            'welcome escritorio' auto / 1fr 1fr !important
-        grid_template_on_smallscreen: >
-            'welcome' auto
-            'frente' auto 
-            'fundos' auto 
-            'quarto-do-edu' auto 
-            'escritorio' auto / 1fr !important;
-        boxes:
-          - box: welcome
-            title: >
-                [[[
-                    let horas = new Date().getHours();
-                    let welcomeText = '';
-                    if(horas < 12) welcomeText += 'Bom dia';
-                    else if(horas < 18) welcomeText += 'Boa tarde';
-                    else welcomeText += 'Boa noite';
+    - type: custom:button-card
+      template: boxed_view_layout
+      variables:
+          regular_grid_template: >
+              'welcome frente fundos' auto 
+              'welcome quarto-do-edu escritorio' auto / 1fr 1fr 1fr !important
+          grid_template_on_mediumscreen: >
+              'welcome frente' auto 
+              'welcome fundos' auto 
+              'welcome quarto-do-edu' auto 
+              'welcome escritorio' auto / 1fr 1fr !important
+          grid_template_on_smallscreen: >
+              'welcome' auto
+              'frente' auto 
+              'fundos' auto 
+              'quarto-do-edu' auto 
+              'escritorio' auto / 1fr !important;
+          boxes:
+              - box: welcome
+                title: >
+                    [[[
+                        let horas = new Date().getHours();
+                        let welcomeText = '';
+                        if(horas < 12) welcomeText += 'Bom dia';
+                        else if(horas < 18) welcomeText += 'Boa tarde';
+                        else welcomeText += 'Boa noite';
 
-                    welcomeText += ', ' + user.name.split(' ')[0];
+                        welcomeText += ', ' + user.name.split(' ')[0];
 
-                    return welcomeText;
-                ]]]
-            cards: []
+                        return welcomeText;
+                    ]]]
+                cards: []
 
+              - box: frente
+                title: "Frente"
+                cards:
+                    - type: custom:mushroom-cover-card
+                      entity: cover.frente_portao_da_garagem
+                      name: Garagem
+                      show_position_control: false
+                      show_buttons_control: true
 
+              - box: fundos
+                title: "Fundos"
+                cards:
+                    - type: custom:mushroom-light-card
+                      entity: light.fundos_fita_de_led
+                      name: Fita de LED
+                      use_light_color: true
+                      show_brightness_control: true
+                      show_color_control: true
 
-          - box: frente
-            title: "Frente"
-            cards:
-              - type: custom:mushroom-cover-card
-                entity: cover.frente_portao_da_garagem
-                name: Garagem
-                show_position_control: false
-                show_buttons_control: true
+              - box: quarto-do-edu
+                title: "Quarto do Edu"
+                cards:
+                    - type: custom:mushroom-climate-card
+                      entity: climate.quarto_do_edu_ar_condicionado
+                      name: Ar-condicionado
+                      hvac_modes:
+                          - auto
+                          - cool
+                          - dry
+                          - fan_only
+                          - "off"
+                      show_temperature_control: true
+                    - type: custom:mushroom-light-card
+                      entity: light.quarto_do_edu_luz_de_cabeceira
+                      name: Luz de Cabeceira
+                      use_light_color: true
+                      show_brightness_control: true
+                      show_color_control: true
+                    - type: custom:mushroom-light-card
+                      entity: light.quarto_do_edu_luz_de_teto
+                      name: Luz de Teto
+                      use_light_color: true
+                      show_brightness_control: true
+                      show_color_control: true
 
-
-
-          - box: fundos
-            title: "Fundos"
-            cards:
-              - type: custom:mushroom-light-card
-                entity: light.fundos_fita_de_led
-                name: Fita de LED
-                use_light_color: true
-                show_brightness_control: true
-                show_color_control: true
-
-
-
-          - box: quarto-do-edu
-            title: "Quarto do Edu"
-            cards:
-              - type: custom:mushroom-climate-card
-                entity: climate.quarto_do_edu_ar_condicionado
-                name: Ar-condicionado               
-                hvac_modes:
-                  - auto
-                  - cool
-                  - dry
-                  - fan_only
-                  - 'off'
-                show_temperature_control: true
-              - type: custom:mushroom-light-card
-                entity: light.quarto_do_edu_luz_de_cabeceira
-                name: Luz de Cabeceira
-                use_light_color: true
-                show_brightness_control: true
-                show_color_control: true
-              - type: custom:mushroom-light-card
-                entity: light.quarto_do_edu_luz_de_teto
-                name: Luz de Teto
-                use_light_color: true
-                show_brightness_control: true
-                show_color_control: true
-
-
-
-          - box: escritorio
-            title: "Escritório"
-            cards:
-              - type: custom:mushroom-light-card
-                entity: light.escritorio_luz_de_teto
-                name: Luz de Teto
-                use_light_color: true
-                show_brightness_control: true
-                show_color_control: true
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
+              - box: escritorio
+                title: "Escritório"
+                cards:
+                    - type: custom:mushroom-light-card
+                      entity: light.escritorio_luz_de_teto
+                      name: Luz de Teto
+                      use_light_color: true
+                      show_brightness_control: true
+                      show_color_control: true

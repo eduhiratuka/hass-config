@@ -7,20 +7,20 @@
 #                                        #
 ##########################################
 
-header_fields_button_card_template:
+header_view_layout_section_fields:
     template:
-      - no_base_style_mask
+        - no_base_style_mask
     variables:
-        regular_grid_template: '1_col_auto_row_grid_template'
-        grid_template_on_mediumscreen: '1_col_auto_row_grid_template'
-        grid_template_on_smallscreen: '1_col_auto_row_grid_template'
+        regular_grid_template: "1_col_auto_row_grid_template"
+        grid_template_on_mediumscreen: "1_col_auto_row_grid_template"
+        grid_template_on_smallscreen: "1_col_auto_row_grid_template"
         set_height_100: false
     styles:
         grid:
-          - grid-gap: 6px 6px
-          - height: "[[[ return variables.set_height_100 ? '100%' : 'auto' ]]]"
+            - grid-gap: 6px 6px
+            - height: "[[[ return variables.set_height_100 ? '100%' : 'auto' ]]]"
         card:
-          - height: "[[[ return variables.set_height_100 ? '100%' : 'auto' ]]]"
+            - height: "[[[ return variables.set_height_100 ? '100%' : 'auto' ]]]"
     extra_styles: >-
         [[[
             let mapa = {

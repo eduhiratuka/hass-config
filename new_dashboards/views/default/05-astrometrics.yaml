@@ -3,8 +3,8 @@ path: astrometrics
 icon: mdi:space-station
 type: panel
 cards:
-  - type: custom:button-card
-    template: header_view_button_card_template
-    variables:
-        title: Astrometria
-        subtitle: Astrometrics
+    - type: custom:button-card
+      template: header_view_layout
+      variables:
+          title: Astrometria
+          subtitle: Astrometrics

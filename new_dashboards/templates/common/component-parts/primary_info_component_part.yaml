@@ -6,7 +6,7 @@
 #                                       #
 #########################################
 
-primary_info_button_card_template:
+primary_info_component_part:
     variables:
         primary_info: "Sun"
 
@@ -15,16 +15,16 @@ primary_info_button_card_template:
 
     styles:
         name:
-          # Layout Styles
-          - overflow: hidden
+            # Layout Styles
+            - overflow: hidden
 
-          # Text Styles
-          - font-size: 14px
-          - font-weight: 500
-          - letter-spacing: 0.1px
-          - line-height: 20px
-          - text-overflow: ellipsis
-          - white-space: nowrap
+            # Text Styles
+            - font-size: 14px
+            - font-weight: 500
+            - letter-spacing: 0.1px
+            - line-height: 20px
+            - text-overflow: ellipsis
+            - white-space: nowrap
 
-          # Appearence Styles
-          - color: var(--primary-text-color)
+            # Appearence Styles
+            - color: var(--primary-text-color)

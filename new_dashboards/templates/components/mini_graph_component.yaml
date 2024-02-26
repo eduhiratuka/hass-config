@@ -8,16 +8,16 @@
 #                                     #
 #######################################
 
-mini_graph_button_card_template:
+mini_graph_component:
     template:
-      - clickabled_card_style_mask
-      - quick_wrapper_style_mask
-      - padding_all_ghost_mask
+        - clickabled_card_style_mask
+        - quick_wrapper_style_mask
+        - padding_all_ghost_mask
     custom_fields:
         contained:
             card:
                 type: custom:mini-graph-card
-                entities: '[[[ return variables.lines ]]]'
+                entities: "[[[ return variables.lines ]]]"
                 show:
                     state: false
                     name: false
@@ -33,29 +33,3 @@ mini_graph_button_card_template:
                             border: 0;
                             border-radius: 0;
                         }
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-

@@ -5,17 +5,17 @@
 #                                     #
 #######################################
 
-boxed_area_button_card_template:
-    template: 
-      - no_base_style_mask
-      - quick_wrapper_style_mask
+boxed_view_layout_section_area:
+    template:
+        - no_base_style_mask
+        - quick_wrapper_style_mask
     custom_fields:
         contained:
             card:
                 type: custom:button-card
                 template:
-                  - no_base_style_mask
-                  - auto_grid_style_mask
+                    - no_base_style_mask
+                    - auto_grid_style_mask
                 custom_fields: >-
                     [[[
                         let arrayToMap = {};

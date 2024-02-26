@@ -3,34 +3,33 @@ path: network
 icon: mdi:check-network-outline
 type: panel
 cards:
-  - type: custom:button-card
-    template: header_view_button_card_template
-    variables:
-        title: Rede e Internet
-        subtitle: Internet e Rede
-        regular_grid_template: 2_col_auto_row_grid_template
-        grid_template_on_mediumscreen: 1_col_auto_row_grid_template
-        grid_template_on_smallscreen: 1_col_auto_row_grid_template
-        fields:
-    
-          - type: custom:button-card
-            template: 1_line_graph_button_card_template
-            variables:
-                entity: sensor.servicos_networking_speedtest_ping
-                primary_info: Latência
-                icon: mdi:network-outline
-                icon_color: red
-    
-          - type: custom:button-card
-            template: 2_lines_graph_button_card_template
-            variables:
-                line1:
-                    entity: sensor.servicos_networking_speedtest_velocidade_de_download
-                    primary_info: Download
-                    icon: mdi:download-network
-                    icon_color: orange
-                line2:
-                    entity: sensor.servicos_networking_speedtest_velocidade_de_upload
-                    primary_info: Upload
-                    icon: mdi:upload-network
-                    icon_color: blue
+    - type: custom:button-card
+      template: header_view_layout
+      variables:
+          title: Rede e Internet
+          subtitle: Internet e Rede
+          regular_grid_template: 2_col_auto_row_grid_template
+          grid_template_on_mediumscreen: 1_col_auto_row_grid_template
+          grid_template_on_smallscreen: 1_col_auto_row_grid_template
+          fields:
+              - type: custom:button-card
+                template: 1_line_graph_panel_card
+                variables:
+                    entity: sensor.servicos_networking_speedtest_ping
+                    primary_info: Latência
+                    icon: mdi:network-outline
+                    icon_color: red
+
+              - type: custom:button-card
+                template: 2_lines_graph_panel_card
+                variables:
+                    line1:
+                        entity: sensor.servicos_networking_speedtest_velocidade_de_download
+                        primary_info: Download
+                        icon: mdi:download-network
+                        icon_color: orange
+                    line2:
+                        entity: sensor.servicos_networking_speedtest_velocidade_de_upload
+                        primary_info: Upload
+                        icon: mdi:upload-network
+                        icon_color: blue

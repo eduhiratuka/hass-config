@@ -1,0 +1,33 @@
+#################################
+#   Icon Button Card Template   #
+#                               #
+# Variables:                    #
+#   - icon                      #
+#   - icon_color                #
+#                               #
+#################################
+
+icon_component_part:
+    variables:
+        icon: "mdi:lan-connect"
+        icon_color: "disabled"
+
+    icon: "[[[ return variables.icon ]]]"
+    show_icon: true
+
+    styles:
+        img_cell:
+            # Layout Styles
+            - width: 40px
+            - height: 40px
+
+            # Appearence Styles
+            - background: "[[[ return `color-mix(in srgb, var(--${variables.icon_color}-color) 20%, transparent)` ]]]"
+            - border-radius: 100%
+        icon:
+            # Layout Styles
+            - width: 24px
+            - height: 24px
+
+            # Appearence Styles
+            - color: "[[[ return `var(--${variables.icon_color}-color)` ]]]"

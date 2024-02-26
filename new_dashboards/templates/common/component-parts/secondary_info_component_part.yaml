@@ -6,7 +6,7 @@
 #                                         #
 ###########################################
 
-secondary_info_button_card_template:
+secondary_info_component_part:
     variables:
         secondary_info: "[[[ return helpers.localize(states['sun.sun']) ]]]"
 
