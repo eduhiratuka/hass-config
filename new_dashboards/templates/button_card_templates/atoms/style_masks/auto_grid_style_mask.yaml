@@ -1,12 +1,17 @@
 auto_grid_style_mask:
     styles:
         grid:
-          - grid-template-areas: none
-          - grid-template-rows: none
-          - grid-template-columns: none
-          - grid-gap: 8px
-          - text-align: left
+            - grid-template-areas: none
+            - grid-template-rows: none
+            - grid-template-columns: none
+            - grid-gap: 8px
+            - text-align: left
     extra_styles: |
         #container > * {
             grid-area: auto !important;
+        }
+
+        #container > *:not(#generated_boxed_title) {
+            pointer-events: all;
+            cursor: pointer;
         }

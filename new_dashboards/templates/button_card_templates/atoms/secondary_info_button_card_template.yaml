@@ -15,16 +15,16 @@ secondary_info_button_card_template:
 
     styles:
         state:
-          # Layout Styles
-          - overflow: hidden
+            # Layout Styles
+            - overflow: hidden
 
-          # Text Styles
-          - font-size: 12px
-          - font-weight: 400
-          - letter-spacing: 0.4px
-          - line-height: 16px
-          - text-overflow: ellipsis
-          - white-space: nowrap
+            # Text Styles
+            - font-size: 12px
+            - font-weight: 400
+            - letter-spacing: 0.4px
+            - line-height: 16px
+            - text-overflow: ellipsis
+            - white-space: normal
 
-          # Appearence Styles
-          - color: var(--primary-text-color)
+            # Appearence Styles
+            - color: var(--primary-text-color)
