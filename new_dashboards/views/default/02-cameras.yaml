@@ -8,11 +8,12 @@ cards:
     variables:
         title: Câmeras de Vigilância
         subtitle: Surveillance Cameras
-        regular_grid_template: 2_columns_grid_template
-        grid_template_on_mediumscreen: 1_column_grid_template
-        grid_template_on_smallscreen: 1_column_grid_template
+        regular_grid_template: 2_col_half_row_grid_template
+        grid_template_on_mediumscreen: 2_col_half_row_grid_template
+        grid_template_on_smallscreen: 2_col_half_row_grid_template
+        set_height_100: true
         fields:
-    
+
           - type: custom:button-card
             template: webrtc_camera_button_card_template
             variables:

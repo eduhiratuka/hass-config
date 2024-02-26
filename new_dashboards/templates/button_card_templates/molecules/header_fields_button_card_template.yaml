@@ -10,43 +10,51 @@
 header_fields_button_card_template:
     template:
       - no_base_style_mask
+    variables:
+        regular_grid_template: '1_col_auto_row_grid_template'
+        grid_template_on_mediumscreen: '1_col_auto_row_grid_template'
+        grid_template_on_smallscreen: '1_col_auto_row_grid_template'
+        set_height_100: false
     styles:
         grid:
           - grid-gap: 6px 6px
+          - height: "[[[ return variables.set_height_100 ? '100%' : 'auto' ]]]"
+        card:
+          - height: "[[[ return variables.set_height_100 ? '100%' : 'auto' ]]]"
     extra_styles: >-
         [[[
-            function getGridTemplate(localGridTemplate) {
-                switch(localGridTemplate) {
-                    case '1_column_grid_template':
-                        return "grid-template: auto / repeat(1, 100%) !important; grid-auto-rows: auto;"
-                    case '2_columns_grid_template':
-                        return "grid-template: auto / repeat(2, calc(50% - 3px)) !important; grid-auto-rows: auto;"
-                }
+            let mapa = {
+                '1_col_auto_row_grid_template': { 'grid-template': '           auto / repeat(1, calc(100% - 6px)) !important', 'grid-auto-rows':            'auto' },
+                '2_col_auto_row_grid_template': { 'grid-template': '           auto / repeat(2, calc( 50% - 3px)) !important', 'grid-auto-rows':            'auto' },
+                '2_col_half_row_grid_template': { 'grid-template': 'calc(50% - 3px) / repeat(2, calc( 50% - 3px)) !important', 'grid-auto-rows': 'calc(50% - 3px)' }
             }
 
             return `
                 #container > * {
                     grid-area: auto !important;
+                    height: ${ variables.set_height_100 ? '100%' : 'auto' };
+                }
+
+                #container > * > button-card {
+                    height: ${ variables.set_height_100 ? '100%' : 'auto' };
                 }
                 
                 #container {
-                    ${ getGridTemplate(variables.regular_grid_template) };
+                    grid-template: ${ mapa[variables.regular_grid_template]['grid-template'] };
+                    grid-auto-rows: ${ mapa[variables.regular_grid_template]['grid-auto-rows'] };
                 }
 
                 @media screen and (max-width: 870px) {
                     #container {
-                        ${ getGridTemplate(variables.grid_template_on_mediumscreen) };
+                        grid-template: ${ mapa[variables.grid_template_on_mediumscreen]['grid-template'] };
+                        grid-auto-rows: ${ mapa[variables.grid_template_on_mediumscreen]['grid-auto-rows'] };
                     }
                 }
 
                 @media screen and (max-width: 450px) {
                     #container {
-                        ${ getGridTemplate(variables.grid_template_on_smallscreen) };
+                        grid-template: ${ mapa[variables.grid_template_on_smallscreen]['grid-template'] };
+                        grid-auto-rows: ${ mapa[variables.grid_template_on_smallscreen]['grid-auto-rows'] };
                     }
                 }`
         ]]]
-
-
-
-    
-            

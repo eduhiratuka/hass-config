@@ -3,6 +3,11 @@ webrtc_camera_button_card_template:
       - no_base_style_mask
       - clickabled_card_style_mask
       - quick_wrapper_style_mask
+    styles:
+      card:
+        - height: 100%
+      grid:
+        - height: 100%
     custom_fields:
         contained:
             card:

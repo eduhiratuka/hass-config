@@ -11,9 +11,26 @@ header_view_button_card_template:
     template:
       - no_base_style_mask
       - general_container_style_mask
+    variables:
+        regular_grid_template: '1_col_auto_row_grid_template'
+        grid_template_on_mediumscreen: '1_col_auto_row_grid_template'
+        grid_template_on_smallscreen: '1_col_auto_row_grid_template'
+        set_height_100: false
     styles:
+        card:
+          - height: "[[[ return variables.set_height_100 ? 'calc(100vh - 56px)' : 'auto' ]]]"
         grid:
+          - height: "[[[ return variables.set_height_100 ? '100%' : 'auto' ]]]"
           - grid-template: "'title' 80px 'fields' calc(100% - 80px) / auto"
+    extra_styles: |
+        #container > #fields {
+            height: 100%;
+            justify-content: center;
+            align-content: center;
+        }
+        #container > #fields > button-card {
+            height: 100%;
+        }
     custom_fields:
         title:
             card:
@@ -30,16 +47,15 @@ header_view_button_card_template:
                     regular_grid_template: "[[[ return variables.regular_grid_template ]]]"
                     grid_template_on_mediumscreen: "[[[ return variables.grid_template_on_mediumscreen ]]]"
                     grid_template_on_smallscreen: "[[[ return variables.grid_template_on_smallscreen ]]]"
+                    set_height_100: "[[[ return variables.set_height_100 ]]]"
                 custom_fields: >
                     [[[
-                        console.log(variables.fields);
                         let arrayToMap = {};
 
                         if (Array.isArray(variables.fields)) {
                             for (let i = 0; i < variables.fields.length; i++) {
                                 arrayToMap['a' + i] = { card: variables.fields[i] };
                             }
-                            console.log(arrayToMap);
                         }
                         return arrayToMap;
                     ]]]
