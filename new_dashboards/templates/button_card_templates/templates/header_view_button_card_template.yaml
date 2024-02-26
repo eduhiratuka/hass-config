@@ -13,9 +13,7 @@ header_view_button_card_template:
       - general_container_style_mask
     styles:
         grid:
-          - grid-template: >
-                'title' 80px
-                'fields' calc(100% - 80px) / auto
+          - grid-template: "'title' 80px 'fields' calc(100% - 80px) / auto"
     custom_fields:
         title:
             card:

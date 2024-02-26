@@ -31,9 +31,7 @@ status_button_card_template:
 
         grid:
           # Grid Styles
-          - grid-template: >
-                "i n" auto
-                "i s" min-content / min-content auto
+          - grid-template: "'i n' auto 'i s' min-content / min-content auto"
 
         img_cell:
           # Layout Styles

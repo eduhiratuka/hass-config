@@ -20,9 +20,7 @@ header_title_button_card_template:
 
         grid:
           # Grid Styles
-          - grid-template: >
-                "n" auto
-                "s" auto / auto
+          - grid-template: "'n' auto 's' auto / auto"
 
         name:
           # Layout Styles
