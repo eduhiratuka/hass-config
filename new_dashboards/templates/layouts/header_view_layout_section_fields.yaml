@@ -1,12 +1,3 @@
-##########################################
-#   Header Fields Button Card Template   #
-#                                        #
-# Variables:                             #
-#   - primary_info                       #
-#   - secondary_info                     #
-#                                        #
-##########################################
-
 header_view_layout_section_fields:
     template:
         - no_base_style_mask
@@ -24,6 +15,7 @@ header_view_layout_section_fields:
     extra_styles: >-
         [[[
             let mapa = {
+                'auto_wrapper_grid_template':   { 'grid-template': '           100% / repeat(1,             100%) !important', 'grid-auto-rows':            '100%' },
                 '1_col_auto_row_grid_template': { 'grid-template': '           auto / repeat(1, calc(100% - 6px)) !important', 'grid-auto-rows':            'auto' },
                 '2_col_auto_row_grid_template': { 'grid-template': '           auto / repeat(2, calc( 50% - 3px)) !important', 'grid-auto-rows':            'auto' },
                 '2_col_half_row_grid_template': { 'grid-template': 'calc(50% - 3px) / repeat(2, calc( 50% - 3px)) !important', 'grid-auto-rows': 'calc(50% - 3px)' }
@@ -37,6 +29,7 @@ header_view_layout_section_fields:
 
                 #container > * > button-card {
                     height: ${ variables.set_height_100 ? '100%' : 'auto' };
+                    max-width: 100% !important;
                 }
                 
                 #container {

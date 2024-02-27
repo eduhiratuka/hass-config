@@ -8,16 +8,11 @@
 no_base_style_mask:
     styles:
         card:
-          # Layout Styles
-          - margin: 0
-          - padding: 0
-          - height: auto
-          
-          # Appearence Styles
-          - border: 0
-          - border-radius: 0
-          - background: none
+            # Layout Styles
+            - margin: 0
+            - padding: 0
 
-        grid:
-          # Layout Styles
-          - height: auto
+            # Appearence Styles
+            - border: 0
+            - border-radius: 0
+            - background: none

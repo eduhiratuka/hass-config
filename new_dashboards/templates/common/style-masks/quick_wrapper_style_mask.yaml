@@ -1,5 +1,4 @@
 quick_wrapper_style_mask:
     styles:
         grid:
-          - grid-template: "'contained' 100% / 100%"
-          - align-items: stretch
+            - grid-template: "'contained' 100% / 100%"

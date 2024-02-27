@@ -1,12 +1,3 @@
-########################################
-#   Header View Button Card Template   #
-#                                      #
-# Variables:                           #
-#   - title                            #
-#   - subtitle                         #
-#                                      #
-########################################
-
 header_view_layout:
     template:
         - no_base_style_mask
@@ -19,16 +10,21 @@ header_view_layout:
     styles:
         card:
             - height: "[[[ return variables.set_height_100 ? 'calc(100vh - 56px)' : 'auto' ]]]"
+            - transition: none
         grid:
             - height: "[[[ return variables.set_height_100 ? '100%' : 'auto' ]]]"
             - grid-template: "'title' 80px 'fields' calc(100% - 80px) / auto"
     extra_styles: |
-        #container > #fields {
-            height: 100%;
-            justify-content: center;
-            align-content: center;
+        #container > #title {
+            place-self: center start;
+            height: auto;
         }
-        #container > #fields > button-card {
+
+        #container > #fields {
+            place-self: center stretch;
+        }
+
+        #fields, button-card {
             height: 100%;
         }
     custom_fields:
@@ -51,11 +47,12 @@ header_view_layout:
                 custom_fields: >
                     [[[
                         let arrayToMap = {};
-
+                        console.log(variables.fields);
                         if (Array.isArray(variables.fields)) {
                             for (let i = 0; i < variables.fields.length; i++) {
                                 arrayToMap['a' + i] = { card: variables.fields[i] };
                             }
                         }
+                        console.log(arrayToMap);
                         return arrayToMap;
                     ]]]

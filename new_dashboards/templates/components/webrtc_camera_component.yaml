@@ -8,6 +8,7 @@ webrtc_camera_component:
             - height: 100%
         grid:
             - height: 100%
+            - align-items: stretch
     custom_fields:
         contained:
             card:

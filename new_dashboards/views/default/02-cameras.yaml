@@ -8,35 +8,52 @@ cards:
       variables:
           title: Câmeras de Vigilância
           subtitle: "[[[ return states['sensor.frontend_cameras_texto_do_dashboard'].state ]]]"
-          regular_grid_template: 2_col_half_row_grid_template
-          grid_template_on_mediumscreen: 2_col_half_row_grid_template
-          grid_template_on_smallscreen: 2_col_half_row_grid_template
+          regular_grid_template: auto_wrapper_grid_template
+          grid_template_on_mediumscreen: auto_wrapper_grid_template
+          grid_template_on_smallscreen: auto_wrapper_grid_template
           set_height_100: true
           fields:
               - type: custom:button-card
-                template: webrtc_camera_component
+                template: 4ch_camera_panel_card
                 variables:
-                    camera_url: frente_camera_da_garagem
-                    camera_name: "Frente: Câmera da Garagem"
                     highlighted_camera: "select.frontend_cameras_destaque_atual"
+                    channel1:
+                        camera_url: frente_camera_da_garagem
+                        camera_name: "Frente: Câmera da Garagem"
+                    channel2:
+                        camera_url: frente_camera_da_lateral
+                        camera_name: "Frente: Câmera da Lateral"
+                    channel3:
+                        camera_url: fundos_camera_da_piscina
+                        camera_name: "Fundos: Câmera da Piscina"
+                    channel4:
+                        camera_url: fundos_camera_do_quintal
+                        camera_name: "Fundos: Câmera do Quintal"
 
-              - type: custom:button-card
-                template: webrtc_camera_component
-                variables:
-                    camera_url: frente_camera_da_lateral
-                    camera_name: "Frente: Câmera da Lateral"
-                    highlighted_camera: "select.frontend_cameras_destaque_atual"
+                # - type: custom:button-card
+                #   template: webrtc_camera_component
+                #   variables:
+                #       camera_url: frente_camera_da_garagem
+                #       camera_name: "Frente: Câmera da Garagem"
+                #       highlighted_camera: "select.frontend_cameras_destaque_atual"
 
-              - type: custom:button-card
-                template: webrtc_camera_component
-                variables:
-                    camera_url: fundos_camera_da_piscina
-                    camera_name: "Fundos: Câmera da Piscina"
-                    highlighted_camera: "select.frontend_cameras_destaque_atual"
+                # - type: custom:button-card
+                #   template: webrtc_camera_component
+                #   variables:
+                #       camera_url: frente_camera_da_lateral
+                #       camera_name: "Frente: Câmera da Lateral"
+                #       highlighted_camera: "select.frontend_cameras_destaque_atual"
 
-              - type: custom:button-card
-                template: webrtc_camera_component
-                variables:
-                    camera_url: fundos_camera_do_quintal
-                    camera_name: "Fundos: Câmera do Quintal"
-                    highlighted_camera: "select.frontend_cameras_destaque_atual"
+                # - type: custom:button-card
+                #   template: webrtc_camera_component
+                #   variables:
+                #       camera_url: fundos_camera_da_piscina
+                #       camera_name: "Fundos: Câmera da Piscina"
+                #       highlighted_camera: "select.frontend_cameras_destaque_atual"
+
+                # - type: custom:button-card
+                #   template: webrtc_camera_component
+                #   variables:
+                #       camera_url: fundos_camera_do_quintal
+                #       camera_name: "Fundos: Câmera do Quintal"
+                #       highlighted_camera: "select.frontend_cameras_destaque_atual"

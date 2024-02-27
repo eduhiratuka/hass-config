@@ -1,0 +1,81 @@
+4ch_camera_panel_card:
+    template:
+        - no_base_style_mask
+    styles:
+        card:
+            - width: 100%
+            - height: 100%
+        grid:
+            - grid-gap: 6px 6px
+            - height: 100%
+            - align-items: flex-start
+    extra_styles: >-
+        [[[
+            let pos = ['cam1', 'cam2', 'cam3', 'cam4'];
+
+            return `
+                #container > *, #container > * > button-card {
+                    height: 100%;
+                }
+
+            #container {
+                grid-template: 
+                    '${ pos[0] } ${ pos[1] }' calc(34% - 4px)
+                    '${ pos[0] } ${ pos[2] }' calc(33% - 4px)
+                    '${ pos[0] } ${ pos[3] }' calc(33% - 4px) / 70% calc(30% - 6px) !important;
+            }
+
+            @media screen and (max-width: 870px) and (orientation: portrait) {
+                #container {
+                    grid-template: 
+                        '${ pos[0] } ${ pos[0] } ${ pos[0] }' max-content
+                        '${ pos[1] } ${ pos[2] } ${ pos[3] }' min-content / auto !important;
+                }
+            }
+
+            @media screen and (max-width: 450px) and (orientation: portrait) {
+                #container {
+                    grid-template: 
+                        '${ pos[0] } ${ pos[0] }' max-content
+                        '${ pos[1] } ${ pos[2] }' min-content
+                        '${ pos[3] }      .     ' min-content / calc(50% - 6px) !important;
+                }
+
+                #container > *, #container > * > button-card {
+                    height: auto;
+                }
+            }`;
+        ]]]
+    custom_fields:
+        cam1:
+            card:
+                type: custom:button-card
+                template: webrtc_camera_component
+                variables:
+                    camera_url: frente_camera_da_garagem
+                    camera_name: "Frente: Câmera da Garagem"
+                    highlighted_camera: "select.frontend_cameras_destaque_atual"
+        cam2:
+            card:
+                type: custom:button-card
+                template: webrtc_camera_component
+                variables:
+                    camera_url: frente_camera_da_lateral
+                    camera_name: "Frente: Câmera da Lateral"
+                    highlighted_camera: "select.frontend_cameras_destaque_atual"
+        cam3:
+            card:
+                type: custom:button-card
+                template: webrtc_camera_component
+                variables:
+                    camera_url: fundos_camera_da_piscina
+                    camera_name: "Fundos: Câmera da Piscina"
+                    highlighted_camera: "select.frontend_cameras_destaque_atual"
+        cam4:
+            card:
+                type: custom:button-card
+                template: webrtc_camera_component
+                variables:
+                    camera_url: fundos_camera_do_quintal
+                    camera_name: "Fundos: Câmera do Quintal"
+                    highlighted_camera: "select.frontend_cameras_destaque_atual"
