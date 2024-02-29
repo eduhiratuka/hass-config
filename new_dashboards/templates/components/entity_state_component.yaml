@@ -17,7 +17,7 @@ entity_state_component:
         - secondary_info_component_part
 
     variables:
-        secondary_info: ""
+        entity: "sun.sun"
 
     entity: "[[[ return variables.entity ]]]"
 

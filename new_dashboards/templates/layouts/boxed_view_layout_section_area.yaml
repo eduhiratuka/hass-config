@@ -19,12 +19,14 @@ boxed_view_layout_section_area:
                 custom_fields: >-
                     [[[
                         let arrayToMap = {};
+
                         for (let i = 0; i < variables.cards.length; i++) {
                             let mapIndex = 'a' + i;
                             if(variables.cards[i]['id'] == 'generated_boxed_title') {
                                 mapIndex = 'generated_boxed_title';
                             }
-                          arrayToMap[mapIndex] = { card: variables.cards[i] };
+                            arrayToMap[mapIndex] = { card: variables.cards[i] };
                         }
+
                         return arrayToMap;
                     ]]]

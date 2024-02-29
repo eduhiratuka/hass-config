@@ -9,8 +9,8 @@
 
 icon_component_part:
     variables:
-        icon: "mdi:lan-connect"
-        icon_color: "disabled"
+        icon: "mdi:weather-sunny"
+        icon_color: "orange"
 
     icon: "[[[ return variables.icon ]]]"
     show_icon: true

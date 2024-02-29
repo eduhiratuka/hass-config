@@ -8,7 +8,7 @@
 
 primary_info_component_part:
     variables:
-        primary_info: "Sun"
+        primary_info: "Sol"
 
     name: "[[[ return variables.primary_info ]]]"
     show_name: true

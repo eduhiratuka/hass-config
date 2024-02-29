@@ -47,12 +47,12 @@ header_view_layout:
                 custom_fields: >
                     [[[
                         let arrayToMap = {};
-                        console.log(variables.fields);
+
                         if (Array.isArray(variables.fields)) {
                             for (let i = 0; i < variables.fields.length; i++) {
                                 arrayToMap['a' + i] = { card: variables.fields[i] };
                             }
                         }
-                        console.log(arrayToMap);
+
                         return arrayToMap;
                     ]]]
