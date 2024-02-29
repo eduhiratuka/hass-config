@@ -1,0 +1,45 @@
+generic_controller_card:
+    template: entity_state_component
+    styles:
+        grid:
+            - grid-template: "'i n' auto 'i s' min-content 'action-button-container action-button-container' min-content / 52px auto"
+    custom_fields:
+        action-button-container:
+            card:
+                type: custom:button-card
+                styles:
+                    card:
+                        - margin-top: 12px
+                        - padding: 0
+                        - border: 0
+                        - height: 40px
+                    grid:
+                        - height: 40px
+                        - grid-template-areas: none
+                        - grid-template-rows: none
+                        - grid-template-columns: none
+                        - grid-auto-flow: column
+                        - column-gap: 8px
+                extra_styles: |
+                    #container > * {
+                        grid-area: auto !important;
+                    }
+                custom_fields: >-
+                    [[[
+                        let arrayToMap = {};
+
+                        for (let i = 0; i < variables.action_buttons.length; i++) {
+                            let mapIndex = 'a' + i;
+                            arrayToMap[mapIndex] = { card: {
+                                type: 'custom:button-card',
+                                template: 'action_button_component',
+                                variables: variables.action_buttons[i]
+                            } }
+                        }
+
+                        return arrayToMap;
+                    ]]]
+    extra_styles: |
+        ha-card#card > div#container > div#action-button-container {
+            justify-self: center;
+        }

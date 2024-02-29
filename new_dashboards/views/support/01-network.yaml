@@ -33,3 +33,18 @@ cards:
                         primary_info: Upload
                         icon: mdi:upload-network
                         icon_color: blue
+
+              - type: custom:button-card
+                template: generic_controller_card
+                variables:
+                    action_buttons:
+                        - icon: mdi:arrow-left-bold
+                          icon_color: red
+                        - icon: mdi:arrow-up-bold
+                          icon_color: orange
+                        - icon: mdi:arrow-down-bold
+                          icon_color: green
+                        - icon: mdi:arrow-right-bold
+                          icon_color: blue
+                        - icon: mdi:arrow-left-bold
+                          icon_color: teal

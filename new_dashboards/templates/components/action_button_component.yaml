@@ -1,0 +1,11 @@
+action_button_component:
+    template:
+        - icon_component_part
+        - no_base_style_mask
+    variables:
+        icon_color: disabled
+        icon: mdi:download-network
+
+    styles:
+        img_cell:
+            - border-radius: 12px
