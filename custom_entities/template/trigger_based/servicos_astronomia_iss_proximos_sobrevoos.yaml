@@ -8,6 +8,7 @@
         state: >-
             {{ (strptime(trigger.event.data.flybys.passes[0]['begin'], '%Y%m%d%H%M%S') | as_local).isoformat() }}
         attributes:
+            updated_at: "{{ (now() | as_local).isoformat() }}"
             magnitude: "{{ trigger.event.data.flybys.passes[0]['mag'] }}"
 
             begin_time: "{{ (strptime(trigger.event.data.flybys.passes[0]['begin'], '%Y%m%d%H%M%S') | as_local).isoformat() }}"

@@ -20,6 +20,7 @@
             {% endfor %}
             {{ ns.problem }}
         attributes:
+            updated_at: "{{ (now() | as_local).isoformat() }}"
             object_id_not_equal_to_name: >-
                 {% set ns = namespace(entities=[]) %}
                 {% for state in states | rejectattr("domain", "in", ["person", "zone", "sun"]) | sort(attribute="name") %}

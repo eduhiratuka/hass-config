@@ -1,10 +1,10 @@
-alias: "Serviços: Astronomia: ISS: Atualiza Proximos Sobrevoos"
+alias: "Serviços: Astronomia: ISS: Atualiza Próximos Sobrevoos"
 mode: single
 sequence:
     - alias: "Obtem os dados da API 'servicos_astronomia_iss_proximos_sobrevoos_rest_command'"
       service: rest_command.servicos_astronomia_iss_proximos_sobrevoos_rest_command
       response_variable: proximos_sobrevoos_response
-    - alias: "Dispara Evento Customizado: 'Serviços: Astronomia: ISS: Proximos Sobrevoos Atualizado' com os dados da API"
+    - alias: "Dispara Evento Customizado: 'Serviços: Astronomia: ISS: Próximos Sobrevoos Atualizado' com os dados da API"
       event: "custom_events::proximos_sobrevoos_atualizado"
       event_data:
           flybys: "{{ proximos_sobrevoos_response['content'] }}"
