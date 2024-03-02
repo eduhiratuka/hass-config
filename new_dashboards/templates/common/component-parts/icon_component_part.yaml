@@ -10,7 +10,6 @@
 icon_component_part:
     variables:
         icon: "mdi:weather-sunny"
-        icon_color: "orange"
 
     icon: "[[[ return variables.icon ]]]"
     show_icon: true
@@ -22,7 +21,7 @@ icon_component_part:
             - height: 40px
 
             # Appearence Styles
-            - background: "[[[ return `color-mix(in srgb, var(--${variables.icon_color}-color) 20%, transparent)` ]]]"
+            - background: "[[[ return variables.icon_color !== undefined ?  `color-mix(in srgb, var(--${variables.icon_color}-color) 20%, transparent)` : 'color-mix(in srgb, var(--disabled-color) 20%, transparent)' ]]]"
             - border-radius: 100%
         icon:
             # Layout Styles
@@ -30,4 +29,4 @@ icon_component_part:
             - height: 24px
 
             # Appearence Styles
-            - color: "[[[ return `var(--${variables.icon_color}-color)` ]]]"
+            - color: "[[[ return variables.icon_color !== undefined ? `var(--${variables.icon_color}-color)` : `var(--primary-text-color)` ]]]"

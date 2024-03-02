@@ -33,18 +33,73 @@ cards:
                         primary_info: Upload
                         icon: mdi:upload-network
                         icon_color: blue
-
               - type: custom:button-card
                 template: generic_controller_card
                 variables:
+                    entity: person.eduardo_hiratuka
                     action_buttons:
-                        - icon: mdi:arrow-left-bold
-                          icon_color: red
-                        - icon: mdi:arrow-up-bold
-                          icon_color: orange
-                        - icon: mdi:arrow-down-bold
-                          icon_color: green
-                        - icon: mdi:arrow-right-bold
-                          icon_color: blue
-                        - icon: mdi:arrow-left-bold
-                          icon_color: teal
+                        - icon: mdi:calendar-sync
+                          active_color: green
+                          active_state: home
+                          action:
+                              action: call-service
+                              service: climate.set_hvac_mode
+                              target:
+                                  entity_id: climate.quarto_do_edu_ar_condicionado
+                              data:
+                                  hvac_mode: auto
+              - type: custom:button-card
+                template: generic_controller_card
+                variables:
+                    entity: climate.quarto_do_edu_ar_condicionado
+                    action_buttons:
+                        - icon: mdi:calendar-sync
+                          active_color: green
+                          active_state: auto
+                          action:
+                              action: call-service
+                              service: climate.set_hvac_mode
+                              target:
+                                  entity_id: climate.quarto_do_edu_ar_condicionado
+                              data:
+                                  hvac_mode: auto
+                        - icon: mdi:snowflake
+                          active_color: blue
+                          active_state: cool
+                          action:
+                              action: call-service
+                              service: climate.set_hvac_mode
+                              target:
+                                  entity_id: climate.quarto_do_edu_ar_condicionado
+                              data:
+                                  hvac_mode: cool
+                        - icon: mdi:water-percent
+                          active_color: orange
+                          active_state: dry
+                          action:
+                              action: call-service
+                              service: climate.set_hvac_mode
+                              target:
+                                  entity_id: climate.quarto_do_edu_ar_condicionado
+                              data:
+                                  hvac_mode: dry
+                        - icon: mdi:fan
+                          active_color: teal
+                          active_state: fan_only
+                          action:
+                              action: call-service
+                              service: climate.set_hvac_mode
+                              target:
+                                  entity_id: climate.quarto_do_edu_ar_condicionado
+                              data:
+                                  hvac_mode: fan_only
+                        - icon: mdi:power
+                          active_color: disabled
+                          active_state: "off"
+                          action:
+                              action: call-service
+                              service: climate.set_hvac_mode
+                              target:
+                                  entity_id: climate.quarto_do_edu_ar_condicionado
+                              data:
+                                  hvac_mode: "off"

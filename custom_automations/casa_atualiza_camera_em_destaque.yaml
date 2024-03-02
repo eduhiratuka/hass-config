@@ -1,0 +1,19 @@
+id: casa_atualiza_camera_em_destaque
+alias: "Casa: Atualiza Câmera em Destaque"
+description: ""
+mode: single
+trigger:
+    - alias: "As entidades da plataforma template são recarregadas"
+      platform: event
+      event_type: event_template_reloaded
+    - alias: "O Home Assistant é ligado."
+      platform: homeassistant
+      event: start
+action:
+    - alias: "Chama o script de Atualização da Câmera em Destaque"
+      service: script.turn_on
+      target:
+          entity_id: script.casa_atualiza_camera_em_destaque
+      data:
+          variables:
+              camera_name: "Frente: Câmera da Garagem"

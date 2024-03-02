@@ -2,10 +2,16 @@ action_button_component:
     template:
         - icon_component_part
         - no_base_style_mask
+    triggers_update:
+        - "[[[ return variables.entity ]]]"
     variables:
-        icon_color: disabled
         icon: mdi:download-network
-
+        icon_color: "[[[ return variables.active_state == states[variables.entity].state ? variables.active_color : undefined ]]]"
+    tap_action:
+        action: "[[[ return variables.action !== undefined ? variables.action.action : 'none' ]]]"
+        service: "[[[ return variables.action !== undefined ? variables.action.service : undefined ]]]"
+        target: "[[[ return variables.action !== undefined ? variables.action.target : undefined ]]]"
+        data: "[[[ return variables.action !== undefined ? variables.action.data : undefined ]]]"
     styles:
         img_cell:
             - border-radius: 12px

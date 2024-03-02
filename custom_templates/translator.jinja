@@ -1,0 +1,35 @@
+{%- macro format_state(state) -%}
+    {%- set state_value = state.state -%}
+    {%- set translation_list = [
+      {"state": "off", "value":"Desligado"},
+      {"state": "on", "value":"Ligado"},
+
+      {"state": "open", "value":"Aberto"},
+      {"state": "closed", "value":"Fechado"},
+
+      {"state": "auto", "value":"Automático"},
+      {"state": "cool", "value":"Frio"},
+      {"state": "dry", "value":"Desumidificar"},
+      {"state": "fan_only", "value":"Ventilar"},
+      {"state": "home", "value":"Em Casa"},
+      {"state": "not_home", "value":"Ausente"},
+
+      {"state": "idle", "value":"Ocioso"},
+      {"state": "playing", "value":"Reproduzindo"},
+      {"state": "paused", "value":"Pausado"},
+      {"state": "standby", "value":"Em Espera"},
+      {"state": "buffering", "value":"Carregando"},
+
+      
+      {"state": "unavailable", "value":"Indisponível"},
+      {"state": "unknown", "value":"Desconhecido"}
+    ] -%}
+
+    {{ 
+        translation_list |
+        selectattr("state", "eq", state_value) |
+        map(attribute="value") |
+        first |
+        default(state_value)
+    }}
+{%- endmacro -%}

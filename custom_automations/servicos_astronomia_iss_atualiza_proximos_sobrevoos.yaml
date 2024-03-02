@@ -1,0 +1,13 @@
+id: servicos_astronomia_iss_atualiza_proximos_sobrevoos
+alias: "Serviços: Astronomia: ISS: Atualiza Próximos Sobrevoos"
+description: ""
+mode: single
+trigger:
+    - alias: "o relógio entrar no minuto 23"
+      platform: time_pattern
+      minutes: "22"
+action:
+    - alias: "Chama o script de Atualização dos Próximos Sobrevoos da ISS"
+      service: script.turn_on
+      target:
+          entity_id: script.servicos_astronomia_iss_atualiza_proximos_sobrevoos

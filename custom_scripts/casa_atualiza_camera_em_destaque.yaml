@@ -1,0 +1,12 @@
+alias: "Casa: Atualiza Câmera em Destaque"
+mode: single
+fields:
+    camera_name:
+        name: "Nome da Câmera"
+        required: true
+        default: "Frente: Câmera da Garagem"
+sequence:
+    - alias: "Dispara Evento Customizado: 'highlited_camera_updated'"
+      event: custom_events::highlited_camera_updated
+      event_data:
+          camera: "{{ camera_name }}"

@@ -1,5 +1,16 @@
 generic_controller_card:
     template: entity_state_component
+    variables:
+        primary_info: "[[[ return states[variables.entity].attributes.friendly_name ]]]"
+        secondary_info: "[[[ return helpers.localize(states[variables.entity]) ]]]"
+        icon: >-
+            [[[
+                return variables.action_buttons.find(objeto => objeto.active_state == states[variables.entity].state)['icon']
+            ]]]
+        icon_color: >-
+            [[[
+                return variables.action_buttons.find(objeto => objeto.active_state == states[variables.entity].state)['active_color']
+            ]]]
     styles:
         grid:
             - grid-template: "'i n' auto 'i s' min-content 'action-button-container action-button-container' min-content / 52px auto"
@@ -30,6 +41,8 @@ generic_controller_card:
 
                         for (let i = 0; i < variables.action_buttons.length; i++) {
                             let mapIndex = 'a' + i;
+                            variables.action_buttons[i]['entity'] = variables.entity;
+                            
                             arrayToMap[mapIndex] = { card: {
                                 type: 'custom:button-card',
                                 template: 'action_button_component',

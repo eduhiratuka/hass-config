@@ -1,8 +1,6 @@
 - trigger:
       - platform: event
         event_type: "custom_events::entity_problem_detector_updated"
-      - platform: time_pattern
-        minutes: "24"
   binary_sensor:
       - name: "Serviços: Detector de Problemas com Entidades"
         unique_id: servicos_detector_de_problemas_com_entidades
