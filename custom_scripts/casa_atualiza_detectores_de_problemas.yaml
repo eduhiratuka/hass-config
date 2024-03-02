@@ -1,5 +1,0 @@
-alias: "Casa: Atualiza Detectores de Problemas"
-mode: single
-sequence:
-    - alias: "Dispara Evento Customizado: 'entity_problem_detector_updated'"
-      event: custom_events::entity_problem_detector_updated

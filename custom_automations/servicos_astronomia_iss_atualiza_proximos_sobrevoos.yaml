@@ -7,7 +7,7 @@ trigger:
       platform: time_pattern
       minutes: "22"
 action:
-    - alias: "Chama o script de Atualização dos Próximos Sobrevoos da ISS"
+    - alias: "Chama o script 'Serviços: Astronomia: ISS: Atualiza Próximos Sobrevoos'"
       service: script.turn_on
       target:
           entity_id: script.servicos_astronomia_iss_atualiza_proximos_sobrevoos

@@ -1,0 +1,13 @@
+id: casa_atualiza_detector_de_problemas_com_entidades
+alias: "Casa: Atualiza Detector de Problemas com Entidades"
+description: ""
+mode: single
+trigger:
+    - alias: "o relógio entrar no minuto 24"
+      platform: time_pattern
+      minutes: "24"
+action:
+    - alias: "Chama o script 'Casa: Atualiza Detector de Problemas com Entidades"
+      service: script.turn_on
+      target:
+          entity_id: script.casa_atualiza_detector_de_problemas_com_entidades

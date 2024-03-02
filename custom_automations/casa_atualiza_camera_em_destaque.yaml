@@ -10,7 +10,7 @@ trigger:
       platform: homeassistant
       event: start
 action:
-    - alias: "Chama o script de Atualização da Câmera em Destaque"
+    - alias: "Chama o script 'Casa: Atualiza Câmera em Destaque'"
       service: script.turn_on
       target:
           entity_id: script.casa_atualiza_camera_em_destaque

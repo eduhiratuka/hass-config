@@ -6,7 +6,7 @@ fields:
         required: true
         default: "Frente: Câmera da Garagem"
 sequence:
-    - alias: "Dispara Evento Customizado: 'highlited_camera_updated'"
-      event: custom_events::highlited_camera_updated
+    - alias: "Dispara Evento Customizado: 'Casa: Câmera em Destaque Atualizado'"
+      event: custom_events::camera_em_destaque_atualizado
       event_data:
           camera: "{{ camera_name }}"

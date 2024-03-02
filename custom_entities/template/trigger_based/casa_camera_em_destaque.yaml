@@ -1,9 +1,9 @@
 - trigger:
       - platform: event
-        event_type: "custom_events::highlited_camera_updated"
+        event_type: "custom_events::camera_em_destaque_atualizado"
   select:
-      - name: "Frontend: Cameras: Destaque Atual"
-        unique_id: frontend_cameras_destaque_atual
+      - name: "Casa: Camera em Destaque"
+        unique_id: casa_camera_em_destaque
         state: "{{ trigger.event.data.camera }}"
         options: "['Frente: Câmera da Garagem', 'Frente: Câmera da Lateral', 'Fundos: Câmera da Piscina','Fundos: Câmera do Quintal']"
         select_option:

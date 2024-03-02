@@ -16,7 +16,7 @@ cards:
               - type: custom:button-card
                 template: 4ch_camera_panel_card
                 variables:
-                    highlighted_camera: "select.frontend_cameras_destaque_atual"
+                    highlighted_camera: "select.casa_camera_em_destaque"
                     channel1:
                         camera_url: frente_camera_da_garagem
                         camera_name: "Frente: Câmera da Garagem"
@@ -35,25 +35,25 @@ cards:
                 #   variables:
                 #       camera_url: frente_camera_da_garagem
                 #       camera_name: "Frente: Câmera da Garagem"
-                #       highlighted_camera: "select.frontend_cameras_destaque_atual"
+                #       highlighted_camera: "select.casa_camera_em_destaque"
 
                 # - type: custom:button-card
                 #   template: webrtc_camera_component
                 #   variables:
                 #       camera_url: frente_camera_da_lateral
                 #       camera_name: "Frente: Câmera da Lateral"
-                #       highlighted_camera: "select.frontend_cameras_destaque_atual"
+                #       highlighted_camera: "select.casa_camera_em_destaque"
 
                 # - type: custom:button-card
                 #   template: webrtc_camera_component
                 #   variables:
                 #       camera_url: fundos_camera_da_piscina
                 #       camera_name: "Fundos: Câmera da Piscina"
-                #       highlighted_camera: "select.frontend_cameras_destaque_atual"
+                #       highlighted_camera: "select.casa_camera_em_destaque"
 
                 # - type: custom:button-card
                 #   template: webrtc_camera_component
                 #   variables:
                 #       camera_url: fundos_camera_do_quintal
                 #       camera_name: "Fundos: Câmera do Quintal"
-                #       highlighted_camera: "select.frontend_cameras_destaque_atual"
+                #       highlighted_camera: "select.casa_camera_em_destaque"

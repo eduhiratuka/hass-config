@@ -1,9 +1,9 @@
 - trigger:
       - platform: event
-        event_type: "custom_events::entity_problem_detector_updated"
+        event_type: "custom_events::detector_de_problemas_com_entidades_atualizado"
   binary_sensor:
-      - name: "Serviços: Detector de Problemas com Entidades"
-        unique_id: servicos_detector_de_problemas_com_entidades
+      - name: "Casa: Detector de Problemas com Entidades"
+        unique_id: casa_detector_de_problemas_com_entidades
         device_class: problem
         state: >-
             {% set ns = namespace(problem=false) %}

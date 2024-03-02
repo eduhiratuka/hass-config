@@ -1,6 +1,6 @@
 - trigger:
       - platform: event
-        event_type: "custom_events::upcoming_iss_flybys_updated"
+        event_type: "custom_events::proximos_sobrevoos_atualizado"
   sensor:
       - name: "Serviços: Astronomia: ISS: Próximos Sobrevoos"
         unique_id: servicos_astronomia_iss_proximos_sobrevoos
