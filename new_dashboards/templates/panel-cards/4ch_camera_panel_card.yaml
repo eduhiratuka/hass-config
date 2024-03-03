@@ -1,6 +1,15 @@
 4ch_camera_panel_card:
     template:
         - no_base_style_mask
+    variables:
+        channel1:
+            extra_shortcuts: []
+        channel2:
+            extra_shortcuts: []
+        channel3:
+            extra_shortcuts: []
+        channel4:
+            extra_shortcuts: []
     styles:
         card:
             - width: 100%
@@ -76,7 +85,7 @@
                                     entity_id: `${ variables.highlighted_camera }`,
                                     option: `${ variables.channel1.camera_name }`
                                 }
-                            }]
+                            }].concat(variables.channel1.extra_shortcuts);
                             return destacar;
                         ]]]
         cam2:
@@ -97,7 +106,7 @@
                                     entity_id: `${ variables.highlighted_camera }`,
                                     option: `${ variables.channel2.camera_name }`
                                 }
-                            }]
+                            }].concat(variables.channel2.extra_shortcuts);
                             return destacar;
                         ]]]
         cam3:
@@ -118,7 +127,7 @@
                                     entity_id: `${ variables.highlighted_camera }`,
                                     option: `${ variables.channel3.camera_name }`
                                 }
-                            }]
+                            }].concat(variables.channel3.extra_shortcuts);
                             return destacar;
                         ]]]
         cam4:
@@ -139,6 +148,6 @@
                                     entity_id: `${ variables.highlighted_camera }`,
                                     option: `${ variables.channel4.camera_name }`
                                 }
-                            }]
+                            }].concat(variables.channel4.extra_shortcuts);
                             return destacar;
                         ]]]
