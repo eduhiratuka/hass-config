@@ -4,8 +4,7 @@ description: ""
 mode: queued
 max: 10
 trigger:
-    - id: casa_notificar_atividades_hass_start_trigger
-      alias: "O Home Assistant é ligado."
+    - alias: "O Home Assistant é ligado."
       platform: homeassistant
       event: start
 action:

@@ -12,6 +12,8 @@ deps
 blueprints
 www/entity_picture/*
 !www/entity_picture/moon_phases
+www/records/*
+tts/*
 custom_components/*
 
 # Specific file ignores

@@ -4,8 +4,7 @@ description: ""
 mode: queued
 max: 10
 trigger:
-    - id: casa_notificar_atividades_hass_shutdown_trigger
-      alias: "O Home Assistant é desligado."
+    - alias: "O Home Assistant é desligado."
       platform: homeassistant
       event: shutdown
 action:

@@ -4,8 +4,7 @@ description: ""
 mode: queued
 max: 10
 trigger:
-    - id: casa_notificar_atividades_selected_devices_state_trigger
-      alias: "Dispositivos selecionados mudam de estado."
+    - alias: "Dispositivos selecionados mudam de estado."
       platform: state
       entity_id:
           - cover.frente_portao_da_garagem

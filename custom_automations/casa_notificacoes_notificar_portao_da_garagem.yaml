@@ -1,0 +1,24 @@
+id: "casa_notificacoes_notificar_portao_da_garagem"
+alias: "Casa: Notificações: Notificar Portão da Garagem"
+description: ""
+mode: queued
+max: 10
+trigger:
+    - alias: "Portão da Garagem mudar de estado."
+      platform: state
+      entity_id:
+          - cover.frente_portao_da_garagem
+      from: null
+      to: null
+action:
+    - alias: "Gravar a Câmera do portão da garagem por 10s"
+      service: camera.record
+      target:
+          entity_id: camera.frente_camera_da_garagem_stream
+      data:
+          duration: 10
+          filename: /config/www/records/frente_camera_da_garagem.mp4
+    - alias: "Enviar video gravado via Telegram"
+      service: telegram_bot.send_video
+      data:
+          file: /config/www/records/frente_camera_da_garagem.mp4
