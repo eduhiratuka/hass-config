@@ -5,11 +5,13 @@ generic_controller_card:
         secondary_info: "[[[ return helpers.localize(states[variables.entity]) ]]]"
         icon: >-
             [[[
-                return variables.action_buttons.find(objeto => objeto.active_state == states[variables.entity].state)['icon']
+                let state = variables.action_buttons.find(objeto => objeto.active_state == states[variables.entity].state);
+                if (state != null) return state['icon'];
             ]]]
         icon_color: >-
             [[[
-                return variables.action_buttons.find(objeto => objeto.active_state == states[variables.entity].state)['active_color']
+                let state = variables.action_buttons.find(objeto => objeto.active_state == states[variables.entity].state);
+                if (state != null) return state['active_color'];
             ]]]
     styles:
         grid:

@@ -6,7 +6,7 @@ action_button_component:
         - "[[[ return variables.entity ]]]"
     variables:
         icon: mdi:download-network
-        icon_color: "[[[ return variables.active_state == states[variables.entity].state ? variables.active_color : undefined ]]]"
+        icon_color: "[[[ return variables.hasOwnProperty('active_state') && variables.active_state == states[variables.entity].state ? variables.active_color : undefined ]]]"
     tap_action:
         action: "[[[ return variables.action !== undefined ? variables.action.action : 'none' ]]]"
         service: "[[[ return variables.action !== undefined ? variables.action.service : undefined ]]]"

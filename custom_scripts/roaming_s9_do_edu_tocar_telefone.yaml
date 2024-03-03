@@ -1,0 +1,12 @@
+alias: 'Roaming: S9+ do Edu: Tocar Telefone'
+mode: single
+icon: mdi:cellphone-sound
+sequence:
+    - service: notify.mobile_app_roaming_s9_do_edu
+      data:
+          message: "Tocando telefone em volume máximo..."
+          title: "Home Assistant: Tocar Telefone"
+          data:
+              ttl: 0
+              priority: high
+              channel: alarm_stream

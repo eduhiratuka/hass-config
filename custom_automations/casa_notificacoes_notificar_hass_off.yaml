@@ -1,0 +1,17 @@
+id: "casa_notificacoes_notificar_hass_off"
+alias: "Casa: Notificações: Notificar Hass OFF"
+description: ""
+mode: queued
+max: 10
+trigger:
+    - id: casa_notificar_atividades_hass_shutdown_trigger
+      alias: "O Home Assistant é desligado."
+      platform: homeassistant
+      event: shutdown
+action:
+    - alias: "Enviar notificação via Telegram"
+      service: telegram_bot.send_message
+      data:
+          title: "{{ 'Home Assistant' }}"
+          message: |
+              {{ 'Ligado' }} ➡️ {{ 'Desligado' }}

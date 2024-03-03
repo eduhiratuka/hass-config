@@ -1,4 +1,4 @@
-alias: "Casa: Atualiza Câmera em Destaque"
+alias: "Casa: Câmeras: Atualiza Destaque Atual"
 mode: single
 fields:
     camera_name:
@@ -6,7 +6,7 @@ fields:
         required: true
         default: "Frente: Câmera da Garagem"
 sequence:
-    - alias: "Dispara Evento Customizado: 'Casa: Câmera em Destaque Atualizado'"
+    - alias: "Dispara Evento Customizado: 'Casa: Câmeras: Destaque Atualizado'"
       event: custom_events::camera_em_destaque_atualizado
       event_data:
           camera: "{{ camera_name }}"

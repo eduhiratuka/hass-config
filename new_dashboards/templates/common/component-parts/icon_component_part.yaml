@@ -1,19 +1,23 @@
-#################################
-#   Icon Button Card Template   #
-#                               #
-# Variables:                    #
-#   - icon                      #
-#   - icon_color                #
-#                               #
-#################################
+###########################
+#   Icon Component Part   #
+#                         #
+# Variables:              #
+#   - icon                #
+#   - icon_color          #
+#   - badge               #
+#   - badge_color         #
+#                         #
+###########################
 
 icon_component_part:
+    template:
+      - notification_component_part
     variables:
-        icon: "mdi:weather-sunny"
-
-    icon: "[[[ return variables.icon ]]]"
-    show_icon: true
-
+        icon: null
+        icon_color: null
+        badge: null
+        badge_color: null
+    icon: "[[[ return variables.icon; ]]]"
     styles:
         img_cell:
             # Layout Styles
@@ -30,3 +34,4 @@ icon_component_part:
 
             # Appearence Styles
             - color: "[[[ return variables.icon_color !== undefined ? `var(--${variables.icon_color}-color)` : `var(--primary-text-color)` ]]]"
+

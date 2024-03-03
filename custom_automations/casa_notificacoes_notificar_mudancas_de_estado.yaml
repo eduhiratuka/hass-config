@@ -1,0 +1,28 @@
+id: "casa_notificacoes_notificar_mudancas_de_estado"
+alias: "Casa: Notificações: Notificar Mudanças de Estado"
+description: ""
+mode: queued
+max: 10
+trigger:
+    - id: casa_notificar_atividades_selected_devices_state_trigger
+      alias: "Dispositivos selecionados mudam de estado."
+      platform: state
+      entity_id:
+          - cover.frente_portao_da_garagem
+          - climate.quarto_do_edu_ar_condicionado
+          - light.quarto_do_edu_luz_de_teto
+          - light.quarto_do_edu_luz_de_cabeceira
+          - light.fundos_fita_de_led
+          - light.escritorio_luz_de_teto
+      from: null
+      to: null
+action:
+    - alias: "Enviar notificação com as modificações via Telegram"
+      service: telegram_bot.send_message
+      data:
+          title: "{{ trigger.from_state.name }}"
+          message: |
+              {% from 'translator.jinja' import format_state %}
+              {{ format_state(trigger.from_state) }}
+              {{- ' ➡️ ' }}
+              {{- format_state(trigger.to_state) }}

@@ -54,7 +54,7 @@
                 variables:
                     camera_url: frente_camera_da_garagem
                     camera_name: "Frente: Câmera da Garagem"
-                    highlighted_camera: "select.casa_camera_em_destaque"
+                    highlighted_camera: "select.casa_cameras_destaque_atual"
         cam2:
             card:
                 type: custom:button-card
@@ -62,7 +62,7 @@
                 variables:
                     camera_url: frente_camera_da_lateral
                     camera_name: "Frente: Câmera da Lateral"
-                    highlighted_camera: "select.casa_camera_em_destaque"
+                    highlighted_camera: "select.casa_cameras_destaque_atual"
         cam3:
             card:
                 type: custom:button-card
@@ -70,7 +70,7 @@
                 variables:
                     camera_url: fundos_camera_da_piscina
                     camera_name: "Fundos: Câmera da Piscina"
-                    highlighted_camera: "select.casa_camera_em_destaque"
+                    highlighted_camera: "select.casa_cameras_destaque_atual"
         cam4:
             card:
                 type: custom:button-card
@@ -78,4 +78,4 @@
                 variables:
                     camera_url: fundos_camera_do_quintal
                     camera_name: "Fundos: Câmera do Quintal"
-                    highlighted_camera: "select.casa_camera_em_destaque"
+                    highlighted_camera: "select.casa_cameras_destaque_atual"

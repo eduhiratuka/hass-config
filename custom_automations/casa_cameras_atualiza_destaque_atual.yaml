@@ -1,5 +1,5 @@
-id: casa_atualiza_camera_em_destaque
-alias: "Casa: Atualiza Câmera em Destaque"
+id: casa_cameras_atualiza_destaque_atual
+alias: "Casa: Câmeras: Atualiza Destaque Atual"
 description: ""
 mode: single
 trigger:
@@ -10,10 +10,10 @@ trigger:
       platform: homeassistant
       event: start
 action:
-    - alias: "Chama o script 'Casa: Atualiza Câmera em Destaque'"
+    - alias: "Chama o script 'Casa: Câmeras: Atualiza Destaque Atual'"
       service: script.turn_on
       target:
-          entity_id: script.casa_atualiza_camera_em_destaque
+          entity_id: script.casa_cameras_atualiza_destaque_atual
       data:
           variables:
               camera_name: "Frente: Câmera da Garagem"

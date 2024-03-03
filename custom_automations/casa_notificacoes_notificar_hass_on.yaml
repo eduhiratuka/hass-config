@@ -1,0 +1,17 @@
+id: "casa_notificacoes_notificar_hass_on"
+alias: "Casa: Notificações: Notificar Hass ON"
+description: ""
+mode: queued
+max: 10
+trigger:
+    - id: casa_notificar_atividades_hass_start_trigger
+      alias: "O Home Assistant é ligado."
+      platform: homeassistant
+      event: start
+action:
+    - alias: "Enviar notificação via Telegram"
+      service: telegram_bot.send_message
+      data:
+          title: "{{ 'Home Assistant' }}"
+          message: |
+              {{ 'Desligado' }} ➡️ {{ 'Ligado' }}

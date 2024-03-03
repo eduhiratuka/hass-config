@@ -1,0 +1,14 @@
+#####################################
+#   Entity Picture Component Part   #
+#                                   #
+# Variables:                        #
+#                                   #
+#####################################
+
+entity_picture_component_part:
+    show_entity_picture: true
+    styles:
+        entity_picture:
+            - width: 40px
+            - height: 40px
+            - border-radius: 100%

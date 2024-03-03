@@ -1,0 +1,84 @@
+person_controller_card:
+    template: 
+      - entity_state_component
+      - entity_picture_component_part
+    variables:
+        primary_info: >
+            [[[
+                let nameToken = states[entity.entity_id]['attributes']['friendly_name'];
+                return nameToken.split(" ")[0];
+            ]]]
+        badge: >
+            [[[
+                let info = states[entity.entity_id].state;
+                if (info == 'home') { 
+                    return 'mdi:home';
+                }
+                else if (info == 'not_home') {
+                    return 'mdi:home-export-outline';
+                }
+                else { 
+                    return 'mdi:help';
+                }
+            ]]]
+        badge_color: >
+            [[[
+                let info = states[entity.entity_id].state;
+                if (info == 'home') { 
+                    return 'var(--green-color)';
+                }
+                else if (info == 'not_home') {
+                    return 'var(--red-color)';
+                }
+            ]]]
+
+    styles:
+        grid:
+            - grid-template: "'i n' auto 'i s' min-content 'action-button-container action-button-container' min-content / 52px auto"
+    custom_fields:
+        action-button-container:
+            card:
+                type: custom:button-card
+                styles:
+                    card:
+                        - margin-top: 12px
+                        - padding: 0
+                        - border: 0
+                        - height: 40px
+                    grid:
+                        - height: 40px
+                        - grid-template-areas: none
+                        - grid-template-rows: none
+                        - grid-template-columns: none
+                        - grid-auto-flow: column
+                        - column-gap: 8px
+                extra_styles: |
+                    #container > * {
+                        grid-area: auto !important;
+                    }
+                custom_fields: >-
+                    [[[
+                        let arrayToMap = {};
+
+                        for (let i = 0; i < states[variables.entity]['attributes']['device_trackers'].length; i++) {
+                            let mapIndex = 'a' + i;
+                            let deviceTrackerEntityID = states[variables.entity]['attributes']['device_trackers'][i];
+                            
+
+                            
+                            arrayToMap[mapIndex] = { card: {
+                                type: 'custom:button-card',
+                                template: 'action_button_component',
+                                variables: { 
+                                    entity: deviceTrackerEntityID,
+                                    icon: 'mdi:cellphone-sound'
+                                }
+                            } }
+                        }
+
+                        return arrayToMap;
+                    ]]]
+    extra_styles: |
+        ha-card#card > div#container > div#action-button-container {
+            justify-self: center;
+        }
