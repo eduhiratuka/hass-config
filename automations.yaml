@@ -1,1 +1,13 @@
-[]
+- id: '1709434033663'
+  alias: Nova Automação
+  description: ''
+  trigger:
+  - platform: conversation
+    command: Teste
+  condition: []
+  action:
+  - service: telegram_bot.send_message
+    metadata: {}
+    data:
+      message: Teste funcionando
+  mode: single
