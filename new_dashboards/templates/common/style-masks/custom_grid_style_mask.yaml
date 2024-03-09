@@ -1,0 +1,36 @@
+custom_grid_style_mask:
+    variables:
+        grid_template:
+            col: 2
+            row: 3
+    extra_styles: >-
+        [[[
+            let gridArea = 'none';
+            let gridCol = 'repeat(auto-fill, minmax(200px, 1fr) )';
+            let gridRow = 'auto';
+            let gridHeight = '100%';
+            let gridAutoRows = 'auto';
+            let gridAutoFlow = 'row';
+
+            let gridTemplate = `${ gridRow } / ${ gridCol } !important`;
+
+            return `
+                ha-card#card {
+                    height: ${ gridHeight };
+                }
+                
+                div#container {
+                    height: ${ gridHeight };
+                    grid-template: ${ gridTemplate };
+                    grid-auto-rows: ${ gridAutoRows };
+                    grid-auto-flow: ${ gridAutoFlow };
+                }
+
+                div#container {
+                }
+
+                 div#container > * {
+                    height: ${ gridHeight };
+                    grid-area: auto !important;
+                }`
+        ]]]

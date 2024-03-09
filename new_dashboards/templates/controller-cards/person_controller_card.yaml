@@ -31,7 +31,7 @@ person_controller_card:
                     return 'var(--red-color)';
                 }
             ]]]
-
+        personal_devices: []
     styles:
         grid:
             - grid-template: "'i n' auto 'i s' min-content 'action-button-container action-button-container' min-content / 52px auto"
@@ -60,20 +60,29 @@ person_controller_card:
                     [[[
                         let arrayToMap = {};
 
-                        for (let i = 0; i < states[variables.entity]['attributes']['device_trackers'].length; i++) {
+                        for (let i = 0; i < variables.personal_devices.length; i++) {
                             let mapIndex = 'a' + i;
-                            let deviceTrackerEntityID = states[variables.entity]['attributes']['device_trackers'][i];
+                            let findDeviceScript = variables.personal_devices[i]['find_device_script'];
+                            let personalDeviceIcon = variables.personal_devices[i]['icon'];
+                            personalDeviceIcon = personalDeviceIcon ? personalDeviceIcon : 'mdi:cellphone-sound';
                             
-
-                            
-                            arrayToMap[mapIndex] = { card: {
-                                type: 'custom:button-card',
-                                template: 'action_button_component',
-                                variables: { 
-                                    entity: deviceTrackerEntityID,
-                                    icon: 'mdi:cellphone-sound'
+                            arrayToMap[mapIndex] = {
+                                card: {
+                                    type: 'custom:button-card',
+                                    template: 'action_button_component',
+                                    variables: { 
+                                        entity: findDeviceScript,
+                                        icon: personalDeviceIcon,
+                                        action: {
+                                            action: 'call-service',
+                                            service: 'script.turn_on',
+                                            target: {
+                                                entity_id: findDeviceScript
+                                            }
+                                        }
+                                    }
                                 }
-                            } }
+                            }
                         }
 
                         return arrayToMap;
