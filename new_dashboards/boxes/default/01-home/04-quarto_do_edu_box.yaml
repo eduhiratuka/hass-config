@@ -1,0 +1,27 @@
+box: quarto-do-edu
+title: "Quarto do Edu"
+cards:
+    - type: custom:mushroom-climate-card
+      entity: climate.quarto_do_edu_ar_condicionado
+      name: Ar-condicionado
+      hvac_modes:
+          - auto
+          - cool
+          - dry
+          - fan_only
+          - "off"
+      show_temperature_control: true
+    - type: custom:mushroom-light-card
+      entity: light.quarto_do_edu_luz_de_cabeceira
+      name: Luz de Cabeceira
+      use_light_color: true
+      show_brightness_control: true
+      show_color_control: true
+      show_color_temp_control: true
+    - type: custom:mushroom-light-card
+      entity: light.quarto_do_edu_luz_de_teto
+      name: Luz de Teto
+      use_light_color: true
+      show_brightness_control: true
+      show_color_control: true
+      show_color_temp_control: true

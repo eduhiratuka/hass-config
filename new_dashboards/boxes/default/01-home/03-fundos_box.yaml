@@ -1,0 +1,10 @@
+box: fundos
+title: "Fundos"
+cards:
+    - type: custom:mushroom-light-card
+      entity: light.fundos_fita_de_led
+      name: Fita de LED
+      use_light_color: true
+      show_brightness_control: true
+      show_color_control: true
+      show_color_temp_control: true

@@ -1,0 +1,10 @@
+box: escritorio
+title: "Escritório"
+cards:
+    - type: custom:mushroom-light-card
+      entity: light.escritorio_luz_de_teto
+      name: Luz de Teto
+      use_light_color: true
+      show_brightness_control: true
+      show_color_control: true
+      show_color_temp_control: true

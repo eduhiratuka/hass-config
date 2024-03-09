@@ -1,0 +1,27 @@
+box: welcome
+title: >
+    [[[
+        let horas = new Date().getHours();
+        let welcomeText = '';
+        if(horas < 12) welcomeText += 'Bom dia';
+        else if(horas < 18) welcomeText += 'Boa tarde';
+        else welcomeText += 'Boa noite';
+
+        welcomeText += ', ' + user.name.split(' ')[0];
+
+        return welcomeText;
+    ]]]
+cards:
+    - type: custom:button-card
+      template: person_controller_card
+      variables:
+          entity: person.eduardo_hiratuka
+          personal_devices:
+              - battery_state: sensor.roaming_iphone_do_edu_estado_da_bateria
+                battery_level: sensor.roaming_iphone_do_edu_nivel_da_bateria
+                find_device_script: script.roaming_iphone_do_edu_tocar_telefone
+                icon: mdi:apple-ios
+              - battery_state: sensor.roaming_s9_do_edu_estado_da_bateria
+                battery_level: sensor.roaming_s9_do_edu_nivel_da_bateria
+                find_device_script: script.roaming_s9_do_edu_tocar_telefone
+                icon: mdi:android
