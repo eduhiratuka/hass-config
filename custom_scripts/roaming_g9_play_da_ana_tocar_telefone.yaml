@@ -2,7 +2,7 @@ alias: 'Roaming: G9 Play da Ana: Tocar Telefone'
 mode: single
 icon: mdi:cellphone-sound
 sequence:
-    - service: notify.mobile_app_roaming_g9_play_da_ana
+    - service: notify.mobile_app_g9_play_da_ana
       data:
           message: "Tocando telefone em volume máximo..."
           title: "Home Assistant: Tocar Telefone"

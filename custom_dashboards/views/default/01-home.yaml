@@ -1,0 +1,81 @@
+################################################################################
+#                             Home Dashboard View                              #
+#                                                                              #
+#     Esta view é responsável por exibir os dispositivos inteligentes da casa, #
+# separados por seções                                                         #
+#                                                                              #
+################################################################################
+
+title: Home
+path: home
+icon: mdi:home-circle
+type: panel
+cards:
+  - type: custom:button-card
+    template: sections_layout
+    variables:
+        sections:
+          - title: >
+                [[[
+                    let horas = new Date().getHours();
+                    let welcomeText = '';
+                    if(horas < 12) welcomeText += 'Bom dia';
+                    else if(horas < 18) welcomeText += 'Boa tarde';
+                    else welcomeText += 'Boa noite';
+
+                    welcomeText += ', ' + user.name.split(' ')[0];
+
+                    return welcomeText;
+                ]]]
+            vertical_span: 2
+          - title: Frente
+            cards:
+              - type: custom:mushroom-cover-card
+                entity: cover.frente_portao_da_garagem
+                name: Garagem
+                show_position_control: false
+                show_buttons_control: true
+          - title: Fundos
+            cards:
+              - type: custom:mushroom-light-card
+                entity: light.fundos_fita_de_led
+                name: Fita de LED
+                use_light_color: true
+                show_brightness_control: true
+                show_color_control: true
+                show_color_temp_control: true
+          - title: Escritório
+            cards:
+              - type: custom:mushroom-light-card
+                entity: light.escritorio_luz_de_teto
+                name: Luz de Teto
+                use_light_color: true
+                show_brightness_control: true
+                show_color_control: true
+                show_color_temp_control: true
+          - title: Quarto do Edu
+            cards:
+              - type: custom:mushroom-climate-card
+                entity: climate.quarto_do_edu_ar_condicionado
+                name: Ar-condicionado
+                hvac_modes:
+                    - auto
+                    - cool
+                    - dry
+                    - fan_only
+                    - "off"
+                show_temperature_control: true
+              - type: custom:mushroom-light-card
+                entity: light.quarto_do_edu_luz_de_cabeceira
+                name: Luz de Cabeceira
+                use_light_color: true
+                show_brightness_control: true
+                show_color_control: true
+                show_color_temp_control: true
+              - type: custom:mushroom-light-card
+                entity: light.quarto_do_edu_luz_de_teto
+                name: Luz de Teto
+                use_light_color: true
+                show_brightness_control: true
+                show_color_control: true
+                show_color_temp_control: true

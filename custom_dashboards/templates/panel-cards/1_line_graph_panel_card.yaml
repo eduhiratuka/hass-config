@@ -1,0 +1,35 @@
+################################################################################
+#                                                                              #
+#                                                                              #
+#                                                                              #
+################################################################################
+
+1_line_graph_panel_card:
+    template:
+        - no_base_style_mask
+    styles:
+        grid:
+            - grid-template: "'status' auto 'graphic' auto / auto"
+    custom_fields:
+        status:
+            card:
+                type: custom:button-card
+                template:
+                    - entity_state_component
+                    - border_top_ghost_mask
+                variables:
+                    entity: "[[[ return variables.entity ]]]"
+                    primary_info: "[[[ return variables.primary_info ]]]"
+                    secondary_info: "[[[ return variables.secondary_info ]]]"
+                    icon: "[[[ return variables.icon ]]]"
+                    icon_color: "[[[ return variables.icon_color ]]]"
+        graphic:
+            card:
+                type: custom:button-card
+                template:
+                    - mini_graph_component
+                    - border_bottom_ghost_mask
+                variables:
+                    lines:
+                        - entity: "[[[ return variables.entity ]]]"
+                          color: "[[[ return variables.icon_color ]]]"

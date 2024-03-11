@@ -7,6 +7,9 @@ person:
 
   - id: mario_hiratuka
     name: Mario Hiratuka
+    user_id: 0b4e5ecf50784bab9cc49091cdae5bdd
+    device_trackers:
+      - device_tracker.roaming_g30_do_mario_localizacao
 
   - id: ana_ferreira_hiratuka
     name: Ana Ferreira Hiratuka

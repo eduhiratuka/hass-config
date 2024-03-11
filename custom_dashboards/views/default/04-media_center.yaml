@@ -1,0 +1,19 @@
+################################################################################
+#                         Media Center Dashboard View                          #
+#                                                                              #
+#     Esta view é responsável por controlar os dispositivos de mídia da casa,  #
+# como televisores, chromecasts e alto-falantes                                #
+#                                                                              #
+################################################################################
+
+title: Central Multimedia
+path: media-center
+icon: mdi:multimedia
+type: panel
+cards:
+  - type: custom:button-card
+    template: sections_layout
+    variables:
+        header:
+            title: Central Multimedia
+            subtitle: Media Center

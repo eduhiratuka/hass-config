@@ -1,0 +1,41 @@
+################################################################################
+#                            Weather Dashboard View                            #
+#                                                                              #
+#     Esta view é responsável por exibir as condições climáticas atuais,       #
+# previsões do tempo, alertas climáticos e outras informações                  #
+#                                                                              #
+################################################################################
+
+title: Previsão do Tempo
+path: weather
+icon: mdi:weather-partly-cloudy
+type: panel
+cards:
+  - type: custom:button-card
+    template: sections_layout
+    variables:
+        header:
+            title: Previsão do Tempo
+            subtitle: Weather Forecast
+        sections:
+            - cards:
+                - type: custom:button-card
+                  template: 2_lines_graph_panel_card
+                  variables:
+                      line1:
+                          entity: sensor.servicos_clima_previsao_do_tempo_em_casa_temperatura
+                          primary_info: Temperatura
+                          icon: mdi:thermometer
+                          icon_color: orange
+                      line2:
+                          entity: sensor.servicos_clima_previsao_do_tempo_em_casa_umidade_relativa
+                          primary_info: Umidade
+                          icon: mdi:water-percent
+                          icon_color: blue
+                - type: custom:button-card
+                  template: 1_line_graph_panel_card
+                  variables:
+                      entity: sensor.servicos_clima_previsao_do_tempo_em_casa_temperatura
+                      primary_info: Temperatura
+                      icon: mdi:thermometer
+                      icon_color: orange

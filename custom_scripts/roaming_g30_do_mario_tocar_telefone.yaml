@@ -1,8 +1,8 @@
-alias: 'Roaming: S9+ do Edu: Tocar Telefone'
+alias: 'Roaming: G30 do Mario: Tocar Telefone'
 mode: single
 icon: mdi:cellphone-sound
 sequence:
-    - service: notify.mobile_app_s9_do_edu
+    - service: notify.mobile_app_g30_do_mario
       data:
           message: "Tocando telefone em volume máximo..."
           title: "Home Assistant: Tocar Telefone"

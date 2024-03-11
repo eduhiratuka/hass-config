@@ -1,6 +1,6 @@
 id: casa_cameras_atualiza_destaque_atual
 alias: "Casa: Câmeras: Atualiza Destaque Atual"
-description: ""
+description: "Automação que atualiza a 'Câmera em Destaque' quando o evento ao iniciar o Home Assistant ou recarregar as entidade da integração 'Template'"
 mode: single
 trigger:
     - alias: "As entidades da plataforma template são recarregadas"

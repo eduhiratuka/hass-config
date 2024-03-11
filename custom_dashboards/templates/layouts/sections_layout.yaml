@@ -1,0 +1,134 @@
+################################################################################
+#                                                                              #
+#                                                                              #
+#                                                                              #
+################################################################################
+
+sections_layout:
+    template:
+      - no_base_style_mask
+    variables:
+        header:
+            title: null
+            subtitle: null
+        sections: []
+    styles:
+        card:
+          - pointer-events: none
+          - cursor: default
+        grid:
+          - grid-template-areas: "'view_header' 'section_container'"
+          - grid-template-rows: "[[[ return variables.header?.title || variables.header?.subtitle ? '80px auto' : '0px auto'; ]]]"
+          - grid-template-columns: 100%
+          - max-width: var(--grid-max-width)
+    extra_styles: |
+        [[[ 
+            return `:host {
+                --section-count: ${ variables.sections.length > 0 ? variables.sections.length : 4 };
+                --grid-gap: 32px;
+                --grid-max-section-count: 4;
+                --grid-section-min-width: 320px;
+                --grid-section-max-width: 500px;
+                
+                --max-count: min(var(--section-count), var(--grid-max-section-count));
+                --grid-max-width: min(calc((var(--max-count) + 1) * var(--grid-section-min-width) + (var(--max-count) + 2) * var(--grid-gap) - 1px), calc(var(--max-count) * var(--grid-section-max-width) + (var(--max-count) + 1) * var(--grid-gap)))
+            }
+
+            @media (max-width: 600px) {
+                :host {
+                    --grid-gap: 8px;
+                }
+            }`
+        ]]]
+    custom_fields:
+        view_header:
+            card:
+                type: custom:button-card
+                template:
+                  - no_base_style_mask
+                show_name: true
+                name: "[[[ return variables.header?.title ]]]"
+                show_state: true
+                state_display: "[[[ return variables.header?.subtitle ]]]"
+                styles:
+                    card:
+                      - padding: 0px 12px 0px
+                      - pointer-events: none
+                      - cursor: default
+                      - height: 100%
+                    grid:
+                      - grid-template: "'n' auto 's' auto / auto"
+                      - padding: 0 var(--grid-gap)
+                    name:
+                      - overflow: hidden
+                      - text-overflow: ellipsis
+                      - white-space: nowrap
+                      - place-self: initial
+                      - text-align: initial
+                      - font-size: 24px
+                      - line-height: normal
+                      - font-weight: normal
+                      - letter-spacing: normal
+                      - color: var(--primary-text-color)
+                    state:
+                      - overflow: hidden
+                      - text-overflow: ellipsis
+                      - white-space: normal
+                      - place-self: initial
+                      - text-align: initial
+                      - font-size: 16px
+                      - line-height: normal
+                      - font-weight: normal
+                      - letter-spacing: normal
+                      - color: var(--secondary-text-color)
+        section_container:
+            card:
+                type: custom:button-card
+                template:
+                  - no_base_style_mask
+                styles:
+                    card:
+                      - pointer-events: none
+                      - cursor: default
+                    grid:
+                      - grid-template-columns: repeat(auto-fit, minmax( min(var(--grid-section-min-width), 100%), 1fr))
+                      - grid-gap: 8px var(--grid-gap)
+                      - padding: 8px var(--grid-gap)
+                      - margin: 0px auto
+                      - align-items: start
+                extra_styles: |
+                    [[[
+                        let styles = "";
+
+                        if (Array.isArray(variables.sections)) {
+                            for (let i = 0; i < variables.sections.length; i++) {
+                                let vertical_span = variables.sections[i].vertical_span || "1";
+                                
+                                styles += `
+                                    #container > *:nth-child(${ i + 1 }) { 
+                                        grid-area: span ${ vertical_span } / span 1 !important;
+                                    }`
+                            }
+                        }
+
+                        return styles;
+                    ]]]
+                    
+                custom_fields: |
+                    [[[
+                        let arrayToMap = {};
+
+                        if (Array.isArray(variables.sections)) {
+                            for (let i = 0; i < variables.sections.length; i++) {
+                                arrayToMap['a' + i] = {
+                                    card: {
+                                        type: 'custom:button-card',
+                                        template: 'sections_layout_box',
+                                        variables: variables.sections[i]
+                                    }
+                                };
+                            }
+                        }
+
+                        return arrayToMap;
+                    ]]]

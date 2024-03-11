@@ -1,0 +1,19 @@
+################################################################################
+#                            Network Dashboard View                            #
+#                                                                              #
+#     Esta view é responsável por exibir as informações de rede interna da     #
+# casa e informações sobre o status da internet                                #
+#                                                                              #
+################################################################################
+
+title: Rede e Internet
+path: network
+icon: mdi:check-network-outline
+type: panel
+cards:
+  - type: custom:button-card
+    template: sections_layout
+    variables:
+        header:
+            title: Rede e Internet
+            subtitle: Internet e Rede

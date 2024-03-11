@@ -2,7 +2,7 @@ alias: 'Roaming: iPhone do Edu: Tocar Telefone'
 mode: single
 icon: mdi:cellphone-sound
 sequence:
-    - service: notify.mobile_app_roaming_iphone_do_edu
+    - service: notify.mobile_app_iphone_do_edu
       data:
           message: "Tocando telefone em volume máximo..."
           title: "Home Assistant: Tocar Telefone"

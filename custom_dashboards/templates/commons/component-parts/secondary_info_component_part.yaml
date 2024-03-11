@@ -1,0 +1,28 @@
+################################################################################
+#                                                                              #
+#                                                                              #
+#                                                                              #
+################################################################################
+
+secondary_info_component_part:
+    variables:
+        secondary_info: "[[[ return helpers.localize(states[entity.entity_id]) ]]]"
+
+    state_display: "[[[ return variables.secondary_info ]]]"
+    show_state: true
+
+    styles:
+        state:
+            # Layout Styles
+            - overflow: hidden
+
+            # Text Styles
+            - font-size: 12px
+            - font-weight: 400
+            - letter-spacing: 0.4px
+            - line-height: 16px
+            - text-overflow: ellipsis
+            - white-space: normal
+
+            # Appearence Styles
+            - color: var(--primary-text-color)

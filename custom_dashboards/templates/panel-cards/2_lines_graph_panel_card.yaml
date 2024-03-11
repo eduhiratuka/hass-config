@@ -1,0 +1,51 @@
+################################################################################
+#                                                                              #
+#                                                                              #
+#                                                                              #
+################################################################################
+
+2_lines_graph_panel_card:
+    template:
+        - no_base_style_mask
+    styles:
+        grid:
+            - grid-template: "'status1 status2' auto 'graphic graphic' auto / 50% 50%"
+    custom_fields:
+        status1:
+            card:
+                type: custom:button-card
+                template:
+                    - entity_state_component
+                    - border_top_ghost_mask
+                    - border_left_ghost_mask
+                variables:
+                    entity: "[[[ return variables.line1.entity ]]]"
+                    primary_info: "[[[ return variables.line1.primary_info ]]]"
+                    secondary_info: "[[[ return variables.line1.secondary_info ]]]"
+                    icon: "[[[ return variables.line1.icon ]]]"
+                    icon_color: "[[[ return variables.line1.icon_color ]]]"
+        status2:
+            card:
+                type: custom:button-card
+                template:
+                    - entity_state_component
+                    - border_top_ghost_mask
+                    - border_right_ghost_mask
+                variables:
+                    entity: "[[[ return variables.line2.entity ]]]"
+                    primary_info: "[[[ return variables.line2.primary_info ]]]"
+                    secondary_info: "[[[ return variables.line2.secondary_info ]]]"
+                    icon: "[[[ return variables.line2.icon ]]]"
+                    icon_color: "[[[ return variables.line2.icon_color ]]]"
+        graphic:
+            card:
+                type: custom:button-card
+                template:
+                    - mini_graph_component
+                    - border_bottom_ghost_mask
+                variables:
+                    lines:
+                        - entity: "[[[ return variables.line1.entity ]]]"
+                          color: "[[[ return variables.line1.icon_color ]]]"
+                        - entity: "[[[ return variables.line2.entity ]]]"
+                          color: "[[[ return variables.line2.icon_color ]]]"

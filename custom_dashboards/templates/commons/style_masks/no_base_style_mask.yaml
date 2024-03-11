@@ -1,0 +1,16 @@
+################################################################################
+#                              No Base Style Mask                              #
+#                                                                              #
+#     No Base é uma mascara de estilo que remove toda a formatação padrão do   #
+# Button Card, possibilitando transforma-lo em diversos tipos de container     #
+#                                                                              #
+################################################################################
+
+no_base_style_mask:
+    styles:
+        card:
+          - margin: 0
+          - padding: 0
+          - border: 0
+          - border-radius: 0
+          - background: none

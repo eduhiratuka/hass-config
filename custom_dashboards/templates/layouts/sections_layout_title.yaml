@@ -1,0 +1,28 @@
+################################################################################
+#                                                                              #
+#                                                                              #
+#                                                                              #
+################################################################################
+
+sections_layout_title:
+    template:
+        - no_base_style_mask
+    variables:
+    name: "[[[ return variables.title ]]]"
+    show_name: true
+    styles:
+        card:
+            - padding: 24px 12px 8px
+            - pointer-events: none
+            - cursor: default
+        name:
+            - color: var(--primary-text-color)
+            - font-size: 24px
+            - font-weight: normal
+            - line-height: 32px
+            - letter-spacing: -0.288px
+            - justify-self: left
+
+            - overflow: hidden
+            - text-overflow: ellipsis
+            - white-space: nowrap

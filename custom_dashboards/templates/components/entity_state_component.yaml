@@ -1,0 +1,48 @@
+################################################################################
+#                                                                              #
+#                                                                              #
+#                                                                              #
+################################################################################
+
+entity_state_component:
+    template:
+        - icon_component_part
+        - primary_info_component_part
+        - secondary_info_component_part
+
+    variables:
+        entity: "sun.sun"
+
+    entity: "[[[ return variables.entity ]]]"
+
+    styles:
+        card:
+            # Layout Styles
+            - padding: 12px
+
+            - pointer-events: all
+            - cursor: pointer
+
+        grid:
+            # Grid Styles
+            - grid-template: "'i n' auto 'i s' min-content / min-content auto"
+
+        img_cell:
+            # Layout Styles
+            - margin-right: 12px
+
+        name:
+            # Layout Styles
+            - padding-top: 2px
+            - place-self: initial
+
+            # Text Styles
+            - text-align: initial
+
+        state:
+            # Layout Styles
+            - padding-bottom: 2px
+            - place-self: initial
+
+            # Text Styles
+            - text-align: initial

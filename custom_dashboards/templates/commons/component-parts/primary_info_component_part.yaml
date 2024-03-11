@@ -1,0 +1,28 @@
+################################################################################
+#                                                                              #
+#                                                                              #
+#                                                                              #
+################################################################################
+
+primary_info_component_part:
+    variables:
+        primary_info: "Sol"
+
+    name: "[[[ return variables.primary_info ]]]"
+    show_name: true
+
+    styles:
+        name:
+            # Layout Styles
+            - overflow: hidden
+
+            # Text Styles
+            - font-size: 14px
+            - font-weight: 500
+            - letter-spacing: 0.1px
+            - line-height: 20px
+            - text-overflow: ellipsis
+            - white-space: nowrap
+
+            # Appearence Styles
+            - color: var(--primary-text-color)

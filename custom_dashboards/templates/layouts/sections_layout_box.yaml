@@ -1,0 +1,67 @@
+################################################################################
+#                                                                              #
+#                                                                              #
+#                                                                              #
+################################################################################
+
+sections_layout_box:
+    template:
+        - no_base_style_mask
+    styles:
+        grid:
+            - grid-template: "'workaround_wrapper' 100% / 100%"
+    custom_fields:
+        workaround_wrapper:
+            card:
+                type: custom:button-card
+                template:
+                    - no_base_style_mask
+                styles:
+                    grid:
+                        - grid-gap: 8px
+                        - text-align: start
+                extra_styles: |
+                    [[[
+                        let styles = "#container > * { grid-area: auto !important; }";
+
+                        if(variables.title != null) {
+                            styles += "#container > *:not(:first-child) { pointer-events: all; }";
+                        }
+                        
+                        return styles;
+                    ]]]
+                custom_fields: |
+                    [[[
+                        let arrayToMap = {};
+
+                        if(variables.title != null) {
+                            arrayToMap['a0'] = {
+                                card: {
+                                    type: 'custom:button-card',
+                                    template: 'sections_layout_title',
+                                    variables: {
+                                        title: variables.title
+                                    }
+                                }
+                            };
+                        }
+                        if (Array.isArray(variables.cards)) {
+                            for (let i = 0; i < variables.cards.length; i++) {
+                                arrayToMap['b' + i] = { card: variables.cards[i] };
+                            }
+                        }
+
+                        return arrayToMap;
+                    ]]]
+    # custom_fields:
+    #     a1:
+    #         card:
+    #             type: custom:mushroom-title-card
+    #             title: "[[[ return variables.title ]]]"
+    #     a2:
+    #         card:
+    #             type: custom:mushroom-cover-card
+    #             entity: cover.frente_portao_da_garagem
+    #             name: Garagem
+    #             show_position_control: false
+    #             show_buttons_control: true
