@@ -7,9 +7,7 @@
 sections_layout_box:
     template:
         - no_base_style_mask
-    styles:
-        grid:
-            - grid-template: "'workaround_wrapper' 100% / 100%"
+        - workaround_wrapper_style_mask
     custom_fields:
         workaround_wrapper:
             card:
@@ -53,15 +51,3 @@ sections_layout_box:
 
                         return arrayToMap;
                     ]]]
-    # custom_fields:
-    #     a1:
-    #         card:
-    #             type: custom:mushroom-title-card
-    #             title: "[[[ return variables.title ]]]"
-    #     a2:
-    #         card:
-    #             type: custom:mushroom-cover-card
-    #             entity: cover.frente_portao_da_garagem
-    #             name: Garagem
-    #             show_position_control: false
-    #             show_buttons_control: true

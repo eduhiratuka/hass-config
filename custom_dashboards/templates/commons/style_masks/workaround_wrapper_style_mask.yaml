@@ -4,8 +4,7 @@
 #                                                                              #
 ################################################################################
 
-clickabled_card_style_mask:
+workaround_wrapper_style_mask:
     styles:
-        card:
-          - pointer-events: all
-          - cursor: pointer
+        grid:
+            - grid-template: "'workaround_wrapper' 100% / 100%"

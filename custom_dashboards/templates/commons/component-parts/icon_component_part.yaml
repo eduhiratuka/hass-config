@@ -10,8 +10,6 @@ icon_component_part:
     variables:
         icon: null
         icon_color: null
-        badge: null
-        badge_color: null
     icon: "[[[ return variables.icon; ]]]"
     styles:
         img_cell:

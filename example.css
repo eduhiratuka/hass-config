@@ -1,0 +1,37 @@
+:host {
+    --grid-section-min-width: 320px;
+    --grid-gap: 32px;
+    
+    
+
+    /* Section count é o total de elementos adicionados ao GRID */
+    /* Max Count é o menor valor entre Section Count e o Grid Max Section Count */
+    --section-count: "x";
+    --grid-max-section-count: 4;
+    --max-count: min(var(--section-count), var(--grid-max-section-count));
+    
+    
+    /* min(
+        calc((min(6, 4) + 1) * 320px + (min(6, 4) + 2) * 32px - 1px),   (4+1)*320 + (4+2)*32 - 1 = 1791
+        calc((min(3, 4) + 1) * 320px + (min(3, 4) + 2) * 32px - 1px),   (3+1)*320 + (3+2)*32 - 1 = 1439
+        calc((min(2, 4) + 1) * 320px + (min(2, 4) + 2) * 32px - 1px),   (2+1)*320 + (2+2)*32 - 1 = 1087
+        calc((min(1, 4) + 1) * 320px + (min(1, 4) + 2) * 32px - 1px),   (1+1)*320 + (1+2)*32 - 1 =  735
+
+
+        calc(min(6, 4) * 500px + (min(6, 4) + 1) * 32px))               2160
+    */
+    --grid-max-width: 
+min(
+    calc((var(--max-count) + 1) * var(--grid-section-min-width) + (var(--max-count) + 2) * var(--grid-gap) - 1px),
+    calc(var(--max-count) * var(--grid-section-max-width) + (var(--max-count) + 1) * var(--grid-gap))
+)
+
+}
+
+.container {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax( min(var(--grid-section-min-width), 100%), 1fr));
+    grid-gap: 8px var(--grid-gap);
+    padding: 8px var(--grid-gap);
+    max-width: var(--grid-max-width);
+}
