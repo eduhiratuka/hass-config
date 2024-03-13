@@ -5,12 +5,12 @@
 ################################################################################
 
 icon_component_part:
-    template:
-      - notification_component_part
     variables:
         icon: null
-        icon_color: null
+        icon_color: 'disabled'
+
     icon: "[[[ return variables.icon; ]]]"
+
     styles:
         img_cell:
             # Layout Styles
@@ -18,7 +18,7 @@ icon_component_part:
             - height: 40px
 
             # Appearence Styles
-            - background: "[[[ return variables.icon_color !== undefined ?  `color-mix(in srgb, var(--${variables.icon_color}-color) 20%, transparent)` : 'color-mix(in srgb, var(--disabled-color) 20%, transparent)' ]]]"
+            - background: "[[[ return `color-mix(in srgb, var(--${variables.icon_color}-color) 20%, transparent)`; ]]]"
             - border-radius: 100%
         icon:
             # Layout Styles
@@ -26,5 +26,5 @@ icon_component_part:
             - height: 24px
 
             # Appearence Styles
-            - color: "[[[ return variables.icon_color !== undefined ? `var(--${variables.icon_color}-color)` : `var(--primary-text-color)` ]]]"
+            - color: "[[[ return `var(--${variables.icon_color}-color)`; ]]]"
 

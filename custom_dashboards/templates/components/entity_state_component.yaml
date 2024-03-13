@@ -9,6 +9,7 @@ entity_state_component:
         - icon_component_part
         - primary_info_component_part
         - secondary_info_component_part
+        - notification_component_part
 
     variables:
         entity: "sun.sun"

@@ -6,7 +6,7 @@
 
 secondary_info_component_part:
     variables:
-        secondary_info: "[[[ return helpers.localize(states[entity.entity_id]) ]]]"
+        secondary_info: "[[[ return helpers.localize(states[entity.entity_id]); ]]]"
 
     state_display: "[[[ return variables.secondary_info ]]]"
     show_state: true

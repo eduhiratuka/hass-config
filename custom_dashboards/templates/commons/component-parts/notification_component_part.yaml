@@ -5,37 +5,55 @@
 ################################################################################
 
 notification_component_part:
+    variables:
+        badge: null
+        badge_color: null
+
     styles:
         custom_fields:
             notification:
-                - background-color: >
-                      [[[
-                          if (variables.badge_color != undefined) {
-                              return variables.badge_color;
-                          } else {
-                              if (variables.badge != undefined) {
-                                  return 'var(--disabled-color)';
-                              } else {
-                                  return 'transparent';
-                              }
-                          }
-                      ]]]
-                - border-radius: 50%
-                - position: absolute
-                - left: 39px
-                - top: 9px
-                - height: 16px
-                - width: 16px
-                - font-size: 8px
-                - line-height: 16px
+              - background-color: >
+                    [[[
+                        
+                        if (variables.badge_color != undefined) {
+                            return variables.badge_color;
+                        } else {
+                            if (variables.badge != undefined) {
+                                return 'var(--disabled-color)';
+                            } else {
+                                if(['unavailable', 'unknown'].includes(entity.state))  {
+                                    return 'orange';
+                                } else {
+                                    return 'transparent';
+                                }
+                            }
+                        }
+                    ]]]
+              - border-radius: 50%
+              - position: absolute
+              - left: 39px
+              - top: 9px
+              - height: 16px
+              - width: 16px
+              - font-size: 8px
+              - line-height: 14px
+
     custom_fields:
         notification: >
             [[[
-              if (variables.badge != null)
-                return `<ha-icon
-                    icon="${ variables.badge }"
-                    style="width: 12px; height: 12px; color: white;">
-                 </ha-icon>`;
-              else
-                  return '';
+                if (variables.badge != null) {
+                    return `<ha-icon
+                        icon="${ variables.badge }"
+                        style="width: 12px; height: 12px; color: white;">
+                    </ha-icon>`;
+                } else {
+                    if(['unavailable', 'unknown'].includes(entity.state))  {
+                        return `<ha-icon
+                            icon="mdi:help"
+                            style="width: 12px; height: 12px; color: white;">
+                        </ha-icon>`;
+                    } else {
+                        return '';
+                    }
+                }
             ]]]

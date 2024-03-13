@@ -6,7 +6,7 @@
 
 primary_info_component_part:
     variables:
-        primary_info: "Sol"
+        primary_info: "[[[ return states[entity.entity_id]['attributes']['friendly_name']; ]]]"
 
     name: "[[[ return variables.primary_info ]]]"
     show_name: true
