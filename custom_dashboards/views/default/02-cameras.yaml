@@ -12,8 +12,54 @@ icon: mdi:cctv
 type: panel
 cards:
   - type: custom:button-card
-    template: sections_layout
+    template: full_window_layout
     variables:
         header:
             title: Câmeras de Vigilância
             subtitle: "[[[ return states['sensor.frontend_cameras_texto_do_dashboard'].state ]]]"
+        card:
+            type: custom:button-card
+            template: 4ch_camera_panel_card
+            variables:
+                highlighted_camera: "select.casa_cameras_destaque_atual"
+                channel1:
+                    camera_url: frente_camera_da_garagem
+                    camera_name: "Frente: Câmera da Garagem"
+                channel2:
+                    camera_url: frente_camera_da_lateral
+                    camera_name: "Frente: Câmera da Lateral"
+                channel3:
+                    camera_url: fundos_camera_da_piscina
+                    camera_name: "Fundos: Câmera da Piscina"
+                channel4:
+                    camera_url: fundos_camera_do_quintal
+                    camera_name: "Fundos: Câmera do Quintal"
+
+        # sections:
+        #   - horizontal_span: 4
+        #     cards:
+        #       - type: custom:button-card
+        #         template: 4ch_camera_panel_card
+        #         variables:
+        #             highlighted_camera: "select.casa_cameras_destaque_atual"
+        #             channel1:
+        #                 camera_url: frente_camera_da_garagem
+        #                 camera_name: "Frente: Câmera da Garagem"
+        #                 extra_shortcuts:
+        #                     - name: "Abrir Portão"
+        #                       icon: "mdi:garage-variant"
+        #                       service: "cover.toggle"
+        #                       service_data:
+        #                           entity_id: 'cover.frente_portao_da_garagem'
+        #             channel2:
+        #                 camera_url: frente_camera_da_lateral
+        #                 camera_name: "Frente: Câmera da Lateral"
+        #             channel3:
+        #                 camera_url: fundos_camera_da_piscina
+        #                 camera_name: "Fundos: Câmera da Piscina"
+        #             channel4:
+        #                 camera_url: fundos_camera_do_quintal
+        #                 camera_name: "Fundos: Câmera do Quintal"
+        #   - cards:
+        #   - cards:
+        #   - cards:

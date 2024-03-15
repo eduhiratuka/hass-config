@@ -1,0 +1,80 @@
+webrtc_camera_component:
+    template:
+        - no_base_style_mask
+        - clickabled_card_style_mask
+        - workaround_wrapper_style_mask
+    styles:
+        card:
+            - height: 100%
+        grid:
+            - height: 100%
+            - align-items: stretch
+    custom_fields:
+        workaround_wrapper:
+            card:
+                type: "custom:webrtc-camera"
+                url: "[[[ return variables.camera_url ]]]"
+                media: "video"
+                shortcuts: "[[[ return variables.shortcuts ]]]"
+                highlited_camera: "[[[ return variables.highlighted_camera ]]]"
+                camera_name: "[[[ return variables.camera_name ]]]"
+                card_mod:
+                    style:
+                        .shortcuts ha-icon $: |
+                            {% set is_main_camera = is_state(config.highlited_camera, config.camera_name) %}
+
+                            ha-svg-icon {
+                                background-color: rgba(var(--rgb-primary-color), 0.5);
+                                color: rgb(var(--rgb-primary-color));
+                                border-radius: 100%;    
+                            }
+
+                            :host {
+                                --mdc-icon-size: {{ '64px' if is_main_camera else '48px' }};
+                            }
+                            ha-svg-icon {
+                                padding: {{ '16px' if is_main_camera else '12px' }};
+                                margin: {{ '16px' if is_main_camera else '12px' }};
+                            }
+                            @media screen and (max-width: 870px) {
+                                :host {
+                                    --mdc-icon-size: {{ '48px' if is_main_camera else '36px' }};
+                                }
+                                ha-svg-icon {
+                                    padding: {{ '12px' if is_main_camera else '9px' }};
+                                    margin: {{ '12px' if is_main_camera else '9px' }};
+                                }
+                            }
+
+                            @media screen and (max-width: 450px) {
+                                :host {
+                                    --mdc-icon-size: {{ '32px' if is_main_camera else '24px' }};
+                                }
+                                ha-svg-icon {
+                                    padding: {{ '8px' if is_main_camera else '6px' }};
+                                    margin: {{ '8px' if is_main_camera else '6px' }};
+                                }
+                            }
+                        .: |
+                            {% set is_main_camera = is_state(config.highlited_camera, config.camera_name) %}
+                            .shortcuts {
+                                display: grid;
+                                top: 0;
+                                left: 0;
+                                width: {{ 'auto' if is_main_camera else '100%' }};
+                                height: {{ 'auto' if is_main_camera else '100%' }};
+                                grid-template-columns: {{ 'auto' if is_main_camera else '100%' }};
+                                grid-template-rows: 100%;
+                                grid-template-areas: {{ ' . ' if is_main_camera else 'middle-direction' }};
+                            }
+                            .shortcuts:hover {
+                                background-color: rgba(0, 0, 0, 0.5);
+                            }
+                            .shortcuts>*:nth-child(1) {
+                                grid-area: 'middle-direction';
+                                display: {{ 'none' if is_main_camera else 'grid' }};
+                            }
+                            .shortcuts>*:nth-child(n+2) {
+                                justify-items: center;
+                                display: {{ 'grid' if is_main_camera else 'none' }};
+                            }

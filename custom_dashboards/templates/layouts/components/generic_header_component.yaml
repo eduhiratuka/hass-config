@@ -1,0 +1,44 @@
+################################################################################
+#                                                                              #
+#                                                                              #
+#                                                                              #
+################################################################################
+
+generic_header_component:
+    template:
+        - no_base_style_mask
+    show_name: true
+    name: "[[[ return variables.title ]]]"
+    show_state: true
+    state_display: "[[[ return variables.subtitle ]]]"
+    styles:
+        card:
+            - padding: 0px 12px 0px
+            - pointer-events: none
+            - cursor: default
+            - height: 100%
+        grid:
+            - grid-template: "'n' auto 's' auto / auto"
+            - padding: 0 var(--grid-gap)
+        name:
+            - overflow: hidden
+            - text-overflow: ellipsis
+            - white-space: nowrap
+            - place-self: initial
+            - text-align: initial
+            - font-size: 24px
+            - line-height: normal
+            - font-weight: normal
+            - letter-spacing: normal
+            - color: var(--primary-text-color)
+        state:
+            - overflow: hidden
+            - text-overflow: ellipsis
+            - white-space: normal
+            - place-self: initial
+            - text-align: initial
+            - font-size: 16px
+            - line-height: normal
+            - font-weight: normal
+            - letter-spacing: normal
+            - color: var(--secondary-text-color)

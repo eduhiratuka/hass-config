@@ -1,0 +1,52 @@
+################################################################################
+#                                                                              #
+#                                                                              #
+#                                                                              #
+################################################################################
+
+full_window_layout:
+    template:
+      - generic_layout_style_mask
+    variables:
+        header:
+            title: null
+            subtitle: null
+    styles:
+        card:
+          - height: calc(100vh - 56px)
+        grid:
+          - grid-template-areas: |
+                'full_window_header'
+                'full_window_container'
+          - grid-template-rows: |
+                [[[
+                    return variables.header?.title || variables.header?.subtitle ?
+                        '80px calc(100% - 80px)' :
+                        '0px 100%';
+                ]]]
+          - grid-template-columns: auto
+          - max-width: var(--grid-max-width)
+          - height: 100%
+    custom_fields:
+        full_window_header:
+            card:
+                type: custom:button-card
+                template: full_window_header_component
+                variables: "[[[ return variables.header ]]]"
+        full_window_container:
+            card:
+                type: custom:button-card
+                template: full_window_container_component
+                styles:
+                    grid:
+                      - padding: 8px var(--grid-gap)
+                custom_fields: |
+                    [[[
+                        let arrayToMap = {};
+
+                        arrayToMap['custom_card'] = {
+                            card: variables.card
+                        };
+
+                        return arrayToMap;
+                    ]]]

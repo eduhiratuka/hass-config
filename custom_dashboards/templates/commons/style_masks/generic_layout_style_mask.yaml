@@ -1,0 +1,39 @@
+################################################################################
+#                                                                              #
+#                                                                              #
+#                                                                              #
+################################################################################
+
+generic_layout_style_mask:
+    styles:
+        card:
+          - margin: 0
+          - padding: 0
+          - border: 0
+          - border-radius: 0
+          - background: none
+          - pointer-events: none
+          - cursor: default
+    extra_styles: |
+        [[[ 
+            return `:host {
+                --section-count: 4;
+                --grid-gap: 32px;
+                --grid-max-section-count: 4;
+                --grid-section-min-width: 320px;
+                --grid-section-max-width: 500px;
+                
+                --max-count: min(var(--section-count), var(--grid-max-section-count));
+                --grid-max-width: min(calc((var(--max-count) + 1) * var(--grid-section-min-width) + (var(--max-count) + 2) * var(--grid-gap) - 1px), calc(var(--max-count) * var(--grid-section-max-width) + (var(--max-count) + 1) * var(--grid-gap)))
+            }
+
+            @media (max-width: 600px) {
+                :host {
+                    --grid-gap: 8px;
+                }
+            }
+    
+            #full_window_container, #full_window_container > button-card {
+                height: 100%;
+            }`
+        ]]]

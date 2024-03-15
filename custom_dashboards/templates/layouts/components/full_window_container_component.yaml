@@ -1,0 +1,19 @@
+################################################################################
+#                                                                              #
+#                                                                              #
+#                                                                              #
+################################################################################
+
+full_window_container_component:
+    template:
+        - no_base_style_mask
+    styles:
+        card:
+          - height: 100%
+        grid:
+          - grid-template: "'custom_card' 100% / 100%"
+          - height: 100%
+    extra_styles: |
+        #custom_card, #custom_card > button-card {
+            height: 100%;
+        }

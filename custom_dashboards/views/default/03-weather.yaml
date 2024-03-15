@@ -18,13 +18,8 @@ cards:
             title: Previsão do Tempo
             subtitle: Weather Forecast
         sections:
-            - cards:
-                - type: 'custom:weather-radar-card'
-            - cards:
-                - type: 'custom:button-card'
-                  template: entity_picture_component_part
-                  variables:
-                      icon: 'mdi:home'
-                      icon_color: orange
-            - cards:
-            - cards:
+          - cards:
+              - type: 'custom:weather-radar-card'
+          - cards:
+          - cards:
+          - cards:
