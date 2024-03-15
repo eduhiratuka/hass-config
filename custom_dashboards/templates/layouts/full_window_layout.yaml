@@ -37,9 +37,6 @@ full_window_layout:
             card:
                 type: custom:button-card
                 template: full_window_container_component
-                styles:
-                    grid:
-                      - padding: 8px var(--grid-gap)
                 custom_fields: |
                     [[[
                         let arrayToMap = {};

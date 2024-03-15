@@ -2,7 +2,8 @@
 #                            Cameras Dashboard View                            #
 #                                                                              #
 #     Esta view é responsável por exibir as câmeras da casa, permitindo que se #
-# escolha uma câmera em destaque                                               #
+# escolha uma câmera em destaque. A view utiliza o Full Window Layout como     #
+# template e implementa o card 4CH Camera Panel                                #
 #                                                                              #
 ################################################################################
 

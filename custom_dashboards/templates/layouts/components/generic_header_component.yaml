@@ -19,7 +19,6 @@ generic_header_component:
             - height: 100%
         grid:
             - grid-template: "'n' auto 's' auto / auto"
-            - padding: 0 var(--grid-gap)
         name:
             - overflow: hidden
             - text-overflow: ellipsis

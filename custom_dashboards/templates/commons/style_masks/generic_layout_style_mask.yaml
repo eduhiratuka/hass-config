@@ -8,7 +8,7 @@ generic_layout_style_mask:
     styles:
         card:
           - margin: 0
-          - padding: 0
+          - padding: 0 var(--grid-gap) 8px var(--grid-gap)
           - border: 0
           - border-radius: 0
           - background: none
