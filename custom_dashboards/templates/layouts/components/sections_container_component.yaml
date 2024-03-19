@@ -1,0 +1,39 @@
+################################################################################
+#                                                                              #
+#                                                                              #
+#                                                                              #
+################################################################################
+
+sections_container_component:
+    template:
+        - no_base_style_mask
+
+    styles:
+        card:
+            - pointer-events: none
+            - cursor: default
+        grid:
+            - grid-template-columns: repeat(auto-fit, minmax( min(var(--grid-section-min-width), 100%), 1fr))
+            - grid-gap: 8px var(--grid-gap)
+            - margin: 0px auto
+            - align-items: start
+
+    extra_styles: |
+        [[[
+            let styles = "";
+
+            if (Array.isArray(variables.sections)) {
+                for (let i = 0; i < variables.sections.length; i++) {
+                    let vertical_span = variables.sections[i].vertical_span || "1";
+                    
+                    styles += `
+                        #container > *:nth-child(${ i + 1 }) { 
+                            grid-area: span ${ vertical_span } / span 1 !important;
+                        }`
+                }
+            }
+
+            console.log("Sections Container Layout");
+            console.log(styles);
+            return styles;
+        ]]]

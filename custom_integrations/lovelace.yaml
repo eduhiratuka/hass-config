@@ -2,8 +2,20 @@ lovelace:
     mode: yaml
 
     resources:
+        - url: /hacsfiles/apexcharts-card/apexcharts-card.js
+          type: module
         - url: /hacsfiles/button-card/button-card.js
           type: module
+        - url: /hacsfiles/lovelace-mushroom/mushroom.js
+          type: module
+        - url: /hacsfiles/mini-graph-card/mini-graph-card-bundle.js
+          type: module
+        - url: /hacsfiles/weather-radar-card/weather-radar-card.js
+          type: module
+        - url: /webrtc/webrtc-camera.js
+          type: module
+        # - url: /hacsfiles/lovelace-windrose-card/windrose-card.js
+        #   type: module
         # - url: /hacsfiles/clock-weather-card/clock-weather-card.js
         #   type: module
         # - url: /hacsfiles/decluttering-card/decluttering-card.js
@@ -14,16 +26,6 @@ lovelace:
         #   type: module
         # - url: /hacsfiles/lovelace-layout-card/layout-card.js
         #   type: module
-        - url: /hacsfiles/mini-graph-card/mini-graph-card-bundle.js
-          type: module
-        - url: /hacsfiles/lovelace-mushroom/mushroom.js
-          type: module
-        - url: /hacsfiles/weather-radar-card/weather-radar-card.js
-          type: module
-        # - url: /hacsfiles/lovelace-windrose-card/windrose-card.js
-        #   type: module
-        - url: /webrtc/webrtc-camera.js
-          type: module
 
     dashboards:
         ui-support:

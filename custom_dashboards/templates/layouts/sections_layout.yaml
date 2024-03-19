@@ -7,17 +7,29 @@
 sections_layout:
     template:
       - generic_layout_style_mask
+
     variables:
         header:
             title: null
             subtitle: null
         sections: []
+
+
     styles:
         grid:
-          - grid-template-areas: "'sections_header' 'sections_container'"
-          - grid-template-rows: "[[[ return variables.header?.title || variables.header?.subtitle ? '80px auto' : '0px auto'; ]]]"
+          - grid-template-areas: |
+                'sections_header'
+                'sections_container'
+          - grid-template-rows: |
+                [[[
+                    return variables.header?.title || variables.header?.subtitle ? 
+                        '80px auto' :
+                        '0px auto';
+                ]]]
           - grid-template-columns: 100%
           - max-width: var(--grid-max-width)
+
+
     custom_fields:
         sections_header:
             card:
@@ -28,35 +40,9 @@ sections_layout:
             card:
                 type: custom:button-card
                 template:
-                  - no_base_style_mask
-                styles:
-                    card:
-                      - pointer-events: none
-                      - cursor: default
-                    grid:
-                      - grid-template-columns: repeat(auto-fit, minmax( min(var(--grid-section-min-width), 100%), 1fr))
-                      - grid-gap: 8px var(--grid-gap)
-                      - padding: 8px var(--grid-gap)
-                      - margin: 0px auto
-                      - align-items: start
-                extra_styles: |
-                    [[[
-                        let styles = "";
-
-                        if (Array.isArray(variables.sections)) {
-                            for (let i = 0; i < variables.sections.length; i++) {
-                                let vertical_span = variables.sections[i].vertical_span || "1";
-                                
-                                styles += `
-                                    #container > *:nth-child(${ i + 1 }) { 
-                                        grid-area: span ${ vertical_span } / span 1 !important;
-                                    }`
-                            }
-                        }
-
-                        return styles;
-                    ]]]
-                    
+                  - sections_container_component
+                variables:
+                    sections: "[[[ return variables.sections ]]]"
                 custom_fields: |
                     [[[
                         let arrayToMap = {};
