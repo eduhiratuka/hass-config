@@ -1,0 +1,40 @@
+################################################################################
+#                           WebRTC Camera Component                            #
+#                                                                              #
+# @Author Eduardo Hiratuka <edu.hiratuka@gmail.com>                            #
+# @Version 1.0                                                                 #
+#                                                                              #
+################################################################################
+
+apex_graph_component:
+    template:
+        - workaround_wrapper_style_mask
+    custom_fields:
+        workaround_wrapper:
+            card:
+                type: custom:apexcharts-card
+                graph_span: "[[[ return variables.graph_span ]]]"
+                span: "[[[ return variables.span ]]]"
+                series:
+                    - entity: "[[[ return variables.entity ]]]"
+                      name: "[[[ return variables.name ]]]"
+                      type: "[[[ return variables.series_type ]]]"
+                      group_by: "[[[ return variables.series_group_by ]]]"
+                      show:
+                          datalabels: true
+                          legend_value: false
+                          in_header: false
+                apex_config:
+                    dataLabels:
+                        style:
+                            colors: 
+                                - '#FFF'
+                        background:
+                            enabled: false
+                card_mod:
+                    style: |
+                        ha-card {
+                            padding-top: 0 !important;
+                            border: 0;
+                            border-radius: 0;
+                        }

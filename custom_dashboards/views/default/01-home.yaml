@@ -29,70 +29,34 @@ cards:
                 ]]]
             vertical_span: 2
             cards:
+              - type: grid
+                square: false
+                columns: 3
+                cards:
+                  - type: tile
+                    entity: person.eduardo_hiratuka
+                    name: Eduardo
+                    show_entity_picture: true
+                    vertical: true
+                  - type: tile
+                    entity: person.ana_ferreira_hiratuka
+                    show_entity_picture: true
+                    name: Ana
+                    vertical: true
+                  - type: tile
+                    entity: person.mario_hiratuka
+                    show_entity_picture: true
+                    name: Mario
+                    vertical: true
               - type: custom:button-card
-                styles:
-                    card:
-                      - margin: 0
-                      - padding: 0
-                      - border: 0
-                      - border-radius: 0
-                      - background: none
-                    grid:
-                      - grid-template: "'status' auto 'graphic' auto / auto"
-                custom_fields:
-                    status:
-                        card:
-                            type: custom:button-card
-                            template:
-                                - entity_state_component
-                                - border_top_ghost_mask
-                            variables:
-                                entity: sensor.casa_energia_solar_ecu_energia_hoje
-                                primary_info: Geração de Energia - 7 Dias
-                                secondary_info: Info
-                                icon:  mdi:solar-power
-                                icon_color: orange
-                    graphic:
-                        card:
-                            type: custom:button-card
-                            template:
-                                - padding_all_ghost_mask
-                                - border_bottom_ghost_mask
-                            styles:
-                                grid:
-                                    - grid-template: "'contained' 100% / 100%"
-                            custom_fields:
-                                contained:
-                                    card:
-                                        type: custom:apexcharts-card
-                                        graph_span: 7d
-                                        span:
-                                            end: day
-                                        series:
-                                          - entity: sensor.casa_energia_solar_ecu_energia_hoje
-                                            name: Energia Gerada
-                                            type: column
-                                            group_by:
-                                                func: max
-                                                duration: 1d
-                                            show:
-                                                datalabels: true
-                                                legend_value: false
-                                                in_header: false
-                                        apex_config:
-                                            dataLabels:
-                                                style:
-                                                    colors: 
-                                                      - '#FFF'
-                                                background:
-                                                    enabled: false
-                                        card_mod:
-                                            style: |
-                                                ha-card {
-                                                    padding-top: 0 !important;
-                                                    border: 0;
-                                                    border-radius: 0;
-                                                }
+                template: simple_column_apex_panel_card
+                variables:
+                    entity: sensor.casa_energia_solar_ecu_energia_hoje
+                    primary_info: Geração de Energia
+                    secondary_info: Últimos 7 dias
+                    icon: mdi:solar-power
+                    icon_color: orange
+                            
 
           - title: Frente
             cards:

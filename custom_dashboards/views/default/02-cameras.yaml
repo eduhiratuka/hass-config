@@ -5,6 +5,9 @@
 # escolha uma câmera em destaque. A view utiliza o Full Window Layout como     #
 # template e implementa o card 4CH Camera Panel                                #
 #                                                                              #
+# @Author Eduardo Hiratuka <edu.hiratuka@gmail.com>                            #
+# @Version 1.0                                                                 #
+#                                                                              #
 ################################################################################
 
 title: Câmeras de Vigilância
@@ -26,6 +29,12 @@ cards:
                 channel1:
                     camera_url: frente_camera_da_garagem
                     camera_name: "Frente: Câmera da Garagem"
+                    extra_shortcuts:
+                      - name: "Abrir Portão"
+                        icon: mdi:garage-variant
+                        service: cover.toggle
+                        service_data:
+                            entity_id: cover.frente_portao_da_garagem
                 channel2:
                     camera_url: frente_camera_da_lateral
                     camera_name: "Frente: Câmera da Lateral"

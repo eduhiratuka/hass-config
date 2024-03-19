@@ -1,0 +1,44 @@
+################################################################################
+#                        Simple Column Apex Panel Card                         #
+#                                                                              #
+# @Author Eduardo Hiratuka <edu.hiratuka@gmail.com>                            #
+# @Version 1.0                                                                 #
+#                                                                              #
+################################################################################
+
+simple_column_apex_panel_card:
+    template:
+        - no_base_style_mask
+    styles:
+        grid:
+            - grid-template: "'status' auto 'graphic' auto / auto"
+    custom_fields:
+        status:
+            card:
+                type: custom:button-card
+                template:
+                    - entity_state_component
+                    - border_top_ghost_mask
+                variables:
+                    entity: "[[[ return variables.entity ]]]"
+                    primary_info: "[[[ return variables.primary_info ]]]"
+                    secondary_info: "[[[ return variables.secondary_info ]]]"
+                    icon: "[[[ return variables.icon ]]]"
+                    icon_color: "[[[ return variables.icon_color ]]]"
+        graphic:
+            card:
+                type: custom:button-card
+                template:
+                    - apex_graph_component
+                    - padding_all_ghost_mask
+                    - border_bottom_ghost_mask
+                variables:
+                    entity: "[[[ return variables.entity ]]]"
+                    name: "[[[ return variables.primary_info ]]]"
+                    series_type: column
+                    series_group_by:
+                        func: max
+                        duration: 1d
+                    graph_span: 7d
+                    span:
+                        end: day

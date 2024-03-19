@@ -1,3 +1,11 @@
+################################################################################
+#                           WebRTC Camera Component                            #
+#                                                                              #
+# @Author Eduardo Hiratuka <edu.hiratuka@gmail.com>                            #
+# @Version 1.0                                                                 #
+#                                                                              #
+################################################################################
+
 webrtc_camera_component:
     template:
         - no_base_style_mask

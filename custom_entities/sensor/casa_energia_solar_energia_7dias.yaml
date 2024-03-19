@@ -1,0 +1,7 @@
+platform: statistics
+name: "Casa: Energia Solar: Energia 7 Dias"
+unique_id: sensor.casa_energia_solar_energia_7dias
+entity_id: sensor.casa_energia_solar_ecu_energia_hoje
+state_characteristic: datetime_oldest
+max_age:
+    days: 7
