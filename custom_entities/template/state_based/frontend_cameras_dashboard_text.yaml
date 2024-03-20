@@ -1,5 +1,5 @@
 - sensor:
-      - name: "Frontend: Cameras: Texto do Dashboard"
+      - name: "Frontend: Câmeras: Texto do Dashboard"
         unique_id: frontend_cameras_dashboard_text
         state: >-
             {% set server_entity = "binary_sensor.servicos_supervisor_go2rtc_executando" %}
