@@ -1,0 +1,11 @@
+title: Lab
+path: lab
+icon: mdi:rocket-launch
+type: panel
+cards:
+  - type: custom:button-card
+    template: sections_layout
+    variables:
+        header:
+            title: Laboratório de Testes
+            subtitle: Laboratório de Testes

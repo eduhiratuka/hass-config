@@ -34,12 +34,12 @@ lovelace:
             title: Manutenção
             icon: mdi:tools
             show_in_sidebar: true
-            require_admin: true
+            require_admin: false
 
-        ui-default:
+        ui-testlab:
             mode: yaml
-            filename: /config/ui-default.yaml
-            title: Default
-            icon: mdi:test-tube
+            filename: /config/ui-lab.yaml
+            title: Lab YAML
+            icon: mdi:code-json
             show_in_sidebar: true
             require_admin: true

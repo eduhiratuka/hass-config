@@ -29,25 +29,8 @@ cards:
                 ]]]
             vertical_span: 2
             cards:
-              - type: grid
-                square: false
-                columns: 3
-                cards:
-                  - type: tile
-                    entity: person.eduardo_hiratuka
-                    name: Eduardo
-                    show_entity_picture: true
-                    vertical: true
-                  - type: tile
-                    entity: person.ana_ferreira_hiratuka
-                    show_entity_picture: true
-                    name: Ana
-                    vertical: true
-                  - type: tile
-                    entity: person.mario_hiratuka
-                    show_entity_picture: true
-                    name: Mario
-                    vertical: true
+              - type: custom:button-card
+                template: persons_list_panel_card
               - type: custom:button-card
                 template: simple_column_apex_panel_card
                 variables:

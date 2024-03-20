@@ -15,4 +15,4 @@ person:
     name: Ana Ferreira Hiratuka
     user_id: 0de6fb25e4ad45a3a56ef9314152542f
     device_trackers:
-      - device_tracker.roaming_s9_do_edu_localizacao
+      - device_tracker.roaming_g9_play_da_ana_localizacao

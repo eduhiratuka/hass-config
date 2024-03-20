@@ -1,0 +1,47 @@
+################################################################################
+#                            4CH Camera Panel Card                             #
+#                                                                              #
+# @Author Eduardo Hiratuka <edu.hiratuka@gmail.com>                            #
+# @Version 1.0                                                                 #
+#                                                                              #
+################################################################################
+
+persons_list_panel_card:
+    template:
+        - no_base_style_mask
+        - workaround_wrapper_style_mask
+    custom_fields:
+        workaround_wrapper:
+            card:
+                type: custom:button-card
+                template:
+                    - no_base_style_mask
+                styles:
+                    grid:
+                        - grid-template-columns: repeat(auto-fit, minmax( min(80px, 100%), 1fr))
+                        - grid-gap: 8px
+                extra_styles: |
+                    #container > * {
+                        grid-area: auto !important;
+                    }
+                custom_fields: |
+                    [[[
+                        let arrayToMap = {};
+
+                        let personStates = Object.keys(states).filter(item => item.startsWith("person."));
+                        for (let i = 0; i < personStates.length; i++) {
+                            let nome = states[personStates[i]]['attributes']['friendly_name'];
+
+                            arrayToMap['a' + i] = {
+                                card: {
+                                    type: 'custom:mushroom-person-card',
+                                    entity: personStates[i],
+                                    name: nome.split(' ')[0],
+                                    icon_type: 'entity-picture',
+                                    vertical: true
+                                }
+                            };
+                        }
+
+                        return arrayToMap;
+                    ]]]

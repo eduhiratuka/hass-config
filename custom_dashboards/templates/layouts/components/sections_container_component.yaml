@@ -14,6 +14,7 @@ sections_container_component:
             - cursor: default
         grid:
             - grid-template-columns: repeat(auto-fit, minmax( min(var(--grid-section-min-width), 100%), 1fr))
+            - grid-template-rows: auto
             - grid-gap: 8px var(--grid-gap)
             - margin: 0px auto
             - align-items: start
@@ -33,7 +34,5 @@ sections_container_component:
                 }
             }
 
-            console.log("Sections Container Layout");
-            console.log(styles);
             return styles;
         ]]]
