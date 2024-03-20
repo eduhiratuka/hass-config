@@ -4,7 +4,7 @@
 #                                                                              #
 ################################################################################
 
-entity_picture_component_part:
+entity_picture_component_plugin:
     show_entity_picture: true
     styles:
         entity_picture:
