@@ -9,3 +9,22 @@ cards:
         header:
             title: Laboratório de Testes
             subtitle: Laboratório de Testes
+        sections:
+            - title: Teste A
+              cards:
+                - type: custom:mushroom-entity-card
+                  entity: weather.servicos_clima_previsao_do_tempo_em_casa_previsao
+                  name: Previsão do Tempo
+            - title: Teste B
+              cards:
+                - type: custom:button-card
+                  template:
+                      - entity_state_component
+                      - extra_info_component_plugin
+                  variables:
+                      entity: weather.servicos_clima_previsao_do_tempo_em_casa_previsao
+                      primary_info: Previsão do Tempo
+                      tertiary_info_entity: sensor.servicos_clima_previsao_do_tempo_em_casa_temperatura
+                      quaternary_info_entity: sensor.servicos_clima_previsao_do_tempo_em_casa_umidade_relativa
+            - cards: []
+            - cards: []

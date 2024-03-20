@@ -1,0 +1,40 @@
+################################################################################
+#                                                                              #
+#                                                                              #
+#                                                                              #
+################################################################################
+
+extra_info_component_plugin:
+    variables:
+        tertiary_info_entity: "sun.sun"
+        quaternary_info_entity: "sun.sun"
+
+    custom_fields:
+        t: "[[[ return helpers.localize(states[variables.tertiary_info_entity]) ]]]"
+        q: "[[[ return helpers.localize(states[variables.quaternary_info_entity]) ]]]"
+
+    styles:
+        grid:
+            - grid-template: "'i n t' auto 'i s q' min-content / min-content auto min-content"
+
+        custom_fields:
+            t:
+                - overflow: hidden
+                - font-size: 14px
+                - font-weight: 500
+                - letter-spacing: 0.1px
+                - line-height: 20px
+                - text-overflow: ellipsis
+                - white-space: nowrap
+                - color: var(--primary-text-color)
+                - text-align: right
+            q:
+                - overflow: hidden
+                - font-size: 12px
+                - font-weight: 400
+                - letter-spacing: 0.4px
+                - line-height: 16px
+                - text-overflow: ellipsis
+                - white-space: nowrap
+                - color: var(--primary-text-color)
+                - text-align: right

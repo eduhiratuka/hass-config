@@ -22,7 +22,7 @@ secondary_info_component_part:
             - letter-spacing: 0.4px
             - line-height: 16px
             - text-overflow: ellipsis
-            - white-space: normal
+            - white-space: nowrap
 
             # Appearence Styles
             - color: var(--primary-text-color)
