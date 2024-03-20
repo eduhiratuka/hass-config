@@ -4,7 +4,7 @@
 #                                                                              #
 ################################################################################
 
-sections_layout_title:
+sections_layout_title_component:
     template:
         - no_base_style_mask
     variables:

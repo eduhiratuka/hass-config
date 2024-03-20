@@ -4,7 +4,7 @@
 #                                                                              #
 ################################################################################
 
-sections_layout_box:
+sections_layout_box_component:
     template:
         - no_base_style_mask
         - workaround_wrapper_style_mask
@@ -36,7 +36,7 @@ sections_layout_box:
                             arrayToMap['a0'] = {
                                 card: {
                                     type: 'custom:button-card',
-                                    template: 'sections_layout_title',
+                                    template: 'sections_layout_title_component',
                                     variables: {
                                         title: variables.title
                                     }

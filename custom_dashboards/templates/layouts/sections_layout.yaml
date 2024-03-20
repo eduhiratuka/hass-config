@@ -52,7 +52,7 @@ sections_layout:
                                 arrayToMap['a' + i] = {
                                     card: {
                                         type: 'custom:button-card',
-                                        template: 'sections_layout_box',
+                                        template: 'sections_layout_box_component',
                                         variables: variables.sections[i]
                                     }
                                 };
