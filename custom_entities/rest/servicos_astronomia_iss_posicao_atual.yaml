@@ -1,0 +1,12 @@
+resource: https://api.wheretheiss.at/v1/satellites/25544
+scan_interval: 30
+sensor:
+  - unique_id: servicos_astronomia_iss_posicao_atual
+    name: "Serviços: Astronomia: ISS: Posição Atual"
+    value_template: 'OK'
+    json_attributes:
+      - latitude
+      - longitude
+      - altitude
+      - velocity
+      - visibility
