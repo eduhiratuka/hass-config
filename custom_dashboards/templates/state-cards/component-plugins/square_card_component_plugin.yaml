@@ -1,0 +1,22 @@
+################################################################################
+#                                                                              #
+#                                                                              #
+#                                                                              #
+################################################################################
+
+square_card_component_plugin:
+    variables:
+        proportion: 50%
+    styles:
+        card:
+            - padding-top: "[[[ return variables.proportion ]]]"
+            - height: 0
+            - position: relative
+        grid:
+            - padding: 12px
+            - height: calc(100% - 24px)
+            - width: calc(100% - 24px)
+            - position: absolute
+            - top: 0
+            - left: 0
+            - align-content: baseline

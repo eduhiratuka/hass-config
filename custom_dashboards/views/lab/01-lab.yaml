@@ -190,34 +190,10 @@ cards:
           - title: Teste C
             cards: 
               - type: custom:button-card
-                template: entity_state_component
-                entity: weather.servicos_clima_previsao_do_tempo_em_casa_previsao
+                template: weather_state_card
                 variables:
-                    primary_info: Tempo Agora
-                    icon_color: blue
-                styles:
-                    card:
-                      - background: |
-                            [[[
-                                const url = states['sensor.frontend_previsao_do_tempo_weather_frog_background'].state;
-                                const color = states['sensor.frontend_previsao_do_tempo_weather_frog_background'].attributes.color.join(", ");
-                                console.log(url);
-                                console.log(color);
- 
-                                return `linear-gradient(to top, transparent, rgba(${ color }, 10%)), url(${ url })`;
-                            ]]]
-                      - background-position: bottom left 30%
-                      - background-repeat: no-repeat
-                      - background-size: 200%
-                      - padding-top: 50%;
-                      - height: 0
-                      - position: relative
-                    grid:
-                      - padding: 12px
-                      - height: calc(100% - 24px)
-                      - width: calc(100% - 24px)
-                      - position: absolute
-                      - top: 0
-                      - left: 0
-                      - align-content: baseline
+                    a0_weather_entity: weather.servicos_clima_previsao_do_tempo_em_casa_previsao
+                    a0_froggy_entity: sensor.frontend_previsao_do_tempo_weather_frog_background
+                    a0_temperature_entity: sensor.servicos_clima_previsao_do_tempo_em_casa_temperatura
+                    a0_humidity_entity: sensor.servicos_clima_previsao_do_tempo_em_casa_umidade_relativa
           - cards: []

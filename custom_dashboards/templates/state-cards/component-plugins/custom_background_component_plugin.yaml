@@ -1,0 +1,12 @@
+################################################################################
+#                                                                              #
+#                                                                              #
+#                                                                              #
+################################################################################
+
+custom_background_component_plugin:
+    variables:
+        xbackground: transparent
+    styles:
+        card:
+            - background: "[[[ return variables.xbackground ]]]"

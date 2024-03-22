@@ -1,0 +1,22 @@
+
+
+
+weather_state_card:
+    template:
+        - entity_state_component
+        - extra_info_component_plugin
+        - custom_background_component_plugin
+        - square_card_component_plugin
+    variables:
+        entity: "[[[ return variables.a0_weather_entity ]]]"
+        primary_info: Tempo Agora
+        icon_color: primary
+        tertiary_info_entity: "[[[ return variables.a0_temperature_entity ]]]"
+        quaternary_info_entity: "[[[ return variables.a0_humidity_entity ]]]"
+        xbackground: |
+            [[[
+                const url = states[variables.a0_froggy_entity].state;
+                const color = states[variables.a0_froggy_entity].attributes.color.join(", ");
+
+                return `linear-gradient(to top, transparent, rgba(${ color }, 10%)), url(${ url }) bottom left 30% / 200% no-repeat`;
+            ]]]
