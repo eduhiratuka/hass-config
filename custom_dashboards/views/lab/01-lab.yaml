@@ -190,11 +190,34 @@ cards:
           - title: Teste C
             cards: 
               - type: custom:button-card
+                template: entity_state_component
+                entity: weather.servicos_clima_previsao_do_tempo_em_casa_previsao
+                variables:
+                    primary_info: Tempo Agora
+                    icon_color: blue
                 styles:
                     card:
-                      - background-image: "[[[ return 'url(' + states['sensor.frontend_previsao_do_tempo_weather_frog_background'].state + ')' ]]]"
-                      - background-position: left bottom;
-                      - background-repeat: no-repeat;
-                      - background-size: 200%;
-                      - height: 240px
+                      - background: |
+                            [[[
+                                const url = states['sensor.frontend_previsao_do_tempo_weather_frog_background'].state;
+                                const color = states['sensor.frontend_previsao_do_tempo_weather_frog_background'].attributes.color.join(", ");
+                                console.log(url);
+                                console.log(color);
+ 
+                                return `linear-gradient(to top, transparent, rgba(${ color }, 10%)), url(${ url })`;
+                            ]]]
+                      - background-position: bottom left 30%
+                      - background-repeat: no-repeat
+                      - background-size: 200%
+                      - padding-top: 50%;
+                      - height: 0
+                      - position: relative
+                    grid:
+                      - padding: 12px
+                      - height: calc(100% - 24px)
+                      - width: calc(100% - 24px)
+                      - position: absolute
+                      - top: 0
+                      - left: 0
+                      - align-content: baseline
           - cards: []

@@ -106,6 +106,40 @@
             {% endif %}
 
             {{ base_url + img_url }}
+        attributes:
+            color: >-
+                {% set entity = states('weather.servicos_clima_previsao_do_tempo_em_casa_previsao') %}
+                {% set sun = states('sun.sun') %}
+                {% set color = '24, 159, 215' %}
+
+                {% if entity == 'fog' %}
+                    {% set color = '184, 168, 168' %}
+                {% elif entity == 'hail' %}
+                    {% set color = '103, 143, 164' %}
+                {% elif entity == 'lightning' or entity == 'lightning-rainy' or entity == 'exceptional' %}
+                    {% set color = '162, 84, 130' %}
+                {% elif entity == 'snowy' or entity == 'snowy-rainy' %}
+                    {% set color = '109, 144, 152' %}
+                {% elif drizzle == 'pouring' or entity == 'rainy' %}
+                    {% set color = '40, 130, 221' %}
+                {% elif entity == 'clear-night' or entity == 'sunny' %}
+                    {% if sun == 'below_horizon' %}
+                        {% set color = '124, 76, 242' %}
+                    {% else %}
+                        {% set color = '24, 159, 215' %}
+                    {% endif %}
+                {% elif entity == 'partlycloudy' %}
+                    {% if sun == 'below_horizon' %}
+                        {% set color = '137, 135, 218' %}
+                    {% else %}
+                        {% set color = '100, 165, 208' %}
+                    {% endif %}
+                {% elif entity == 'cloudy' %}
+                    {% set color = '145, 169, 206' %}
+                {% endif %}
+
+                {{ color }}
+
 
 # HASS States (Not Used)
 #     windy
