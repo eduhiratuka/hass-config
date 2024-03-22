@@ -17,7 +17,7 @@ simple_column_apex_panel_card:
             card:
                 type: custom:button-card
                 template:
-                    - entity_state_component
+                    - generic_state_card
                     - border_top_ghost_mask
                 variables:
                     entity: "[[[ return variables.entity ]]]"
@@ -30,7 +30,6 @@ simple_column_apex_panel_card:
                 type: custom:button-card
                 template:
                     - apex_graph_component
-                    - padding_all_ghost_mask
                     - border_bottom_ghost_mask
                 variables:
                     entity: "[[[ return variables.entity ]]]"
