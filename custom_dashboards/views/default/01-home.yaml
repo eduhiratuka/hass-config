@@ -32,15 +32,12 @@ cards:
               - type: custom:button-card
                 template: persons_list_panel_card
               - type: custom:button-card
-                template:
-                    - entity_state_component
-                    - extra_info_component_plugin
+                template: weather_state_card
                 variables:
-                    entity: weather.servicos_clima_previsao_do_tempo_em_casa_previsao
-                    primary_info: Previsão do Tempo
-                    icon_color: primary
-                    tertiary_info_entity: sensor.servicos_clima_previsao_do_tempo_em_casa_temperatura
-                    quaternary_info_entity: sensor.servicos_clima_previsao_do_tempo_em_casa_umidade_relativa
+                    a0_weather_entity: weather.servicos_clima_previsao_do_tempo_em_casa_previsao
+                    a0_froggy_entity: sensor.frontend_previsao_do_tempo_weather_frog_background
+                    a0_temperature_entity: sensor.servicos_clima_previsao_do_tempo_em_casa_temperatura
+                    a0_humidity_entity: sensor.servicos_clima_previsao_do_tempo_em_casa_umidade_relativa
               - type: custom:button-card
                 template: simple_column_apex_panel_card
                 variables:

@@ -19,7 +19,14 @@ cards:
             subtitle: Weather Forecast
         sections:
           - cards:
-              - type: 'custom:weather-radar-card'
+              - type: custom:button-card
+                template: weather_state_card
+                variables:
+                    a0_weather_entity: weather.servicos_clima_previsao_do_tempo_em_casa_previsao
+                    a0_froggy_entity: sensor.frontend_previsao_do_tempo_weather_frog_background
+                    a0_temperature_entity: sensor.servicos_clima_previsao_do_tempo_em_casa_temperatura
+                    a0_humidity_entity: sensor.servicos_clima_previsao_do_tempo_em_casa_umidade_relativa
           - cards:
+              - type: 'custom:weather-radar-card'
           - cards:
           - cards:
