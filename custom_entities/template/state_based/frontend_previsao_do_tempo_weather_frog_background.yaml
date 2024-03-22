@@ -1,0 +1,119 @@
+  - sensor:
+      - name: 'Frontend: Previsão do Tempo: Weather Frog Background'
+        unique_id: frontend_previsao_do_tempo_weather_frog_background
+        state: >-
+            {% set entity = states('weather.servicos_clima_previsao_do_tempo_em_casa_previsao') %}
+            {% set sun = states('sun.sun') %} 
+            {% set base_url = 'https://raw.githubusercontent.com/Senexis/Google-Weather-Frog/master/images/wide/' %}
+            {% set img_url = '01-sunny-beach-reading.png' %}
+
+            {% if entity == 'fog' %}
+                {% set img_url = [
+                    '26-haze-fog-dust-smoke-busstop-waiting.png',
+                    '26-haze-fog-dust-smoke-fruit-stand.png',
+                    '26-haze-fog-dust-smoke-pier.png',
+                    '26-haze-fog-dust-smoke-bridge.png',
+                    '26-haze-fog-dust-smoke-field-lantern.png',
+                    '26-haze-fog-dust-smoke-hills-cocoa.png',
+                    '26-haze-fog-dust-smoke-rooftop.png',
+                    '26-haze-fog-dust-smoke-mountain.png'] | random()
+                %}
+            {% elif entity == 'hail' %}
+                {% set img_url = [
+                    '19-mixed-rain-hail-rain-sleet-busstop-waiting.png',
+                    '19-mixed-rain-hail-rain-sleet-cafe-entering.png'] | random()
+                %}
+            {% elif entity == 'lightning' or entity == 'lightning-rainy' or entity == 'exceptional' %}
+                {% set img_url = [
+                    '22-iso-thunderstorm-cafe-looking-outside.png',
+                    '22-iso-thunderstorms-home-inside.png','24-strong-thunderstorms-home-inside.png'] | random()
+                %}
+            {% elif entity == 'snowy' or entity == 'snowy-rainy' %}
+                {% set img_url = [
+                    '13-flurries-citypark-snowman.png',
+                    '15-snow-showers-snow-citypark-snowman.png',
+                    '20-rain-snow-wintry-mix-citypark-snowman.png',
+                    '13-flurries-creek-iceskating.png',
+                    '15-snow-showers-snow-creek-iceskating.png',
+                    '16-blowing-snow-field-snowman.png',
+                    '15-snow-showers-snow-home-shoveling.png'] | random()
+                %}
+            {% elif drizzle == 'pouring' or entity == 'rainy' %}
+                {% set img_url = [
+                    '12-heavy-rain-busstop-umbrella.png',
+                    '11-rain-creek-leaf.png','12-heavy-rain-creek-leaf.png',
+                    '11-rain-hills-umbrella.png',
+                    '11-rain-home-inside.png','11-rain-home-laundry.png',
+                    '11-rain-home-inside.png','11-rain-home-laundry.png'] | random()
+                %}
+            {% elif entity == 'clear-night' or entity == 'sunny' %}
+                {% if sun == 'below_horizon' %}
+                    {% set img_url = [
+                        '05-clear-home-lounging.png',
+                        '05-clear-creek-stars.png',
+                        '05-clear-field-lanterns.png',
+                        '05-clear-hills-camping.png','05-clear-hills-telescope.png',
+                        '05-clear-home-lounging.png',
+                        '05-clear-orchard-fireflies.png'] | random()
+                    %}
+                {% else %}
+                    {% set img_url = [
+                        '01-sunny-beach-reading.png',
+                        '01-sunny-beach-sandcastle.png',
+                        '01-sunny-beach-sunscreen.png',
+                        '01-sunny-citypark-sunbathing.png',
+                        '01-sunny-rooftop-pinacolada.png',
+                        '01-sunny-creek-swimming.png',
+                        '01-sunny-field-kite.png',
+                        '01-sunny-hills-sunbathing.png',
+                        '01-sunny-home-laundry.png',
+                        '01-sunny-orchard-picking.png'] | random()
+                    %}
+                {% endif %}
+            {% elif entity == 'partlycloudy' %}
+                {% if sun == 'below_horizon' %}
+                    {% set img_url = [
+                        '07-partly-cloudy-night-home-inside.png',
+                        '07-partly-cloudy-night-creek-fireflies.png',
+                        '07-partly-cloudy-night-field-fireflies.png',
+                        '07-partly-cloudy-night-hills-smores.png',
+                        '07-partly-cloudy-night-home-inside.png',
+                        '07-partly-cloudy-night-orchard-eating.png'] | random()
+                    %}
+                {% else %}
+                    {% set img_url = [
+                        '03-partly-cloudy-day-beach-shells.png',
+                        '03-partly-cloudy-day-citypark-ukelele.png',
+                        '03-partly-cloudy-day-creek-feet.png',
+                        '03-partly-cloudy-day-field-biking.png',
+                        '03-partly-cloudy-day-field-hiking.png',
+                        '03-partly-cloudy-day-hills-painting.png',
+                        '03-partly-cloudy-day-hills-reading.png',
+                        '03-partly-cloudy-day-home-flowers.png',
+                        '03-partly-cloudy-day-orchard-butterflies.png',
+                        '03-partly-cloudy-day-orchard-treeswing.png'] | random()
+                    %}
+                {% endif %}
+            {% elif entity == 'cloudy' %}
+                {% set img_url = [
+                    '26-haze-fog-dust-smoke-fruit-stand.png',
+                    '26-haze-fog-dust-smoke-bridge.png',
+                    '26-haze-fog-dust-smoke-mountain.png',
+                    '09-cloudy-hills-coffee.png',
+                    '09-cloudy-home-flowers.png',
+                    '09-cloudy-orchard-watching.png'] | random()
+                %}
+            {% endif %}
+
+            {{ base_url + img_url }}
+
+# HASS States (Not Used)
+#     windy
+#     windy-variant
+
+# Google States (Not Used)
+#    drizzle
+#    mostly-clear
+#    mostly-cloudy-night
+#    mostly-sunny
+#    mostly-cloudy-day

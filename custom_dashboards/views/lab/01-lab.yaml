@@ -10,21 +10,191 @@ cards:
             title: Laboratório de Testes
             subtitle: Laboratório de Testes
         sections:
-            - title: Teste A
-              cards:
-                - type: custom:mushroom-entity-card
-                  entity: weather.servicos_clima_previsao_do_tempo_em_casa_previsao
-                  name: Previsão do Tempo
-            - title: Teste B
-              cards:
-                - type: custom:button-card
-                  template:
-                      - entity_state_component
-                      - extra_info_component_plugin
-                  variables:
-                      entity: weather.servicos_clima_previsao_do_tempo_em_casa_previsao
-                      primary_info: Previsão do Tempo
-                      tertiary_info_entity: sensor.servicos_clima_previsao_do_tempo_em_casa_temperatura
-                      quaternary_info_entity: sensor.servicos_clima_previsao_do_tempo_em_casa_umidade_relativa
-            - cards: []
-            - cards: []
+          - title: Teste A
+            cards:
+              - type: custom:apexcharts-card
+                graph_span: 12h
+                now:
+                    show: true
+                    color: blue
+                span:
+                    start: hour
+                series:
+                  - entity: weather.servicos_clima_previsao_do_tempo_em_casa_previsao
+                    name: Previsão
+                    type: area
+                    opacity: 0.2
+                    stroke_width: 2
+                    curve: smooth
+                    extend_to: now
+                    show:
+                        datalabels: true
+                    data_generator: >
+                        let result = await hass.callWS({
+                            type: 'execute_script',
+                            sequence: [{
+                                service: 'weather.get_forecasts',
+                                data: {
+                                    type: 'hourly'
+                                },
+                                target: {
+                                    entity_id: 'weather.servicos_clima_previsao_do_tempo_em_casa_previsao'
+                                },
+                                response_variable: "service_result"
+                            }, {
+                                stop: "done",
+                                response_variable: "service_result"
+                            }]
+                        });
+
+                        const tempAtual = hass.states['sensor.servicos_clima_previsao_do_tempo_em_casa_temperatura'].state;
+                        const forecast = result.response['weather.servicos_clima_previsao_do_tempo_em_casa_previsao']['forecast'];
+                        const startTime = start.getTime();
+                        const endTime = end.getTime();
+
+                        let indexTime = startTime;
+                        const dados = [[indexTime, +tempAtual]];
+                        while(indexTime < endTime) {
+                            indexTime = indexTime + 3600000;
+                            let objetoDesejado = forecast.find(objeto => {
+                                return new Date(objeto.datetime).getTime() === indexTime
+                            });
+                            if(objetoDesejado != null) {
+                                dados.push([indexTime, objetoDesejado.temperature]);
+                            }
+                        }
+
+                        return dados;
+
+
+
+          - title: Teste B
+            cards:
+              - type: custom:apexcharts-card
+                graph_span: 12h
+                now:
+                    show: true
+                    color: red
+                span:
+                    start: hour
+                apex_config:
+                    legend:
+                        show: false
+                    dataLabels:
+                        style:
+                            colors:
+                              - '#FFF'
+                        background:
+                            enabled: false
+                yaxis:
+                    - id: quantidade
+                      min: 0
+                    - id: probabilidade
+                      min: 0
+                      max: 100
+                      show: false
+                series:
+                  - entity: weather.servicos_clima_previsao_do_tempo_em_casa_previsao
+                    yaxis_id: quantidade
+                    name: Precipitação
+                    unit: mm
+                    type: column
+                    color: blue
+                    extend_to: now
+                    show:
+                        datalabels: true
+                    data_generator: >
+                        let result = await hass.callWS({
+                            type: 'execute_script',
+                            sequence: [{
+                                service: 'weather.get_forecasts',
+                                data: {
+                                    type: 'hourly'
+                                },
+                                target: {
+                                    entity_id: 'weather.servicos_clima_previsao_do_tempo_em_casa_previsao'
+                                },
+                                response_variable: "service_result"
+                            }, {
+                                stop: "done",
+                                response_variable: "service_result"
+                            }]
+                        });
+
+                        const tempAtual = hass.states['sensor.servicos_clima_previsao_do_tempo_em_casa_temperatura'].state;
+                        const forecast = result.response['weather.servicos_clima_previsao_do_tempo_em_casa_previsao']['forecast'];
+                        const startTime = start.getTime();
+                        const endTime = end.getTime();
+
+                        let indexTime = startTime;
+                        const dados = [[indexTime, 0]];
+                        while(indexTime < endTime) {
+                              indexTime = indexTime + 3600000;
+                              let objetoDesejado = forecast.find(objeto => {
+                                  return new Date(objeto.datetime).getTime() === indexTime
+                              });
+                              if(objetoDesejado != null) {
+                                  dados.push([indexTime, objetoDesejado.precipitation]);
+                              }
+                        }
+    
+                        return dados;
+                  - entity: weather.servicos_clima_previsao_do_tempo_em_casa_previsao
+                    yaxis_id: probabilidade
+                    name: Probabilidade
+                    unit: '%'
+                    type: line
+                    color: orange
+                    stroke_width: 3
+                    curve: straight
+                    extend_to: now
+                    show:
+                        datalabels: false
+                    data_generator: >
+                        let result = await hass.callWS({
+                            type: 'execute_script',
+                            sequence: [{
+                                service: 'weather.get_forecasts',
+                                data: {
+                                    type: 'hourly'
+                                },
+                                target: {
+                                    entity_id: 'weather.servicos_clima_previsao_do_tempo_em_casa_previsao'
+                                },
+                                response_variable: "service_result"
+                            }, {
+                                stop: "done",
+                                response_variable: "service_result"
+                            }]
+                        });
+
+                        const tempAtual = hass.states['sensor.servicos_clima_previsao_do_tempo_em_casa_temperatura'].state;
+                        const forecast = result.response['weather.servicos_clima_previsao_do_tempo_em_casa_previsao']['forecast'];
+                        const startTime = start.getTime();
+                        const endTime = end.getTime();
+                        
+                        let indexTime = startTime;
+                        const dados = [[indexTime, 0]];
+                        while(indexTime < endTime) {
+                              indexTime = indexTime + 3600000;
+                              let objetoDesejado = forecast.find(objeto => {
+                                  return new Date(objeto.datetime).getTime() === indexTime
+                              });
+                              if(objetoDesejado != null) {
+                                  dados.push([indexTime, objetoDesejado.precipitation_probability]);
+                              }
+                        }
+    
+                        return dados;
+
+          - title: Teste C
+            cards: 
+              - type: custom:button-card
+                styles:
+                    card:
+                      - background-image: "[[[ return 'url(' + states['sensor.frontend_previsao_do_tempo_weather_frog_background'].state + ')' ]]]"
+                      - background-position: left bottom;
+                      - background-repeat: no-repeat;
+                      - background-size: 200%;
+                      - height: 240px
+          - cards: []
