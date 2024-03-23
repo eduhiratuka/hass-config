@@ -1,0 +1,40 @@
+controller_row_tests:
+    template:
+        - icon_component_part
+        - no_base_style_mask
+
+    
+    triggers_update:
+        - "[[[ return variables.entity ]]]"
+
+    variables:
+        icon_color: |
+            [[[
+                if (variables.disabled_when == 'active' && states[variables.entity].state == variables.active_state) {
+                    return 'disabled';
+                }
+                return 'disabled-text'
+            ]]]
+        
+
+    show_name: false
+
+    tap_action:
+        action: navigate
+        navigation_path: /ui-testlab/lab
+
+    styles:
+        card:
+          - border-radius: 12px
+          - pointer-events: all
+          - cursor: pointer
+
+        grid:
+          - grid-template: "'i' 100% / 100%"
+
+        img_cell:
+          - border-radius: 12px
+          - width: 100%
+
+        icon:
+            - width: 20px

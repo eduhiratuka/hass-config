@@ -9,7 +9,7 @@
 icon_component_part:
     variables:
         icon: null
-        icon_color: 'disabled'
+        icon_color: null
 
     icon: "[[[ return variables.icon; ]]]"
 
@@ -20,7 +20,12 @@ icon_component_part:
             - height: 40px
 
             # Appearence Styles
-            - background: "[[[ return `color-mix(in srgb, var(--${variables.icon_color}-color) 20%, transparent)`; ]]]"
+            - background: |
+                [[[
+                    if(variables.icon_color == undefined) return 'color-mix(in srgb, var(--disabled-color) 20%, transparent)';
+                    if(variables.icon_color == 'disabled-text') return `color-mix(in srgb, var(--disabled-color) 20%, transparent)`;
+                    return `color-mix(in srgb, var(--${variables.icon_color}-color) 20%, transparent)`;
+                ]]]
             - border-radius: 100%
         icon:
             # Layout Styles
@@ -28,5 +33,10 @@ icon_component_part:
             - height: 24px
 
             # Appearence Styles
-            - color: "[[[ return `var(--${variables.icon_color}-color)`; ]]]"
+            - color: |
+                [[[
+                    if (variables.icon_color == undefined) return `var(--disabled-color)`;
+                    if(variables.icon_color == 'disabled-text') return `var(--primary-text-color)`;
+                    return `var(--${variables.icon_color}-color)`;
+                ]]]
 

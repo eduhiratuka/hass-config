@@ -15,6 +15,7 @@ generic_state_card:
 
     variables:
         entity: "sun.sun"
+        controllers: []
 
     entity: "[[[ return variables.entity ]]]"
 
@@ -28,7 +29,13 @@ generic_state_card:
 
         grid:
             # Grid Styles
-            - grid-template: "'i n' auto 'i s' min-content / min-content auto"
+            - grid-template: |
+                [[[
+                    if(variables.controllers.length > 0) {
+                        return "'i n' auto 'i s' min-content 'controller-container controller-container' min-content / min-content auto";    
+                    }
+                    return "'i n' auto 'i s' min-content / min-content auto";
+                ]]]
 
         img_cell:
             # Layout Styles
@@ -49,3 +56,56 @@ generic_state_card:
 
             # Text Styles
             - text-align: initial
+
+    extra_styles: |
+        [[[
+            let display = variables.controllers.length > 0 ? 'block' : 'none';
+            
+            return `#container #controller-container {
+                display: ${ display }
+            }`;
+        ]]]
+    custom_fields:
+        controller-container:
+            card:
+                type: custom:button-card
+                styles:
+                    card:
+                        - margin-top: 12px
+                        - padding: 0
+                        - border: 0
+                        - height: 40px
+                    grid:
+                        - height: 40px
+                        - grid-template-areas: none
+                        - grid-template-rows: none
+                        - grid-template-columns: none
+                        - grid-auto-flow: column
+                        - column-gap: 12px
+                extra_styles: |
+                    #container > * {
+                        grid-area: auto !important;
+                    }
+                custom_fields: |
+                    [[[
+                        if(variables.controllers.length > 0) {
+                            let arrayToMap = {};
+
+                            for (let i = 0; i < variables.controllers.length; i++) {
+                                let controller = variables.controllers[i];
+                                controller.entity = variables.entity;
+
+                                arrayToMap['a' + i] = {
+                                    card: {
+                                        type: 'custom:button-card',
+                                        template: 'controller_row_tests',
+                                        variables: controller
+                                    }
+                                };
+                            }
+                        
+                            return arrayToMap;
+                        }
+                        return "";
+                    ]]]
+
