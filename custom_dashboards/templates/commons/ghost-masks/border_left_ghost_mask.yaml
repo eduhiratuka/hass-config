@@ -1,6 +1,14 @@
 ################################################################################
+# Border Left Ghost Mask                                                       #
 #                                                                              #
+#     Border Left é um ghost mask que deve ser aplicado a componentes quando   #
+# deseja-se formar um único card apartir de outros. Este Ghost Mask deverá ser #
+# aplicado a cards que ficarão no lado esquerdo do cartão único e pode ser u-  #
+# tilizado com outros Ghost Mask para formar posições como superior-esquerdo,  #
+# inferior-esquerdo ou central                                                 #
 #                                                                              #
+# @Author Eduardo Hiratuka <edu.hiratuka@gmail.com>                            #
+# @Version 1.0                                                                 #
 #                                                                              #
 ################################################################################
 

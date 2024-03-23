@@ -1,6 +1,8 @@
 ################################################################################
+# Notification Component Part                                                  #
 #                                                                              #
-#                                                                              #
+# @Author Eduardo Hiratuka <edu.hiratuka@gmail.com>                            #
+# @Version 1.0                                                                 #
 #                                                                              #
 ################################################################################
 
@@ -31,8 +33,8 @@ notification_component_part:
                     ]]]
               - border-radius: 50%
               - position: absolute
-              - left: 39px
-              - top: 9px
+              - left: 39px # 12px (margem) + 40px (img_cell) - 16px (tamanho) + 3px (pra fora)
+              - top: 9px # 12px (margem) - 3px (pra fora)
               - height: 16px
               - width: 16px
               - font-size: 8px

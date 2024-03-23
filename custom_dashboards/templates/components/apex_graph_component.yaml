@@ -1,5 +1,5 @@
 ################################################################################
-#                           WebRTC Camera Component                            #
+# Apex Graph Component                                                         #
 #                                                                              #
 # @Author Eduardo Hiratuka <edu.hiratuka@gmail.com>                            #
 # @Version 1.0                                                                 #
@@ -7,8 +7,8 @@
 ################################################################################
 
 apex_graph_component:
-    template:
-        - workaround_wrapper_style_mask
+    template: generic_component
+
     custom_fields:
         workaround_wrapper:
             card:

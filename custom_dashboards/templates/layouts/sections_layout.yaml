@@ -1,12 +1,13 @@
 ################################################################################
+# Sections Layout                                                              #
 #                                                                              #
-#                                                                              #
+# @Author Eduardo Hiratuka <edu.hiratuka@gmail.com>                            #
+# @Version 1.0                                                                 #
 #                                                                              #
 ################################################################################
 
 sections_layout:
-    template:
-      - generic_layout_style_mask
+    template: generic_layout
 
     variables:
         header:

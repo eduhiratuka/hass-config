@@ -1,5 +1,5 @@
 ################################################################################
-#                           WebRTC Camera Component                            #
+# WebRTC Camera Component                                                      #
 #                                                                              #
 # @Author Eduardo Hiratuka <edu.hiratuka@gmail.com>                            #
 # @Version 1.0                                                                 #
@@ -7,16 +7,8 @@
 ################################################################################
 
 webrtc_camera_component:
-    template:
-        - no_base_style_mask
-        - clickabled_card_style_mask
-        - workaround_wrapper_style_mask
-    styles:
-        card:
-            - height: 100%
-        grid:
-            - height: 100%
-            - align-items: stretch
+    template: generic_component
+
     custom_fields:
         workaround_wrapper:
             card:

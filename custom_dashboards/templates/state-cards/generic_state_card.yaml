@@ -1,10 +1,12 @@
 ################################################################################
+# Generic State Card                                                           #
 #                                                                              #
-#                                                                              #
+# @Author Eduardo Hiratuka <edu.hiratuka@gmail.com>                            #
+# @Version 1.0                                                                 #
 #                                                                              #
 ################################################################################
 
-entity_state_component:
+generic_state_card:
     template:
         - icon_component_part
         - primary_info_component_part

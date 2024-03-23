@@ -27,7 +27,7 @@ cards:
 
                     return welcomeText;
                 ]]]
-            vertical_span: 2
+            vertical_span: 4
             cards:
               - type: custom:button-card
                 template: persons_list_panel_card

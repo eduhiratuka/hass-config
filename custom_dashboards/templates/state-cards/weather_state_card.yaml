@@ -1,12 +1,18 @@
-
-
+################################################################################
+# Weather State Card                                                           #
+#                                                                              #
+# @Author Eduardo Hiratuka <edu.hiratuka@gmail.com>                            #
+# @Version 1.0                                                                 #
+#                                                                              #
+################################################################################
 
 weather_state_card:
     template:
-        - entity_state_component
+        - generic_state_card
         - extra_info_component_plugin
         - custom_background_component_plugin
         - square_card_component_plugin
+
     variables:
         entity: "[[[ return variables.a0_weather_entity ]]]"
         primary_info: Tempo Agora

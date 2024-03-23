@@ -1,5 +1,0 @@
-clickabled_card_style_mask:
-    styles:
-        card:
-          - pointer-events: all
-          - cursor: pointer

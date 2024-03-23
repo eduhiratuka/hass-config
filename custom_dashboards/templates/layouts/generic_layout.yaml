@@ -1,10 +1,12 @@
 ################################################################################
+# Generic Layout                                                               #
 #                                                                              #
-#                                                                              #
+# @Author Eduardo Hiratuka <edu.hiratuka@gmail.com>                            #
+# @Version 1.0                                                                 #
 #                                                                              #
 ################################################################################
 
-generic_layout_style_mask:
+generic_layout:
     styles:
         card:
           - margin: 0

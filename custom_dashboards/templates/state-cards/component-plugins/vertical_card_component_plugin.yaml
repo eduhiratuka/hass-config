@@ -1,24 +1,22 @@
 ################################################################################
-# Square Card Component Plugin                                                 #
+# Vertical Card Component Plugin                                               #
 #                                                                              #
 # @Author Eduardo Hiratuka <edu.hiratuka@gmail.com>                            #
 # @Version 1.0                                                                 #
 #                                                                              #
 ################################################################################
 
-square_card_component_plugin:
-    variables:
-        proportion: 50%
+vertical_card_component_plugin:
     styles:
-        card:
-            - padding-top: "[[[ return variables.proportion ]]]"
-            - height: 0
-            - position: relative
         grid:
-            - padding: 12px
-            - height: calc(100% - 24px)
-            - width: calc(100% - 24px)
-            - position: absolute
-            - top: 0
-            - left: 0
-            - align-content: baseline
+            - grid-template: "'i' auto 'n' auto 's' auto / auto"
+            - text-align: center
+        img_cell:
+            - margin: 0
+        name:
+            - text-align: center
+        state:
+            - text-align: center
+        custom_fields:
+            notification:
+              - left: calc(50% + 20px - 16px + 3px)

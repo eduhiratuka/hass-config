@@ -1,6 +1,14 @@
 ################################################################################
+# Border Top Ghost Mask                                                        #
 #                                                                              #
+#     Border Top é um ghost mask que deve ser aplicado a componentes quando    #
+# deseja-se formar um único card apartir de outros. Este Ghost Mask deverá ser #
+# aplicado a cards que ficarão na parte superior do cartão único e pode ser u- #
+# tilizado com outros Ghost Mask para formar posições como superior-esquerdo,  #
+# superior-direito ou superior-central                                         #
 #                                                                              #
+# @Author Eduardo Hiratuka <edu.hiratuka@gmail.com>                            #
+# @Version 1.0                                                                 #
 #                                                                              #
 ################################################################################
 

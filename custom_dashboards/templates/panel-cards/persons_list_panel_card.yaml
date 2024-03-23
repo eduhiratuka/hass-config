@@ -1,5 +1,5 @@
 ################################################################################
-#                            4CH Camera Panel Card                             #
+# Person List Panel Card                                                       #
 #                                                                              #
 # @Author Eduardo Hiratuka <edu.hiratuka@gmail.com>                            #
 # @Version 1.0                                                                 #
@@ -34,11 +34,12 @@ persons_list_panel_card:
 
                             arrayToMap['a' + i] = {
                                 card: {
-                                    type: 'custom:mushroom-person-card',
-                                    entity: personStates[i],
-                                    name: nome.split(' ')[0],
-                                    icon_type: 'entity-picture',
-                                    vertical: true
+                                    type: 'custom:button-card',
+                                    template: 'person_state_card',
+                                    variables: {
+                                        entity: personStates[i],
+                                        primary_info: nome.split(' ')[0]
+                                    }
                                 }
                             };
                         }

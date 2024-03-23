@@ -1,0 +1,40 @@
+################################################################################
+# Person State Card                                                            #
+#                                                                              #
+# @Author Eduardo Hiratuka <edu.hiratuka@gmail.com>                            #
+# @Version 1.0                                                                 #
+#                                                                              #
+################################################################################
+
+person_state_card:
+    template:
+        - generic_state_card
+        - entity_picture_component_plugin
+        - vertical_card_component_plugin
+    variables:
+        badge: |
+            [[[
+                if(entity.state == 'home') return 'mdi:home';
+                if(entity.state == 'not_home') return 'mdi:home-export-outline';
+                
+                let zoneStates = Object.keys(states).filter(item => item.startsWith("zone."));
+                for (let i = 0; i < zoneStates.length; i++) {
+                    let nome = states[zoneStates[i]]['attributes']['friendly_name'];
+                    if(entity.state == nome) return states[zoneStates[i]]['attributes']['icon'];
+                }
+
+                if(entity.state == 'not_home') return 'mdi:help';
+            ]]]
+        badge_color: |
+            [[[
+                if(entity.state == 'home') return 'green';
+                if(entity.state == 'not_home') return 'red';
+                
+                let zoneStates = Object.keys(states).filter(item => item.startsWith("zone."));
+                for (let i = 0; i < zoneStates.length; i++) {
+                    let nome = states[zoneStates[i]]['attributes']['friendly_name'];
+                    if(entity.state == nome) return 'blue';
+                }
+
+                if(entity.state == 'not_home') return 'orange';
+            ]]]

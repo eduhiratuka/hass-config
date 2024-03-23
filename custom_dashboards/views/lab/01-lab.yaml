@@ -187,5 +187,9 @@ cards:
     
                         return dados;
 
-          - cards: []
+          - title: Teste C
+            cards:
+              - type: custom:button-card
+                entity: cover.frente_portao_da_garagem
+                template: generic_state_card
           - cards: []

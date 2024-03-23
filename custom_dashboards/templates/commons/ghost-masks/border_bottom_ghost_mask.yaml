@@ -1,6 +1,14 @@
 ################################################################################
+# Border Bottom Ghost Mask                                                     #
 #                                                                              #
+#     Border Bottom é um ghost mask que deve ser aplicado a componentes quando #
+# deseja-se formar um único card apartir de outros. Este Ghost Mask deverá ser #
+# aplicado a cards que ficarão na parte inferior do cartão único e pode ser u- #
+# tilizado com outros Ghost Mask para formar posições como inferior-esquerdo,  #
+# inferior-direito ou inferior-central                                         #
 #                                                                              #
+# @Author Eduardo Hiratuka <edu.hiratuka@gmail.com>                            #
+# @Version 1.0                                                                 #
 #                                                                              #
 ################################################################################
 
