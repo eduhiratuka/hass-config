@@ -187,27 +187,55 @@ cards:
     
                         return dados;
 
-          - title: Teste C
+          # - title: Teste C
+          #   cards:
+              # - type: custom:button-card
+              #   template: 
+              #     - generic_state_card
+              #   variables:
+              #       entity: cover.frente_portao_da_garagem
+              #       primary_info: Portão
+              #       controllers:
+              #         - type: action_button_controller
+              #           icon: mdi:arrow-up
+              #           active_state: open
+              #           disabled_when: active
+
+              #         - type: action_button_controller
+              #           icon: mdi:arrow-down
+              #           active_state: closed
+              #           disabled_when: active
+              # - type: custom:mushroom-cover-card
+              #   entity: cover.frente_portao_da_garagem
+              #   name: Garagem
+              #   show_position_control: false
+              #   show_buttons_control: true
+          - title: Portão
             cards:
               - type: custom:button-card
-                template: 
-                  - generic_state_card
+                template: cover_state_card
                 variables:
                     entity: cover.frente_portao_da_garagem
-                    primary_info: Portão
-                    controllers:
-                      - type: action_button_controller
-                        icon: mdi:arrow-up
-                        active_state: open
-                        disabled_when: active
-
-                      - type: action_button_controller
-                        icon: mdi:arrow-down
-                        active_state: closed
-                        disabled_when: active
+                    name: 'Garagem'
               - type: custom:mushroom-cover-card
                 entity: cover.frente_portao_da_garagem
                 name: Garagem
                 show_position_control: false
                 show_buttons_control: true
-          - cards: []
+
+          - title: Ar-condicionado
+            cards:
+              - type: custom:button-card
+                template: climate_state_card
+                variables:
+                    entity: climate.quarto_do_edu_ar_condicionado
+                    name: 'Ar-condicionado'
+              - type: custom:mushroom-climate-card
+                entity: climate.quarto_do_edu_ar_condicionado
+                name: Ar-condicionado
+                hvac_modes:
+                    - auto
+                    - cool
+                    - dry
+                    - fan_only
+                    - "off"

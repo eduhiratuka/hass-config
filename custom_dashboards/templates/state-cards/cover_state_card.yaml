@@ -1,0 +1,33 @@
+################################################################################
+# Cover State Card                                                             #
+#                                                                              #
+# Variables:                                                                   #
+#     - entity                                                                 #
+#     - name                                                                   #
+#                                                                              #
+# @Author Eduardo Hiratuka <edu.hiratuka@gmail.com>                            #
+# @Version 1.0                                                                 #
+#                                                                              #
+################################################################################
+
+cover_state_card:
+    template:
+        - generic_state_card
+    variables:
+        primary_info: "[[[ return variables.name ?? states[entity.entity_id]['attributes']['friendly_name'] ]]]"
+        icon: mdi:garage-variant
+        state_map:
+            open:
+                icon: mdi:garage-open-variant
+                icon_color: purple
+        controllers:
+          - type: action_button
+            icon: mdi:arrow-up
+            state_map:
+                open:
+                    icon_color: disabled
+          - type: action_button
+            icon: mdi:arrow-down
+            state_map:
+                closed:
+                    icon_color: disabled

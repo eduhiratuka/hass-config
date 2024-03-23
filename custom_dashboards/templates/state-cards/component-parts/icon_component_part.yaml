@@ -11,32 +11,68 @@ icon_component_part:
         icon: null
         icon_color: null
 
-    icon: "[[[ return variables.icon; ]]]"
+    icon: |
+        [[[
+            let entity_state = states[variables.entity].state;
 
+            if(variables.state_map != undefined) {
+                const state = variables.state_map[entity_state];
+                if(state != undefined && state.icon != undefined) {
+                    return state.icon;
+                }
+            }
+                    
+            if(variables.icon != undefined) {
+                return variables.icon;
+            }
+        ]]]
     styles:
         img_cell:
-            # Layout Styles
             - width: 40px
             - height: 40px
-
-            # Appearence Styles
+            - border-radius: 100%
             - background: |
                 [[[
-                    if(variables.icon_color == undefined) return 'color-mix(in srgb, var(--disabled-color) 20%, transparent)';
-                    if(variables.icon_color == 'disabled-text') return `color-mix(in srgb, var(--disabled-color) 20%, transparent)`;
-                    return `color-mix(in srgb, var(--${variables.icon_color}-color) 20%, transparent)`;
+                    let entity_state = states[variables.entity].state;
+
+                    if(variables.state_map != undefined) {
+                        const state = variables.state_map[entity_state];
+                        if(state != undefined && state.icon_color != undefined) {
+                            return `color-mix(in srgb, var(--${ state.icon_color }-color) 20%, transparent)`;
+                        }
+                    }
+                    
+                    if(variables.icon_color != undefined) {
+                        if(variables.icon_color == 'disabled-text') {
+                            return `color-mix(in srgb, var(--disabled-color) 20%, transparent)`;
+                        } else {
+                            return `color-mix(in srgb, var(--${ variables.icon_color }-color) 20%, transparent)`;
+                        }
+                    }
+
+                    return `color-mix(in srgb, var(--disabled-color) 20%, transparent)`;
                 ]]]
-            - border-radius: 100%
         icon:
-            # Layout Styles
             - width: 24px
             - height: 24px
-
-            # Appearence Styles
             - color: |
                 [[[
-                    if (variables.icon_color == undefined) return `var(--disabled-color)`;
-                    if(variables.icon_color == 'disabled-text') return `var(--primary-text-color)`;
-                    return `var(--${variables.icon_color}-color)`;
-                ]]]
+                    let entity_state = states[variables.entity].state;
 
+                    if(variables.state_map != undefined) {
+                        const state = variables.state_map[entity_state];
+                        if(state != undefined && state.icon_color != undefined) {
+                            return `var(--${ state.icon_color }-color)`;
+                        }
+                    }
+                    
+                    if(variables.icon_color != undefined) {
+                        if(variables.icon_color == 'disabled-text') {
+                            return `var(--primary-text-color)`;
+                        } else {
+                            return `var(--${ variables.icon_color }-color)`;
+                        }
+                    }
+                
+                    return `var(--disabled-color)`;
+                ]]]

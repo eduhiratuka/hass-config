@@ -1,0 +1,56 @@
+################################################################################
+# Climate State Card                                                           #
+#                                                                              #
+# Variables:                                                                   #
+#     - entity                                                                 #
+#     - name                                                                   #
+#                                                                              #
+# @Author Eduardo Hiratuka <edu.hiratuka@gmail.com>                            #
+# @Version 1.0                                                                 #
+#                                                                              #
+################################################################################
+
+climate_state_card:
+    template:
+        - generic_state_card
+    variables:
+        primary_info: "[[[ return variables.name ?? states[entity.entity_id]['attributes']['friendly_name'] ]]]"
+        state_map:
+            auto:
+                icon: mdi:calendar-sync
+                icon_color: green
+            cool:
+                icon: mdi:snowflake
+                icon_color: blue
+            dry:
+                icon: mdi:water-percent
+                icon_color: orange
+            fan_only:
+                icon: mdi:fan
+                icon_color: teal
+        controllers:
+          - type: action_button
+            icon: mdi:calendar-sync
+            state_map:
+                auto:
+                    icon_color: green
+          - type: action_button
+            icon: mdi:snowflake
+            state_map:
+                cool:
+                    icon_color: blue
+          - type: action_button
+            icon: mdi:water-percent
+            state_map:
+                dry:
+                    icon_color: orange
+          - type: action_button
+            icon: mdi:fan
+            state_map:
+                fan_only:
+                    icon_color: teal
+          - type: action_button
+            icon: mdi:power
+            state_map:
+                'off':
+                    icon_color: grey

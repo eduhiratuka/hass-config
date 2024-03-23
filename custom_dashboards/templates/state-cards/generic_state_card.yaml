@@ -95,10 +95,11 @@ generic_state_card:
                                 let controller = variables.controllers[i];
                                 controller.entity = variables.entity;
 
+                                let template = controller.type + '_controller_component'
                                 arrayToMap['a' + i] = {
                                     card: {
                                         type: 'custom:button-card',
-                                        template: 'controller_row_tests',
+                                        template: template,
                                         variables: controller
                                     }
                                 };

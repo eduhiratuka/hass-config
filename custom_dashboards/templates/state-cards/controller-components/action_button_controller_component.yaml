@@ -1,4 +1,4 @@
-controller_row_tests:
+action_button_controller_component:
     template:
         - icon_component_part
         - no_base_style_mask
@@ -8,13 +8,7 @@ controller_row_tests:
         - "[[[ return variables.entity ]]]"
 
     variables:
-        icon_color: |
-            [[[
-                if (variables.disabled_when == 'active' && states[variables.entity].state == variables.active_state) {
-                    return 'disabled';
-                }
-                return 'disabled-text'
-            ]]]
+        icon_color: 'disabled-text'
         
 
     show_name: false
