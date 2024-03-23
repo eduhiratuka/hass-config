@@ -216,7 +216,7 @@ cards:
                 template: cover_state_card
                 variables:
                     entity: cover.frente_portao_da_garagem
-                    name: 'Garagem'
+                    primary_info: 'Garagem'
               - type: custom:mushroom-cover-card
                 entity: cover.frente_portao_da_garagem
                 name: Garagem
@@ -229,7 +229,7 @@ cards:
                 template: climate_state_card
                 variables:
                     entity: climate.quarto_do_edu_ar_condicionado
-                    name: 'Ar-condicionado'
+                    primary_info: 'Ar-condicionado'
               - type: custom:mushroom-climate-card
                 entity: climate.quarto_do_edu_ar_condicionado
                 name: Ar-condicionado
