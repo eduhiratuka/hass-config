@@ -24,28 +24,32 @@ climate_state_card:
                 icon: mdi:fan
                 icon_color: teal
         controllers:
-          - type: action_button
-            icon: mdi:calendar-sync
-            state_map:
-                auto:
-                    icon_color: green
-          - type: action_button
-            icon: mdi:snowflake
-            state_map:
-                cool:
-                    icon_color: blue
-          - type: action_button
-            icon: mdi:water-percent
-            state_map:
-                dry:
-                    icon_color: orange
-          - type: action_button
-            icon: mdi:fan
-            state_map:
-                fan_only:
-                    icon_color: teal
-          - type: action_button
-            icon: mdi:power
-            state_map:
-                'off':
-                    icon_color: grey
+          - actions:
+              - type: action_button
+                icon: mdi:calendar-sync
+                state_map:
+                    auto:
+                        icon_color: green
+              - type: action_button
+                icon: mdi:snowflake
+                state_map:
+                    cool:
+                        icon_color: blue
+              - type: action_button
+                icon: mdi:water-percent
+                state_map:
+                    dry:
+                        icon_color: orange
+              - type: action_button
+                icon: mdi:fan
+                state_map:
+                    fan_only:
+                        icon_color: teal
+              - type: action_button
+                icon: mdi:power
+                state_map:
+                    'off':
+                        icon_color: grey
+              - type: stepper
+                entity: "[[[ return variables.entity ]]]"
+                attribute: 'temperature'

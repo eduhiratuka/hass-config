@@ -1,0 +1,49 @@
+stepper_controller_component:
+    template:
+        - no_base_style_mask
+
+    styles:
+        grid:
+            - grid-template: "'minus value plus' auto / auto max-content auto"
+        custom_fields:
+            value:
+                - padding: 0px 8px;
+                - height: 40px;
+                - line-height: 40px;
+                - background-color: color-mix(in srgb, var(--disabled-color) 10%, transparent)
+                - font-size: 1.1rem
+
+    custom_fields:
+        minus:
+            card:
+                type: custom:button-card
+                template: action_button_controller_component
+                styles:
+                    card:
+                        - border-top-right-radius: 0px
+                        - border-bottom-right-radius: 0px
+                    img_cell:
+                        - border-top-right-radius: 0px
+                        - border-bottom-right-radius: 0px
+                variables:
+                    icon: mdi:minus
+        value: >-
+            [[[
+                if(variables.attribute != undefined) {
+                    return states[variables.entity]['attributes'][variables.attribute];
+                }
+                return states[variables.entity];
+            ]]]
+        plus:
+            card:
+                type: custom:button-card
+                template: action_button_controller_component
+                styles:
+                    card:
+                        - border-top-left-radius: 0px
+                        - border-bottom-left-radius: 0px
+                    img_cell:
+                        - border-top-left-radius: 0px
+                        - border-bottom-left-radius: 0px
+                variables:
+                    icon: mdi:plus

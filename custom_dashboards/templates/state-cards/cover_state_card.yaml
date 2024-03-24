@@ -16,13 +16,14 @@ cover_state_card:
                 icon: mdi:garage-open-variant
                 icon_color: purple
         controllers:
-          - type: action_button
-            icon: mdi:arrow-up
-            state_map:
-                open:
-                    icon_color: disabled
-          - type: action_button
-            icon: mdi:arrow-down
-            state_map:
-                closed:
-                    icon_color: disabled
+          - actions:
+              - type: action_button
+                icon: mdi:arrow-up
+                state_map:
+                    open:
+                        icon_color: disabled
+              - type: action_button
+                icon: mdi:arrow-down
+                state_map:
+                    closed:
+                        icon_color: disabled

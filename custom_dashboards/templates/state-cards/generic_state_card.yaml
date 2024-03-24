@@ -92,17 +92,19 @@ generic_state_card:
                             let arrayToMap = {};
 
                             for (let i = 0; i < variables.controllers.length; i++) {
-                                let controller = variables.controllers[i];
-                                controller.entity = variables.entity;
+                                for (let j = 0; j < variables.controllers[i]['actions'].length; j++) {
+                                    let controller = variables.controllers[i]['actions'][j];
+                                    controller.entity = variables.entity;
 
-                                let template = controller.type + '_controller_component'
-                                arrayToMap['a' + i] = {
-                                    card: {
-                                        type: 'custom:button-card',
-                                        template: template,
-                                        variables: controller
-                                    }
-                                };
+                                    let template = controller.type + '_controller_component'
+                                    arrayToMap['a' + j] = {
+                                        card: {
+                                            type: 'custom:button-card',
+                                            template: template,
+                                            variables: controller
+                                        }
+                                    };
+                                }
                             }
                         
                             return arrayToMap;

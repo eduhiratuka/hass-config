@@ -13,15 +13,17 @@ icon_component_part:
 
     icon: |
         [[[
-            let entity_state = states[variables.entity].state;
+            if(variables.entity != undefined) {
+                let entity_state = states[variables.entity].state;
 
-            if(variables.state_map != undefined) {
-                const state = variables.state_map[entity_state];
-                if(state != undefined && state.icon != undefined) {
-                    return state.icon;
+                if(variables.state_map != undefined) {
+                    const state = variables.state_map[entity_state];
+                    if(state != undefined && state.icon != undefined) {
+                        return state.icon;
+                    }
                 }
             }
-                    
+                        
             if(variables.icon != undefined) {
                 return variables.icon;
             }
@@ -33,15 +35,17 @@ icon_component_part:
             - border-radius: 100%
             - background: |
                 [[[
-                    let entity_state = states[variables.entity].state;
+                    if(variables.entity != undefined) {
+                        let entity_state = states[variables.entity].state;
 
-                    if(variables.state_map != undefined) {
-                        const state = variables.state_map[entity_state];
-                        if(state != undefined && state.icon_color != undefined) {
-                            return `color-mix(in srgb, var(--${ state.icon_color }-color) 20%, transparent)`;
+                        if(variables.state_map != undefined) {
+                            const state = variables.state_map[entity_state];
+                            if(state != undefined && state.icon_color != undefined) {
+                                return `color-mix(in srgb, var(--${ state.icon_color }-color) 20%, transparent)`;
+                            }
                         }
                     }
-                    
+                        
                     if(variables.icon_color != undefined) {
                         if(variables.icon_color == 'disabled-text') {
                             return `color-mix(in srgb, var(--disabled-color) 20%, transparent)`;
@@ -57,12 +61,14 @@ icon_component_part:
             - height: 24px
             - color: |
                 [[[
-                    let entity_state = states[variables.entity].state;
+                    if(variables.entity != undefined) {
+                        let entity_state = states[variables.entity].state;
 
-                    if(variables.state_map != undefined) {
-                        const state = variables.state_map[entity_state];
-                        if(state != undefined && state.icon_color != undefined) {
-                            return `var(--${ state.icon_color }-color)`;
+                        if(variables.state_map != undefined) {
+                            const state = variables.state_map[entity_state];
+                            if(state != undefined && state.icon_color != undefined) {
+                                return `var(--${ state.icon_color }-color)`;
+                            }
                         }
                     }
                     

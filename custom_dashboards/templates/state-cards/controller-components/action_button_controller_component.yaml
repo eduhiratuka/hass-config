@@ -3,16 +3,12 @@ action_button_controller_component:
         - icon_component_part
         - no_base_style_mask
 
-    
-    triggers_update:
-        - "[[[ return variables.entity ]]]"
-
     variables:
         icon_color: 'disabled-text'
-        
 
     show_name: false
-
+    triggers_update:
+        - "[[[ return variables.entity ]]]"
     tap_action:
         action: navigate
         navigation_path: /ui-testlab/lab
