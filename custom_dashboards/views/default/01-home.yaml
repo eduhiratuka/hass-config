@@ -31,7 +31,6 @@ cards:
             cards:
               - type: custom:button-card
                 template: persons_list_panel_card
-
               - type: custom:button-card
                 template: weather_state_card
                 tap_action:
@@ -43,15 +42,7 @@ cards:
                     a0_temperature_entity: sensor.servicos_clima_previsao_do_tempo_em_casa_temperatura
                     a0_humidity_entity: sensor.servicos_clima_previsao_do_tempo_em_casa_umidade_relativa
 
-              - type: custom:button-card
-                template: simple_column_apex_panel_card
-                variables:
-                    entity: sensor.casa_energia_solar_ecu_energia_hoje
-                    primary_info: Geração de Energia
-                    secondary_info: Últimos 7 dias
-                    icon: mdi:solar-power
-                    icon_color: orange
-                            
+
 
           - title: Frente
             cards:
@@ -60,6 +51,9 @@ cards:
                 name: Garagem
                 show_position_control: false
                 show_buttons_control: true
+
+
+
           - title: Fundos
             cards:
               - type: custom:mushroom-light-card
@@ -69,6 +63,9 @@ cards:
                 show_brightness_control: true
                 show_color_control: true
                 show_color_temp_control: true
+
+
+
           - title: Escritório
             cards:
               - type: custom:mushroom-light-card
@@ -78,6 +75,9 @@ cards:
                 show_brightness_control: true
                 show_color_control: true
                 show_color_temp_control: true
+
+
+
           - title: Quarto do Edu
             cards:
               - type: custom:mushroom-climate-card
@@ -104,3 +104,16 @@ cards:
                 show_brightness_control: true
                 show_color_control: true
                 show_color_temp_control: true
+
+
+
+          - title: Energia Solar
+            cards:
+              - type: custom:button-card
+                template: simple_column_apex_panel_card
+                variables:
+                    entity: sensor.casa_energia_solar_ecu_energia_hoje
+                    primary_info: Geração de Energia
+                    secondary_info: Últimos 7 dias
+                    icon: mdi:solar-power
+                    icon_color: orange

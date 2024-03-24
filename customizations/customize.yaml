@@ -4,3 +4,5 @@ person.mario_hiratuka:
   entity_picture: "/local/entity_picture/person.mario_hiratuka.jpg"
 person.ana_ferreira_hiratuka:
   entity_picture: "/local/entity_picture/person.ana_ferreira_hiratuka.jpg"
+sensor.servicos_astronomia_iss_posicao_atual:
+  entity_picture: "/local/entity_picture/servicos_astronomia_iss.png"
