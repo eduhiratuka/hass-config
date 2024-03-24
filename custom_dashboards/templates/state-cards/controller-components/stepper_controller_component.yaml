@@ -27,6 +27,10 @@ stepper_controller_component:
                         - border-bottom-right-radius: 0px
                 variables:
                     icon: mdi:minus
+                    action: "[[[ return variables.minus_action ]]]"
+
+
+
         value: >-
             [[[
                 if(variables.attribute != undefined) {
@@ -34,6 +38,9 @@ stepper_controller_component:
                 }
                 return states[variables.entity];
             ]]]
+
+
+
         plus:
             card:
                 type: custom:button-card
@@ -47,3 +54,4 @@ stepper_controller_component:
                         - border-bottom-left-radius: 0px
                 variables:
                     icon: mdi:plus
+                    action: "[[[ return variables.plus_action ]]]"

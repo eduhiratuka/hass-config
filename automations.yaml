@@ -1,16 +1,1 @@
-- id: '1710603285673'
-  alias: Ação Alternar Portão
-  description: ''
-  trigger:
-  - event_data:
-      actionID: C28B5297-DAB1-4EDD-9301-AE8A0CA87DD0
-    platform: event
-    event_type: ios.action_fired
-  condition: []
-  action:
-  - service: cover.toggle
-    metadata: {}
-    data: {}
-    target:
-      entity_id: cover.frente_portao_da_garagem
-  mode: single
+[]

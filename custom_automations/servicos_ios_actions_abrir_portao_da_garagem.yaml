@@ -1,0 +1,15 @@
+id: servicos_ios_actions_abrir_portao_da_garagem
+alias: "Serviços: iOS Actions: Abrir Portão da Garagem"
+description: ""
+mode: single
+
+trigger:
+  - platform: event
+    event_type: ios.action_fired
+    event_data:
+        actionID: C28B5297-DAB1-4EDD-9301-AE8A0CA87DD0
+
+action:
+  - service: cover.toggle
+    target:
+        entity_id: cover.frente_portao_da_garagem

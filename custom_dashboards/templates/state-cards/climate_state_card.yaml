@@ -30,26 +30,77 @@ climate_state_card:
                 state_map:
                     auto:
                         icon_color: green
+                action:
+                    action: call-service
+                    service: climate.set_hvac_mode
+                    target:
+                        entity_id: "[[[ return entity.entity_id ]]]"
+                    data:
+                        hvac_mode: auto
               - type: action_button
                 icon: mdi:snowflake
                 state_map:
                     cool:
                         icon_color: blue
+                action:
+                    action: call-service
+                    service: climate.set_hvac_mode
+                    data:
+                        entity_id: "[[[ return entity.entity_id ]]]"
+                        hvac_mode: cool
               - type: action_button
                 icon: mdi:water-percent
                 state_map:
                     dry:
                         icon_color: orange
+                action:
+                    action: call-service
+                    service: climate.set_hvac_mode
+                    data:
+                        entity_id: "[[[ return entity.entity_id ]]]"
+                        hvac_mode: dry
               - type: action_button
                 icon: mdi:fan
                 state_map:
                     fan_only:
                         icon_color: teal
+                action:
+                    action: call-service
+                    service: climate.set_hvac_mode
+                    data:
+                        entity_id: "[[[ return entity.entity_id ]]]"
+                        hvac_mode: fan_only
               - type: action_button
                 icon: mdi:power
                 state_map:
                     'off':
                         icon_color: grey
+                action:
+                    action: call-service
+                    service: climate.set_hvac_mode
+                    data:
+                        entity_id: "[[[ return entity.entity_id ]]]"
+                        hvac_mode: 'off'
               - type: stepper
                 entity: "[[[ return variables.entity ]]]"
                 attribute: 'temperature'
+                minus_action:
+                    action: call-service
+                    service: climate.set_temperature
+                    data:
+                        entity_id: "[[[ return entity.entity_id ]]]"
+                        temperature: |
+                            [[[
+                                let temp = states[entity.entity_id]['attributes']['temperature'];
+                                return temp - 1;
+                            ]]]
+                plus_action:
+                    action: call-service
+                    service: climate.set_temperature
+                    data:
+                        entity_id: "[[[ return entity.entity_id ]]]"
+                        temperature: |
+                            [[[
+                                let temp = states[entity.entity_id]['attributes']['temperature'];
+                                return temp + 1;
+                            ]]]

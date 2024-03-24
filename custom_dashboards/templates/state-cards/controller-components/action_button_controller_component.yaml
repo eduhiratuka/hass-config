@@ -9,9 +9,12 @@ action_button_controller_component:
     show_name: false
     triggers_update:
         - "[[[ return variables.entity ]]]"
+
     tap_action:
-        action: navigate
-        navigation_path: /ui-testlab/lab
+        action: "[[[ return variables.action != undefined ? variables.action.action : 'none' ]]]"
+        service: "[[[ return variables.action != undefined ? variables.action.service : undefined ]]]"
+        target: "[[[ return variables.action != undefined ? variables.action.target : undefined ]]]"
+        data: "[[[ return variables.action != undefined ? variables.action.data : undefined ]]]"
 
     styles:
         card:
