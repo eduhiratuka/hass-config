@@ -1,15 +1,15 @@
-- trigger:
-      - platform: event
-        event_type: "custom_events::camera_em_destaque_atualizado"
-  select:
-      - name: "Casa: Câmeras: Destaque Atual"
-        unique_id: casa_cameras_destaque_atual
-        state: "{{ trigger.event.data.camera }}"
-        options: "['Frente: Câmera da Garagem', 'Frente: Câmera da Lateral', 'Fundos: Câmera da Piscina','Fundos: Câmera do Quintal']"
-        select_option:
-            service: script.turn_on
-            target:
-                entity_id: script.casa_cameras_atualiza_destaque_atual
-            data:
-                variables:
-                    camera_name: "{{ option }}"
+trigger:
+  - platform: event
+    event_type: "custom_events::camera_em_destaque_atualizado"
+select:
+  - name: "Casa: Câmeras: Destaque Atual"
+    unique_id: casa_cameras_destaque_atual
+    state: "{{ trigger.event.data.camera }}"
+    options: "['Frente: Câmera da Garagem', 'Frente: Câmera da Lateral', 'Fundos: Câmera da Piscina','Fundos: Câmera do Quintal']"
+    select_option:
+        service: script.turn_on
+        target:
+            entity_id: script.casa_cameras_atualiza_destaque_atual
+        data:
+            variables:
+                camera_name: "{{ option }}"

@@ -95,7 +95,6 @@ generic_state_card:
                                 for (let j = 0; j < variables.controllers[i]['actions'].length; j++) {
                                     let controller = variables.controllers[i]['actions'][j];
                                     controller.entity = variables.entity;
-                                    console.log(controller);
                                     let template = controller.type + '_controller_component'
                                     arrayToMap['a' + j] = {
                                         card: {

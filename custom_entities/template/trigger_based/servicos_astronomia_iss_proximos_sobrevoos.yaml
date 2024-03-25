@@ -1,33 +1,54 @@
-- trigger:
-      - platform: event
-        event_type: "custom_events::proximos_sobrevoos_atualizado"
-  sensor:
-      - name: "Serviços: Astronomia: ISS: Próximos Sobrevoos"
-        unique_id: servicos_astronomia_iss_proximos_sobrevoos
-        device_class: timestamp
-        state: >-
-            {{ (strptime(trigger.event.data.flybys.passes[0]['begin'], '%Y%m%d%H%M%S') | as_local).isoformat() }}
-        attributes:
-            updated_at: "{{ (now() | as_local).isoformat() }}"
-            magnitude: "{{ trigger.event.data.flybys.passes[0]['mag'] }}"
-
-            begin_time: "{{ (strptime(trigger.event.data.flybys.passes[0]['begin'], '%Y%m%d%H%M%S') | as_local).isoformat() }}"
-            max_time: "{{ (strptime(trigger.event.data.flybys.passes[0]['max'], '%Y%m%d%H%M%S') | as_local).isoformat() }}"
-            end_time: "{{ (strptime(trigger.event.data.flybys.passes[0]['end'], '%Y%m%d%H%M%S') | as_local).isoformat() }}"
-
-            begin_altitude: "{{ trigger.event.data.flybys.passes[0]['beginAlt'] }}"
-            max_altitude: "{{ trigger.event.data.flybys.passes[0]['maxAlt'] }}"
-            end_altitude: "{{ trigger.event.data.flybys.passes[0]['endAlt'] }}"
-
-            begin_direction: "{{ trigger.event.data.flybys.passes[0]['beginDir'] }}"
-            max_begin_direction: "{{ trigger.event.data.flybys.passes[0]['maxDir'] }}"
-            end_begin_direction: "{{ trigger.event.data.flybys.passes[0]['endDir'] }}"
-
-            visible_radius: "{{ trigger.event.data.flybys.passes[0]['visibRad'] }}"
-
-            more_flybys: >
+trigger:
+  - platform: event
+    event_type: "custom_events::proximos_sobrevoos_atualizado"
+sensor:
+  - name: "Serviços: Astronomia: ISS: Próximos Sobrevoos"
+    unique_id: servicos_astronomia_iss_proximos_sobrevoos
+    device_class: timestamp
+    state: >-
+        {% set passes = trigger.event.data.flybys.passes %}
+        {{ (strptime(trigger.event.data.flybys.passes[0]['begin'], '%Y%m%d%H%M%S') | as_local).isoformat() if passes | length > 0 else none }}
+    attributes:
+        updated_at: >-
+            {{ (now() | as_local).isoformat() }}
+        magnitude: >-
+            {% set passes = trigger.event.data.flybys.passes %}
+            {{ trigger.event.data.flybys.passes[0]['mag'] if passes | length > 0 else none }}
+        begin_time: >-
+            {% set passes = trigger.event.data.flybys.passes %}
+            {{ (strptime(trigger.event.data.flybys.passes[0]['begin'], '%Y%m%d%H%M%S') | as_local).isoformat() if passes | length > 0 else none }}
+        max_time: >-
+            {% set passes = trigger.event.data.flybys.passes %}
+            {{ (strptime(trigger.event.data.flybys.passes[0]['max'], '%Y%m%d%H%M%S') | as_local).isoformat() if passes | length > 0 else none }}
+        end_time: >-
+            {% set passes = trigger.event.data.flybys.passes %}
+            {{ (strptime(trigger.event.data.flybys.passes[0]['end'], '%Y%m%d%H%M%S') | as_local).isoformat() if passes | length > 0 else none }}
+        begin_altitude: >-
+            {% set passes = trigger.event.data.flybys.passes %}
+            {{ trigger.event.data.flybys.passes[0]['beginAlt'] if passes | length > 0 else none }}
+        max_altitude: >-
+            {% set passes = trigger.event.data.flybys.passes %}
+            {{ trigger.event.data.flybys.passes[0]['maxAlt'] if passes | length > 0 else none }}
+        end_altitude: >-
+            {% set passes = trigger.event.data.flybys.passes %}
+            {{ trigger.event.data.flybys.passes[0]['endAlt'] if passes | length > 0 else none }}
+        begin_direction: >-
+            {% set passes = trigger.event.data.flybys.passes %}
+            {{ trigger.event.data.flybys.passes[0]['beginDir'] if passes | length > 0 else none }}
+        max_begin_direction: >-
+            {% set passes = trigger.event.data.flybys.passes %}
+            {{ trigger.event.data.flybys.passes[0]['maxDir'] if passes | length > 0 else none }}
+        end_begin_direction: >-
+            {% set passes = trigger.event.data.flybys.passes %}
+            {{ trigger.event.data.flybys.passes[0]['endDir'] if passes | length > 0 else none }}
+        visible_radius: >-
+            {% set passes = trigger.event.data.flybys.passes %}
+            {{ trigger.event.data.flybys.passes[0]['visibRad'] if passes | length > 0 else none }}
+        more_flybys: >-
+            {% set passes = trigger.event.data.flybys.passes %}
+            {% if passes | length > 0 %}
                 {% set ns = namespace(flybys=[]) %}
-                {% set flybys = trigger["event"]["data"]["flybys"]["passes"][1:] %}
+                {% set flybys = passes[1:] %}
                 {% for flyby in flybys -%}
                     {% set ns.flybys = ns.flybys + [{
                         "begin_time": (strptime(flyby['begin'], '%Y%m%d%H%M%S') | as_local).isoformat(),
@@ -36,3 +57,6 @@
                     }] %}
                 {% endfor %}
                 {{ ns.flybys }}
+            {% else %}
+                {{ none }}
+            {% endif %}

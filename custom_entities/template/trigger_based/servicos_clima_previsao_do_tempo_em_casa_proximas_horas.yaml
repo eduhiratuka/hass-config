@@ -1,0 +1,28 @@
+trigger:
+  - platform: time_pattern
+    minutes: /1
+action:
+  - service: weather.get_forecasts
+    data:
+        type: hourly
+    target:
+        entity_id: weather.servicos_clima_previsao_do_tempo_em_casa_previsao
+    response_variable: hourly    
+sensor:
+  - name: 'Serviços: Clima: Previsão do Tempo em Casa: Próximas Horas'
+    unique_id: servicos_clima_previsao_do_tempo_em_casa_proximas_horas
+    state: "OK"
+    attributes:
+        teste: |
+            {% set ns = namespace(forecast=[]) %}
+            {% for hour in hourly['weather.servicos_clima_previsao_do_tempo_em_casa_previsao']['forecast'] | slice(4) | first %}
+                {% set here = {
+                    'condition': hour.condition,
+                    'precipitation': hour.precipitation,
+                    'precipitation_probability': hour.precipitation_probability,
+                    'temperature': hour.temperature,
+                    'datetime': hour.datetime,   
+                } %}
+                {% set ns.forecast = ns.forecast + [here] %}
+            {% endfor %}
+            {{ ns.forecast }}

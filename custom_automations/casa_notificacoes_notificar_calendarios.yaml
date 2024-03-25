@@ -1,0 +1,99 @@
+id: "casa_notificacoes_notificar_calendarios"
+alias: "Casa: Notificações: Notificar Calendários"
+description: ""
+mode: single
+trigger:
+  - id: casa_notificacoes_notificar_15_minutos
+    alias: Notificar eventos com 15 minutos de atencedência
+    platform: calendar
+    event: start
+    entity_id: calendar.eduardo
+    offset: -00:15:00
+  - id: casa_notificacoes_notificar_30_minutos
+    alias: Notificar eventos com 30 minutos de atencedência
+    platform: calendar
+    event: start
+    entity_id: calendar.eduardo
+    offset: -00:30:00
+  - id: casa_notificacoes_notificar_remedios
+    alias: Notificar eventos de remédios
+    platform: calendar
+    event: start
+    entity_id: calendar.remedios
+action:
+  - choose:
+      - conditions:
+          - condition: trigger
+            id:
+              - casa_notificacoes_notificar_15_minutos
+        sequence:
+          - alias: "Enviar notificação via Telegram"
+            service: telegram_bot.send_message
+            data:
+                title: "{{ '📅 Novo Evento em 15 minutos' }}"
+                message: |
+                    {{ trigger.calendar_event.summary }} @ {{ trigger.calendar_event.start }}
+          - alias: "Enviar notificação para iPhone do Edu"
+            service: notify.mobile_app_iphone_do_edu
+            data:
+                title: "{{ '💊 Tomar Remédio' }}"
+                message: |
+                    {{ trigger.calendar_event.summary }}
+          - alias: "Enviar notificação para S9+ do Edu"
+            service: notify.mobile_app_s9_do_edu
+            data:
+                title: "{{ '💊 Tomar Remédio' }}"
+                message: |
+                    {{ trigger.calendar_event.summary }}
+      - conditions:
+          - condition: trigger
+            id:
+              - casa_notificacoes_notificar_30_minutos
+        sequence:
+          - alias: "Enviar notificação via Telegram"
+            service: telegram_bot.send_message
+            data:
+                title: "{{ '📅 Novo Evento em 30 minutos' }}"
+                message: |
+                    {{ trigger.calendar_event.summary }} @ {{ trigger.calendar_event.start }}
+          - alias: "Enviar notificação para iPhone do Edu"
+            service: notify.mobile_app_iphone_do_edu
+            data:
+                title: "{{ '💊 Tomar Remédio' }}"
+                message: |
+                    {{ trigger.calendar_event.summary }}
+          - alias: "Enviar notificação para S9+ do Edu"
+            service: notify.mobile_app_s9_do_edu
+            data:
+                title: "{{ '💊 Tomar Remédio' }}"
+                message: |
+                    {{ trigger.calendar_event.summary }}
+      - conditions:
+          - condition: trigger
+            id:
+              - casa_notificacoes_notificar_remedios
+        sequence:
+          - alias: "Enviar notificação via Telegram"
+            service: telegram_bot.send_message
+            data:
+                title: "{{ '💊 Tomar Remédio' }}"
+                message: |
+                    {{ trigger.calendar_event.summary }}
+          - alias: "Enviar notificação para iPhone do Edu"
+            service: notify.mobile_app_iphone_do_edu
+            data:
+                title: "{{ '💊 Tomar Remédio' }}"
+                message: |
+                    {{ trigger.calendar_event.summary }}
+          - alias: "Enviar notificação para S9+ do Edu"
+            service: notify.mobile_app_s9_do_edu
+            data:
+                title: "{{ '💊 Tomar Remédio' }}"
+                message: |
+                    {{ trigger.calendar_event.summary }}
+          - alias: "Enviar notificação para G9 Play da Ana"
+            service: notify.mobile_app_g9_play_da_ana
+            data:
+                title: "{{ '💊 Tomar Remédio' }}"
+                message: |
+                    {{ trigger.calendar_event.summary }}

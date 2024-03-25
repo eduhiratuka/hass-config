@@ -1,47 +1,47 @@
-- trigger:
-      - platform: event
-        event_type: "custom_events::detector_de_problemas_com_entidades_atualizado"
-  binary_sensor:
-      - name: "Casa: Detector de Problemas: Problemas com Entidades"
-        unique_id: casa_detector_de_problemas_problemas_com_entidades
-        device_class: problem
-        state: >-
-            {% set ns = namespace(problem=false) %}
-            {% for state in states | rejectattr("domain", "in", ["person", "zone", "sun"]) | sort(attribute="name") %}
+trigger:
+  - platform: event
+    event_type: "custom_events::detector_de_problemas_com_entidades_atualizado"
+binary_sensor:
+  - name: "Casa: Detector de Problemas: Problemas com Entidades"
+    unique_id: casa_detector_de_problemas_problemas_com_entidades
+    device_class: problem
+    state: >-
+        {% set ns = namespace(problem=false) %}
+        {% for state in states | rejectattr("domain", "in", ["person", "zone", "sun", "calendar"]) | sort(attribute="name") %}
+            {% if state.name | slugify != state.object_id %}
+                {% set ns.problem = true %}
+            {% endif %}
+            {% if state.name.split(": ") | count < 2 %}
+                {% set ns.problem = true %}
+            {% endif %}
+            {% if area_id(state.entity_id) == none %}
+                {% set ns.problem = true %}
+            {% endif %}
+        {% endfor %}
+        {{ ns.problem }}
+    attributes:
+        updated_at: "{{ (now() | as_local).isoformat() }}"
+        object_id_not_equal_to_name: >-
+            {% set ns = namespace(entities=[]) %}
+            {% for state in states | rejectattr("domain", "in", ["person", "zone", "sun", "calendar"]) | sort(attribute="name") %}
                 {% if state.name | slugify != state.object_id %}
-                    {% set ns.problem = true %}
-                {% endif %}
-                {% if state.name.split(": ") | count < 2 %}
-                    {% set ns.problem = true %}
-                {% endif %}
-                {% if area_id(state.entity_id) == none %}
-                    {% set ns.problem = true %}
+                    {% set ns.entities = ns.entities + [state.entity_id] %}
                 {% endif %}
             {% endfor %}
-            {{ ns.problem }}
-        attributes:
-            updated_at: "{{ (now() | as_local).isoformat() }}"
-            object_id_not_equal_to_name: >-
-                {% set ns = namespace(entities=[]) %}
-                {% for state in states | rejectattr("domain", "in", ["person", "zone", "sun"]) | sort(attribute="name") %}
-                    {% if state.name | slugify != state.object_id %}
-                        {% set ns.entities = ns.entities + [state.entity_id] %}
-                    {% endif %}
-                {% endfor %}
-                {{ ns.entities | list }}
-            not_standard_entity_name: >-
-                {% set ns = namespace(entities=[]) %}
-                {% for state in states | rejectattr("domain", "in", ["person", "zone", "sun"]) | sort(attribute="name") %}
-                    {% if state.name.split(": ") | count < 2 %}
-                        {% set ns.entities = ns.entities + [state.entity_id] %}
-                    {% endif %}
-                {% endfor %}
-                {{ ns.entities | list }}
-            entity_not_in_area: >-
-                {% set ns = namespace(entities=[]) %}
-                {% for state in states | rejectattr("domain", "in", ["person", "zone", "sun"]) | sort(attribute="name") %}
-                    {% if area_id(state.entity_id) == none %}
-                        {% set ns.entities = ns.entities + [state.entity_id] %}
-                    {% endif %}
-                {% endfor %}
-                {{ ns.entities | list }}
+            {{ ns.entities | list }}
+        not_standard_entity_name: >-
+            {% set ns = namespace(entities=[]) %}
+            {% for state in states | rejectattr("domain", "in", ["person", "zone", "sun", "calendar"]) | sort(attribute="name") %}
+                {% if state.name.split(": ") | count < 2 %}
+                    {% set ns.entities = ns.entities + [state.entity_id] %}
+                {% endif %}
+            {% endfor %}
+            {{ ns.entities | list }}
+        entity_not_in_area: >-
+            {% set ns = namespace(entities=[]) %}
+            {% for state in states | rejectattr("domain", "in", ["person", "zone", "sun", "calendar"]) | sort(attribute="name") %}
+                {% if area_id(state.entity_id) == none %}
+                    {% set ns.entities = ns.entities + [state.entity_id] %}
+                {% endif %}
+            {% endfor %}
+            {{ ns.entities | list }}

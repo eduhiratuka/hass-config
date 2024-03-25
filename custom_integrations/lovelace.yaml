@@ -22,8 +22,8 @@ lovelace:
         #   type: module
         # - url: /hacsfiles/lovelace-horizon-card/lovelace-horizon-card.js
         #   type: module
-        # - url: /hacsfiles/lovelace-hourly-weather/hourly-weather.js
-        #   type: module
+        - url: /hacsfiles/lovelace-hourly-weather/hourly-weather.js
+          type: module
         # - url: /hacsfiles/lovelace-layout-card/layout-card.js
         #   type: module
 
