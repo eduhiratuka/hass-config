@@ -1,0 +1,24 @@
+hourly_weather_component:
+    template:
+        - icon_component_part
+        - no_base_style_mask
+    icon: >-
+        [[[
+            let forecast_entity = 'sensor.servicos_clima_previsao_do_tempo_em_casa_proximas_horas';
+            let condition = states[forecast_entity]['attributes']['teste'][variables.index]['condition'];
+            return `mdi:weather-${ condition }`
+        ]]]
+    styles:
+        img_cell:
+            - width: 100%
+            - border-radius: |
+                [[[
+                    const last = variables.map_list[variables.map_list.length - 1]['pos']
+                    if(variables.index + 1 == last) {
+                        return '0px 12px 12px 0px';
+                    }
+                    if(variables.index == 0) {
+                        return '12px 0px 0px 12px';
+                    }
+                    return '0px 0px 0px 0px';
+                ]]]

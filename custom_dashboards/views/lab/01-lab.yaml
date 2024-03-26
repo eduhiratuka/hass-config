@@ -248,3 +248,5 @@ cards:
                 icons: true
                 show_precipitation_amounts: true
                 show_precipitation_probability: true
+              - type: custom:button-card
+                template: hourly_weather_panel_card

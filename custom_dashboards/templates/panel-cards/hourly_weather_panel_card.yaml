@@ -1,1 +1,73 @@
 
+hourly_weather_panel_card:
+    template:
+        - workaround_wrapper_style_mask
+        - no_base_style_mask
+
+    triggers_update:
+        - sensor.servicos_clima_previsao_do_tempo_em_casa_proximas_horas
+
+    variables:
+        internals: |
+            [[[
+                let forecast_entity = 'sensor.servicos_clima_previsao_do_tempo_em_casa_proximas_horas';
+                let forecast = states[forecast_entity]['attributes']['teste'];
+                let last_condition = null;
+                
+                let final_list = [];
+                let exclude_list = '';
+
+                for (let i = 0; i < forecast.length; i++) {
+                    let condition = forecast[i]['condition'];
+                    if(last_condition != condition) {
+                        final_list.push({
+                            condition: condition,
+                            pos: i + 1,
+                            span: 1
+                        });
+                        last_condition = condition;
+                    } else {
+                        final_list[final_list.length - 1].span += 1;
+                        exclude_list += `#container>#h${ i + 1} { grid-area: none !important; display: none; }\n`
+                    }
+                }
+
+                return {final_list: final_list, exclude_list: exclude_list};
+            ]]]
+    
+    custom_fields:
+        workaround_wrapper:
+            card:
+                type: custom:button-card
+
+                styles:
+                    card:
+                    - padding: 12px
+                    - background: teal
+                extra_styles: |
+                    [[[
+                        const last_pos = variables.internals.final_list.map(objeto => objeto.pos).join(' h');
+                        const last_span = variables.internals.final_list.map(objeto => objeto.span).join('fr ');
+                        const grid_template = `'h${ last_pos }' auto / ${ last_span }fr !important`
+                        const exclude_list = variables.internals.exclude_list;
+
+                        return `#container { grid-template: ${grid_template}; }\n${ exclude_list }`
+                    ]]]
+
+                custom_fields: |
+                    [[[
+                        let arrayToMap = {};
+
+                        for (let i = 0; i < 12; i++) {
+                            arrayToMap['h' + (i + 1)] = { card: {
+                                type: 'custom:button-card',
+                                template: 'hourly_weather_component',
+                                variables: {
+                                    index: i,
+                                    map_list: variables.internals.final_list
+                                }
+                            }};
+                        }
+
+                        return arrayToMap;
+                    ]]]
