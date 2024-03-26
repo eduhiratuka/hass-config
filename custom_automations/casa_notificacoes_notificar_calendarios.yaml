@@ -36,15 +36,15 @@ action:
           - alias: "Enviar notificação para iPhone do Edu"
             service: notify.mobile_app_iphone_do_edu
             data:
-                title: "{{ '💊 Tomar Remédio' }}"
+                title: "{{ '📅 Novo Evento em 15 minutos' }}"
                 message: |
-                    {{ trigger.calendar_event.summary }}
+                    {{ trigger.calendar_event.summary }} @ {{ trigger.calendar_event.start }}
           - alias: "Enviar notificação para S9+ do Edu"
             service: notify.mobile_app_s9_do_edu
             data:
-                title: "{{ '💊 Tomar Remédio' }}"
+                title: "{{ '📅 Novo Evento em 15 minutos' }}"
                 message: |
-                    {{ trigger.calendar_event.summary }}
+                    {{ trigger.calendar_event.summary }} @ {{ trigger.calendar_event.start }}
       - conditions:
           - condition: trigger
             id:
@@ -59,15 +59,15 @@ action:
           - alias: "Enviar notificação para iPhone do Edu"
             service: notify.mobile_app_iphone_do_edu
             data:
-                title: "{{ '💊 Tomar Remédio' }}"
+                title: "{{ '📅 Novo Evento em 30 minutos' }}"
                 message: |
-                    {{ trigger.calendar_event.summary }}
+                    {{ trigger.calendar_event.summary }} @ {{ trigger.calendar_event.start }}
           - alias: "Enviar notificação para S9+ do Edu"
             service: notify.mobile_app_s9_do_edu
             data:
-                title: "{{ '💊 Tomar Remédio' }}"
+                title: "{{ '📅 Novo Evento em 30 minutos' }}"
                 message: |
-                    {{ trigger.calendar_event.summary }}
+                    {{ trigger.calendar_event.summary }} @ {{ trigger.calendar_event.start }}
       - conditions:
           - condition: trigger
             id:

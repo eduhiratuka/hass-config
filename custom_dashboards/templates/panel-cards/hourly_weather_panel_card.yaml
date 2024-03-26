@@ -1,7 +1,6 @@
 
 hourly_weather_panel_card:
     template:
-        - workaround_wrapper_style_mask
         - no_base_style_mask
 
     triggers_update:
@@ -32,18 +31,70 @@ hourly_weather_panel_card:
                     }
                 }
 
-                return {final_list: final_list, exclude_list: exclude_list};
+                return {final_list: final_list, exclude_list: exclude_list, forecast: forecast};
             ]]]
-    
+
+    styles:
+        grid:
+            - grid-template: |
+                'condition_bar' auto
+                'time_bar' auto / 100%
+
     custom_fields:
-        workaround_wrapper:
+
+        time_bar:
             card:
                 type: custom:button-card
+                template:
+                    - border_top_ghost_mask
+                    - border_bottom_ghost_mask
+                styles:
+                    card:
+                        - padding: 0px 12px
+                    grid:
+                        - display: inline-grid
+                        - grid-template: none
+                        - grid-auto-columns: 1fr
+                        - grid-auto-rows: 1fr
+                        - grid-auto-flow: column
+                extra_styles: |
+                    #container > * {
+                        grid-area: auto !important;
+                        display: inline-grid;
+                        grid-template: 'left right' 5px 'bottom bottom' auto / 1fr 1fr;
+                        overflow: visible
+                    }
+                custom_fields: |
+                    [[[
+                        let arrayToMap = {};
+
+                        for (let i = 0; i < 12; i++) {
+                            let novaData = new Date(variables.internals.forecast[i].datetime);
+                            let novaDataString = novaData.getHours() + ':00';
+
+                            arrayToMap['h' + (i + 1)] = `
+                                <div style="grid-area: left; height: 5px; border-right: 1px solid var(--ha-card-border-color, var(--divider-color,#e0e0e0))"></div>
+                                <div style="grid-area: right; height: 5px; border-left: 1px solid var(--ha-card-border-color, var(--divider-color,#e0e0e0))"></div>
+                                <div style="grid-area: bottom; height: 15px; font-size: 0.9rem; color: var(--secondary-text-color)">
+                                    ${ i % 2 == 0 ? novaDataString : '' }
+                                </div>
+                            `   
+                        }
+
+                        return arrayToMap;
+                    ]]]
+
+
+        condition_bar:
+            card:
+                type: custom:button-card
+                template:
+                    - border_top_ghost_mask
 
                 styles:
                     card:
-                    - padding: 12px
-                    - background: teal
+                    - padding: 12px 12px 0
+
                 extra_styles: |
                     [[[
                         const last_pos = variables.internals.final_list.map(objeto => objeto.pos).join(' h');

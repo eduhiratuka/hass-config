@@ -10,62 +10,11 @@ cards:
             title: Laboratório de Testes
             subtitle: Laboratório de Testes
         sections:
-          - title: Teste A
+
+          - title: Previsão
             cards:
-              - type: custom:apexcharts-card
-                graph_span: 12h
-                now:
-                    show: true
-                    color: blue
-                span:
-                    start: hour
-                series:
-                  - entity: weather.servicos_clima_previsao_do_tempo_em_casa_previsao
-                    name: Previsão
-                    type: area
-                    opacity: 0.2
-                    stroke_width: 2
-                    curve: smooth
-                    extend_to: now
-                    show:
-                        datalabels: true
-                    data_generator: >
-                        let result = await hass.callWS({
-                            type: 'execute_script',
-                            sequence: [{
-                                service: 'weather.get_forecasts',
-                                data: {
-                                    type: 'hourly'
-                                },
-                                target: {
-                                    entity_id: 'weather.servicos_clima_previsao_do_tempo_em_casa_previsao'
-                                },
-                                response_variable: "service_result"
-                            }, {
-                                stop: "done",
-                                response_variable: "service_result"
-                            }]
-                        });
-
-                        const tempAtual = hass.states['sensor.servicos_clima_previsao_do_tempo_em_casa_temperatura'].state;
-                        const forecast = result.response['weather.servicos_clima_previsao_do_tempo_em_casa_previsao']['forecast'];
-                        const startTime = start.getTime();
-                        const endTime = end.getTime();
-
-                        let indexTime = startTime;
-                        const dados = [[indexTime, +tempAtual]];
-                        while(indexTime < endTime) {
-                            indexTime = indexTime + 3600000;
-                            let objetoDesejado = forecast.find(objeto => {
-                                return new Date(objeto.datetime).getTime() === indexTime
-                            });
-                            if(objetoDesejado != null) {
-                                dados.push([indexTime, objetoDesejado.temperature]);
-                            }
-                        }
-
-                        return dados;
-
+              - type: custom:button-card
+                template: hourly_weather_panel_card
 
 
           - title: Teste B
@@ -248,5 +197,3 @@ cards:
                 icons: true
                 show_precipitation_amounts: true
                 show_precipitation_probability: true
-              - type: custom:button-card
-                template: hourly_weather_panel_card
